@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('manvik');
 });
 
 Route::get('/dashboard', function () {
@@ -23,6 +23,9 @@ Route::get('/dashboard', function () {
 
 Route::get('/admin', function () {
     return view('admin.index');
-})->middleware(['auth', 'role:admin'])->name('admin.index');
+})->middleware(['auth'])->name('admin.index');
+// Route::get('/admin', function () {
+//     return view('admin.index');
+// })->middleware(['auth', 'role:admin'])->name('admin.index');
 
 require __DIR__.'/auth.php';

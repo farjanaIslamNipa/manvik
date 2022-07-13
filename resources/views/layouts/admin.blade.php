@@ -58,43 +58,28 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{ route('admin.index') }}">
                       <!-- Logo icon -->
                       <b class="logo-icon ps-2">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="{{ asset('/assets/images/logo-icon.png') }}" alt="homepage" class="light-logo" width="25" />
+                        <img src="{{ asset('/assets/images/logo-icon.png') }}" alt="homepage" class="light-logo" />
                       </b>
                       <!--End Logo icon -->
                       <!-- Logo text -->
-                      <span class="logo-text ms-2">
+                      <span class="logo-text ms-1">
                         <!-- dark Logo text -->
                         <img src="{{ asset('/assets/images/logo-text.png') }}" alt="homepage" class="light-logo" />
                       </span>
-                      <!-- Logo icon -->
-                      <!-- <b class="logo-icon"> -->
-                      <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                      <!-- Dark Logo icon -->
-                      <!-- <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-
-                      <!-- </b> -->
-                      <!--End Logo icon -->
                     </a>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
                     <!-- ============================================================== -->
                     <!-- Toggle which is visible on mobile only -->
                     <!-- ============================================================== -->
-                    <a
-                      class="nav-toggler waves-effect waves-light d-block d-md-none"
-                      href="javascript:void(0)"
-                      ><i class="ti-menu ti-close"></i
-                    ></a>
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none"
+                      href="javascript:void(0)">
+                      <span class="hamburger-icon"><i class="fa-solid fa-bars"></i></span>
+                    </a>
                   </div>
-                  <!-- ============================================================== -->
-                  <!-- End Logo -->
-                  <!-- ============================================================== -->
                   <div
                     class="navbar-collapse collapse"
                     id="navbarSupportedContent"
@@ -111,9 +96,6 @@
                           data-sidebartype="mini-sidebar"
                           ><span class="hamburger-icon"><i class="fa-solid fa-bars"></i></span></a>
                       </li>
-                      <!-- ============================================================== -->
-                      <!-- create new -->
-                      <!-- ============================================================== -->
                       <li class="nav-item dropdown">
                         <a
                           class="nav-link dropdown-toggle"
@@ -124,7 +106,7 @@
                           aria-expanded="false"
                         >
                           <span class="d-none d-md-block"
-                            >Create New <i class="fa fa-angle-down"></i
+                            >Assign Role <i class="fa fa-angle-down"></i
                           ></span>
                           <span class="d-block d-md-none"
                             ><i class="fa fa-plus"></i
@@ -142,7 +124,7 @@
                       <!-- ============================================================== -->
                       <!-- Search -->
                       <!-- ============================================================== -->
-                      <li class="nav-item search-box">
+                      {{-- <li class="nav-item search-box">
                         <a
                           class="nav-link waves-effect waves-dark"
                           href="javascript:void(0)"
@@ -156,7 +138,7 @@
                           />
                           <a class="srh-btn"><i class="mdi mdi-window-close"></i></a>
                         </form>
-                      </li>
+                      </li> --}}
                     </ul>
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
@@ -307,57 +289,22 @@
                       <!-- User profile and search -->
                       <!-- ============================================================== -->
                       <li class="nav-item dropdown">
-                        <a
-                          class="
-                            nav-link
-                            dropdown-toggle
-                            text-muted
-                            waves-effect waves-dark
-                            pro-pic
-                          "
-                          href="#"
-                          id="navbarDropdown"
-                          role="button"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                        >
-                          <img
-                            src="../assets/images/users/4.jpg"
-                            alt="user"
-                            class="rounded-circle"
-                            width="31"
-                          />
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <p class="mb-0 text-capitalize user-name">{{ Auth::user()->name }} <span class=""><i class="fa-solid fa-caret-down"></i></span></p>
+                                <img src="{{ asset('/assets/images/users/4.jpg') }}" alt="user" class="ms-3 rounded-circle user-icon" />
+                            </div>
                         </a>
-                        <ul
-                          class="dropdown-menu dropdown-menu-end user-dd animated"
-                          aria-labelledby="navbarDropdown"
-                        >
-                          <a class="dropdown-item" href="javascript:void(0)"
-                            ><i class="mdi mdi-account me-1 ms-1"></i> My Profile</a
-                          >
-                          <a class="dropdown-item" href="javascript:void(0)"
-                            ><i class="mdi mdi-wallet me-1 ms-1"></i> My Balance</a
-                          >
-                          <a class="dropdown-item" href="javascript:void(0)"
-                            ><i class="mdi mdi-email me-1 ms-1"></i> Inbox</a
-                          >
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="javascript:void(0)"
-                            ><i class="mdi mdi-settings me-1 ms-1"></i> Account
-                            Setting</a
-                          >
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="javascript:void(0)"
-                            ><i class="fa fa-power-off me-1 ms-1"></i> Logout</a
-                          >
-                          <div class="dropdown-divider"></div>
-                          <div class="ps-4 p-10">
-                            <a
-                              href="javascript:void(0)"
-                              class="btn btn-sm btn-success btn-rounded text-white"
-                              >View Profile</a
-                            >
-                          </div>
+                        <ul class="dropdown-menu dropdown-menu-end user-dd animated rounded  bg-dark" aria-labelledby="navbarDropdown">
+                            <div class="text-end pe-5">
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a onclick="event.preventDefault(); this.closest('form').submit();" class="dropdown-item pt-4 pb-3 text-brand rounded bg-dark" href="{{ route('logout') }}">
+                                        <i class="fa fa-power-off me-1 ms-1"></i> <span class="log-out">Logout</span>
+                                    </a>
+                                </form>
+                            </div>
                         </ul>
                       </li>
                       <!-- ============================================================== -->
@@ -379,10 +326,10 @@
                   <!-- Sidebar navigation-->
                   <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="pt">
-                      <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.index') }}" aria-expanded="false">
+                      <li class="sidebar-item {{ request()->routeIs('admin.index') ? 'active-menu' : ''}}">
+                        <a class="custom-sidebar-link ps-4 waves-effect waves-dark" href="{{ route('admin.index') }}" aria-expanded="false">
                           <span class="menu-icon"><i class="fa-solid fa-table-cells-large"></i></span>
-                          <span class="hide-menu ms-2">Dashboard</span>
+                          <span class="hide-menu ms-3">Dashboard</span>
                         </a>
                       </li>
                       <li class="sidebar-item">
@@ -583,6 +530,17 @@
                           <span class="menu-icon"><i class="fa-solid fa-table-cells"></i></span>
                           <span class="hide-menu ms-2">Others</span>
                         </a>
+                      </li>
+                      <li class="sidebar-item">
+                        <div class="ps-1">
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a onclick="event.preventDefault(); this.closest('form').submit();" class="dropdown-item text-brand " href="{{ route('logout') }}">
+                                    <i class="fa fa-power-off me-1 ms-1"></i> <span class="log-out">Logout</span>
+                                </a>
+                            </form>
+                        </div>
                       </li>
                       {{-- <li class="sidebar-item">
                         <a
