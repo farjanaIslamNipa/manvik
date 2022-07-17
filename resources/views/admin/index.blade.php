@@ -2,13 +2,15 @@
     @section('title')
     Manvik | Admin Dashboard
     @endsection
+
+    @role('admin')
     <div class="page-wrapper">
         <div class="container-fluid">
           <!-- ============================================================== -->
           <!-- Sales Cards  -->
           <!-- ============================================================== -->
             <div class="scroll-height">
-                <div class="row py-2">
+                <div class="row py-xl-4 py-2">
                     <!-- Column -->
                     <div class="col-md-6 col-lg-2 col-xlg-3">
                       <div class="card card-hover">
@@ -75,9 +77,9 @@
                   <!-- ============================================================== -->
                   <!-- Sales chart -->
                   <!-- ============================================================== -->
-                  <div class="row pb-2">
+                  <div class="row">
                     <div class="col-md-12">
-                      <div class="card pb-2">
+                      <div class="card pb-4">
                         <div class="card-body">
                           <div class="d-md-flex align-items-center">
                             <div>
@@ -148,5 +150,15 @@
         </footer>
       </div>
     </div>
+@else
+<div class="bg-dark auth-screen d-flex justify-content-center">
+    <div class="pt-20">
+        <h1 class="text-sky-blue pb-4 text-5xl font-bold text-center"><i class="fa-solid fa-holly-berry"></i></h1>
+        <h1 class="text-brand text-3xl font-bold">Welcome to Manvik Dashboard !</h1>
+    </div>
+</div>
+@endrole
+
+
 </x-admin-layout>
 
