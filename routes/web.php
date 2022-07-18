@@ -26,6 +26,9 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/', action:[IndexController::class, 'index'])->name('index');
     Route::get(uri:'/user', action:[UsersController::class, 'index'])->name('users.index');
+    Route::get(uri:'/user/{user}/role', action:[UsersController::class, 'assignRoleView'])->name('users.assign.role.view');
+    Route::post(uri:'/user/{user}/assign-role', action:[UsersController::class, 'assignRole'])->name('users.roles.assign');
+    Route::delete(uri:'/user/{user}/remove-role/{role}', action:[UsersController::class, 'removeRole'])->name('users.roles.remove');
 });
 // Route::get('/admin', function () {
 //     return view('admin.index');

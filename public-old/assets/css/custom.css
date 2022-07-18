@@ -6,9 +6,6 @@ body{
     --darkIndigo: #1c8782;
     --brandColor: #dcba42;
 }
-body{
-    background: #eeeeee;
-}
 
 .bg-golden{
     background-color: var(--golden) !important;
@@ -44,15 +41,7 @@ body{
 .text-brand{
     color: var(--brandColor);
 }
-.alert{
-    margin-bottom: 0 !important;
-}
 
-.alert-dismissible .btn-close {
-    padding: 10px 20px !important;
-    font-weight: 600;
-    font-size: 18px;
-}
 
 .menu-icon i{
     font-size: 18px !important;
@@ -154,25 +143,9 @@ body{
 }
 
 .login-form{
-    width: 30%;
+    width: 40%;
     background-color: black;
     border-radius: 10px;
-}
-
-@media  (max-width:1199px) {
-    .login-form{
-        width: 45%;
-    }
-}
-@media  (max-width:768px) {
-    .login-form{
-        width: 70%;
-    }
-}
-@media  (max-width:574px) {
-    .login-form{
-        width: 85%;
-    }
 }
 
 .input-group-text {

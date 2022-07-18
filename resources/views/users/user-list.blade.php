@@ -24,12 +24,24 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>@if($user->roles)
-                                    {{-- {{ dd($collectionOfRoles) }}
+                                    {{-- {{ dd($collectionOfRoles) }} --}}
                                     @foreach ($user->roles as $role)
-                                        <span>{{ $role }}, </span>
-                                    @endforeach --}}
+                                    <span class="badge bg-sky-blue text-white">{{ $role->name }}</span>
+                                    @endforeach
                                 @endif</td>
-                                <td>@mdo</td>
+                                {{-- <td><i class="fa-solid fa-circle-chevron-down"></i></td> --}}
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="btn btn-secondary text-brand dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                        </a>
+
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                          <li><a class="dropdown-item" href="{{ route('admin.users.assign.role.view', $user->id) }}">Assign Role</a></li>
+                                          <li><a class="dropdown-item" href="#">Remove Role</a></li>
+                                        </ul>
+                                      </div>
+                                </td>
                           </tr>
                         @endforeach
                       </tbody>

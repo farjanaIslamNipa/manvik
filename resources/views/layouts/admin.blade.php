@@ -31,6 +31,30 @@
 </head>
 
 <body>
+    @if (Session::has('success'))
+    <div class="page-wrapper">
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+            <strong class="text-capitalize">{{ Session::get('success') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+    </div>
+    @endif
+    @if (Session::has('info'))
+    <div class="page-wrapper">
+        <div class="alert alert-warning text-center alert-dismissible fade show" role="alert">
+            <strong class="text-capitalize">{{ Session::get('info') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+    </div>
+    @endif
+    @if (Session::has('error'))
+    <div class="page-wrapper">
+        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+            <strong class="text-capitalize">{{ Session::get('error') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+    </div>
+    @endif
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <header class="topbar" data-navbarbg="skin5">
@@ -176,174 +200,177 @@
                                 <span class="hide-menu ms-3">Dashboard</span>
                             </a>
                         </li>
-                        @role('admin')
-                            <li class="sidebar-item">
-                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                    aria-expanded="false">
-                                    <span class="menu-icon"><i class="fa-solid fa-file-signature"></i></span>
-                                    <span class="hide-menu ms-2">Expenses </span>
-                                </a>
-                                <ul aria-expanded="false" class="collapse first-level sub-menu-bg ps-2">
-                                    <li class="sidebar-item">
-                                        <a href="form-basic.html" class="sidebar-link">
-                                            <span class="hide-menu"> <span class="sub-menu-icon"><i
-                                                        class="fa-solid fa-caret-right"></i></span> Expense List
-                                            </span></a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="form-basic.html" class="sidebar-link">
-                                            <span class="hide-menu"> <span class="sub-menu-icon"><i
-                                                        class="fa-solid fa-caret-right"></i></span> Fabric </span></a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
-                                                    class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                                Accessories </span></a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
-                                                    class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                                Iron </span></a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
-                                                    class="sub-menu-icon"><i
-                                                        class="fa-solid fa-caret-right"></i></span>Equipment Purchase
-                                            </span></a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
-                                                    class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                                Repair Cost </span></a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
-                                                    class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                                Transport </span></a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
-                                                    class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                                Rent </span></a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="form-wizard.html" class="sidebar-link">
-                                            <span class="hide-menu">
+                            
+                            @role('admin')
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                        aria-expanded="false">
+                                        <span class="menu-icon"><i class="fa-solid fa-file-signature"></i></span>
+                                        <span class="hide-menu ms-2">Expenses </span>
+                                    </a>
+                                    <ul aria-expanded="false" class="collapse first-level sub-menu-bg ps-2">
+                                        <li class="sidebar-item">
+                                            <a href="form-basic.html" class="sidebar-link">
+                                                <span class="hide-menu"> <span class="sub-menu-icon"><i
+                                                            class="fa-solid fa-caret-right"></i></span> Expense List
+                                                </span></a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="form-basic.html" class="sidebar-link">
+                                                <span class="hide-menu"> <span class="sub-menu-icon"><i
+                                                            class="fa-solid fa-caret-right"></i></span> Fabric </span></a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
+                                                        class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                    Accessories </span></a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
+                                                        class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                    Iron </span></a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
+                                                        class="sub-menu-icon"><i
+                                                            class="fa-solid fa-caret-right"></i></span>Equipment Purchase
+                                                </span></a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
+                                                        class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                    Repair Cost </span></a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
+                                                        class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                    Transport </span></a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> <span
+                                                        class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                    Rent </span></a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="form-wizard.html" class="sidebar-link">
+                                                <span class="hide-menu">
+                                                    <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                    Suppliers
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                        aria-expanded="false">
+                                        <span class="menu-icon"><i class="fa-solid fa-users"></i></span>
+                                        <span class="hide-menu ms-2">Employee </span>
+                                    </a>
+                                    <ul aria-expanded="false" class="collapse first-level bg-sky-blue ps-2">
+                                        <li class="sidebar-item">
+                                            <a href="icon-material.html" class="sidebar-link"><span class="hide-menu">
+                                                    <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                    Employee Details
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="icon-fontawesome.html" class="sidebar-link">
+                                                <span class="hide-menu">
+                                                    <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                    Employee Salary
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                        aria-expanded="false"><span class="menu-icon"><i
+                                                class="fa-solid fa-circle-dollar-to-slot"></i></span><span
+                                            class="hide-menu ms-2">Sales </span></a>
+                                    <ul aria-expanded="false" class="collapse first-level bg-dark-green ps-2">
+                                        <li class="sidebar-item">
+                                            <a href="index2.html" class="sidebar-link">
                                                 <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                                Suppliers
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                    aria-expanded="false">
-                                    <span class="menu-icon"><i class="fa-solid fa-users"></i></span>
-                                    <span class="hide-menu ms-2">Employee </span>
-                                </a>
-                                <ul aria-expanded="false" class="collapse first-level bg-sky-blue ps-2">
-                                    <li class="sidebar-item">
-                                        <a href="icon-material.html" class="sidebar-link"><span class="hide-menu">
+                                                <span class="hide-menu"> Sales List </span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="index2.html" class="sidebar-link">
                                                 <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                                Employee Details
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="icon-fontawesome.html" class="sidebar-link">
-                                            <span class="hide-menu">
+                                                <span class="hide-menu"> Whole Seller </span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="index2.html" class="sidebar-link">
                                                 <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                                Employee Salary
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                    aria-expanded="false"><span class="menu-icon"><i
-                                            class="fa-solid fa-circle-dollar-to-slot"></i></span><span
-                                        class="hide-menu ms-2">Sales </span></a>
-                                <ul aria-expanded="false" class="collapse first-level bg-dark-green ps-2">
-                                    <li class="sidebar-item">
-                                        <a href="index2.html" class="sidebar-link">
-                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                            <span class="hide-menu"> Sales List </span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="index2.html" class="sidebar-link">
-                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                            <span class="hide-menu"> Whole Seller </span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="index2.html" class="sidebar-link">
-                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                            <span class="hide-menu"> Retailer </span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="index2.html" class="sidebar-link">
-                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                            <span class="hide-menu"> Reseller </span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="index2.html" class="sidebar-link">
-                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                            <span class="hide-menu"> Merchant </span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="index2.html" class="sidebar-link">
-                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                            <span class="hide-menu"> CM </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                    aria-expanded="false"><span class="menu-icon"><i
-                                            class="fa-solid fa-box-tissue"></i></span><span class="hide-menu ms-2">China
-                                        Products </span></a>
-                                <ul aria-expanded="false" class="collapse first-level bg-info ps-2">
-                                    <li class="sidebar-item">
-                                        <a href="index2.html" class="sidebar-link">
-                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                            <span class="hide-menu"> Order List </span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="index2.html" class="sidebar-link">
-                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                            <span class="hide-menu"> Order Booking </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                    aria-expanded="false"><span class="menu-icon"><i
-                                            class="fa-solid fa-boxes-stacked"></i></span><span
-                                        class="hide-menu ms-2">Product Stock </span></a>
-                                <ul aria-expanded="false" class="collapse first-level bg-dark-indigo">
-                                    <li class="sidebar-item">
-                                        <a href="index2.html" class="sidebar-link">
-                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                            <span class="hide-menu"> Product List </span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="index2.html" class="sidebar-link">
-                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                            <span class="hide-menu"> Add Product </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                                                <span class="hide-menu"> Retailer </span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="index2.html" class="sidebar-link">
+                                                <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                <span class="hide-menu"> Reseller </span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="index2.html" class="sidebar-link">
+                                                <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                <span class="hide-menu"> Merchant </span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="index2.html" class="sidebar-link">
+                                                <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                <span class="hide-menu"> CM </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                        aria-expanded="false"><span class="menu-icon"><i
+                                                class="fa-solid fa-box-tissue"></i></span><span class="hide-menu ms-2">China
+                                            Products </span></a>
+                                    <ul aria-expanded="false" class="collapse first-level bg-info ps-2">
+                                        <li class="sidebar-item">
+                                            <a href="index2.html" class="sidebar-link">
+                                                <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                <span class="hide-menu"> Order List </span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="index2.html" class="sidebar-link">
+                                                <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                <span class="hide-menu"> Order Booking </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                        aria-expanded="false"><span class="menu-icon"><i
+                                                class="fa-solid fa-boxes-stacked"></i></span><span
+                                            class="hide-menu ms-2">Product Stock </span></a>
+                                    <ul aria-expanded="false" class="collapse first-level bg-dark-indigo">
+                                        <li class="sidebar-item">
+                                            <a href="index2.html" class="sidebar-link">
+                                                <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                <span class="hide-menu"> Product List </span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="index2.html" class="sidebar-link">
+                                                <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                                <span class="hide-menu"> Add Product </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endrole
+                            @role('super admin')
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.users.index') }}"
                                     aria-expanded="false">
@@ -351,6 +378,47 @@
                                     <span class="hide-menu ms-2">Users</span>
                                 </a>
                             </li>
+                            @endrole
+                            @role('user')
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><span class="menu-icon"><i
+                                            class="fa-solid fa-network-wired"></i></span><span
+                                        class="hide-menu ms-2">Digital Marketing </span></a>
+                                <ul aria-expanded="false" class="collapse first-level bg-dark-red">
+                                    <li class="sidebar-item">
+                                        <a href="index2.html" class="sidebar-link">
+                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                            <span class="hide-menu"> Digital Marketing List </span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="index2.html" class="sidebar-link">
+                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                            <span class="hide-menu"> Seller Code </span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="index2.html" class="sidebar-link">
+                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                            <span class="hide-menu"> Boosting </span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="index2.html" class="sidebar-link">
+                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                            <span class="hide-menu"> Page Setup </span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="index2.html" class="sidebar-link">
+                                            <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                                            <span class="hide-menu"> Graphics Work </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            @endrole
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                                     aria-expanded="false">
@@ -358,45 +426,6 @@
                                     <span class="hide-menu ms-2">Others</span>
                                 </a>
                             </li>
-                        @endrole
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false"><span class="menu-icon"><i
-                                        class="fa-solid fa-network-wired"></i></span><span
-                                    class="hide-menu ms-2">Digital Marketing </span></a>
-                            <ul aria-expanded="false" class="collapse first-level bg-dark-red">
-                                <li class="sidebar-item">
-                                    <a href="index2.html" class="sidebar-link">
-                                        <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                        <span class="hide-menu"> Digital Marketing List </span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="index2.html" class="sidebar-link">
-                                        <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                        <span class="hide-menu"> Seller Code </span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="index2.html" class="sidebar-link">
-                                        <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                        <span class="hide-menu"> Boosting </span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="index2.html" class="sidebar-link">
-                                        <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                        <span class="hide-menu"> Page Setup </span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="index2.html" class="sidebar-link">
-                                        <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                                        <span class="hide-menu"> Graphics Work </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                         <li class="sidebar-item">
                             <div class="ps-1">
                                 <!-- Authentication -->
@@ -457,6 +486,7 @@
         {{ $slot }}
     </div>
 
+    @yield('script')
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/perfect-scrollbar.jquery.min.js') }}"></script>
