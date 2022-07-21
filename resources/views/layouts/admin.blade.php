@@ -89,23 +89,21 @@
                                 data-sidebartype="mini-sidebar"><span class="hamburger-icon"><i
                                         class="fa-solid fa-bars"></i></span></a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="d-none d-md-block">Assign Role <i class="fa fa-angle-down"></i></span>
-                                <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </li>
-                            </ul>
-                        </li>
+                        @role('super admin')
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="d-none d-md-block">Assign Role <i class="fa fa-angle-down"></i></span>
+                                    <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @foreach ($users as $user)
+                                    <li><a class="dropdown-item bg-dark text-white" href="{{ route('admin.users.assign.role.view', $user->id) }}">{{ $user->name }}</a></li>
+                                    @endforeach
+                                    
+                                </ul>
+                            </li>
+                        @endrole
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
@@ -208,7 +206,7 @@
                                         <span class="menu-icon"><i class="fa-solid fa-file-signature"></i></span>
                                         <span class="hide-menu ms-2">Expenses </span>
                                     </a>
-                                    <ul aria-expanded="false" class="collapse first-level sub-menu-bg ps-2">
+                                    <ul aria-expanded="false" class="collapse first-level bg-info ps-2">
                                         <li class="sidebar-item">
                                             <a href="form-basic.html" class="sidebar-link">
                                                 <span class="hide-menu"> <span class="sub-menu-icon"><i
@@ -267,7 +265,7 @@
                                         <span class="menu-icon"><i class="fa-solid fa-users"></i></span>
                                         <span class="hide-menu ms-2">Employee </span>
                                     </a>
-                                    <ul aria-expanded="false" class="collapse first-level bg-sky-blue ps-2">
+                                    <ul aria-expanded="false" class="collapse first-level bg-info ps-2">
                                         <li class="sidebar-item">
                                             <a href="icon-material.html" class="sidebar-link"><span class="hide-menu">
                                                     <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
@@ -290,7 +288,7 @@
                                         aria-expanded="false"><span class="menu-icon"><i
                                                 class="fa-solid fa-circle-dollar-to-slot"></i></span><span
                                             class="hide-menu ms-2">Sales </span></a>
-                                    <ul aria-expanded="false" class="collapse first-level bg-dark-green ps-2">
+                                    <ul aria-expanded="false" class="collapse first-level bg-info ps-2">
                                         <li class="sidebar-item">
                                             <a href="index2.html" class="sidebar-link">
                                                 <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
@@ -354,7 +352,7 @@
                                         aria-expanded="false"><span class="menu-icon"><i
                                                 class="fa-solid fa-boxes-stacked"></i></span><span
                                             class="hide-menu ms-2">Product Stock </span></a>
-                                    <ul aria-expanded="false" class="collapse first-level bg-dark-indigo">
+                                    <ul aria-expanded="false" class="collapse first-level bg-info">
                                         <li class="sidebar-item">
                                             <a href="index2.html" class="sidebar-link">
                                                 <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
@@ -369,15 +367,22 @@
                                         </li>
                                     </ul>
                                 </li>
-                            @endrole
-                            @role('super admin')
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.users.index') }}"
-                                    aria-expanded="false">
-                                    <span class="menu-icon"><i class="fa-solid fa-user-check"></i></span>
-                                    <span class="hide-menu ms-2">Users</span>
-                                </a>
-                            </li>
+                                @role('super admin')
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.users.index') }}"
+                                        aria-expanded="false">
+                                        <span class="menu-icon"><i class="fa-solid fa-user-check"></i></span>
+                                        <span class="hide-menu ms-2">Users</span>
+                                    </a>
+                                </li>
+                                @endrole
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                        aria-expanded="false">
+                                        <span class="menu-icon"><i class="fa-solid fa-table-cells"></i></span>
+                                        <span class="hide-menu ms-2">Others</span>
+                                    </a>
+                                </li>
                             @endrole
                             @role('user')
                             <li class="sidebar-item">
@@ -385,7 +390,7 @@
                                     aria-expanded="false"><span class="menu-icon"><i
                                             class="fa-solid fa-network-wired"></i></span><span
                                         class="hide-menu ms-2">Digital Marketing </span></a>
-                                <ul aria-expanded="false" class="collapse first-level bg-dark-red">
+                                <ul aria-expanded="false" class="collapse first-level bg-info">
                                     <li class="sidebar-item">
                                         <a href="index2.html" class="sidebar-link">
                                             <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
@@ -419,13 +424,6 @@
                                 </ul>
                             </li>
                             @endrole
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                                    aria-expanded="false">
-                                    <span class="menu-icon"><i class="fa-solid fa-table-cells"></i></span>
-                                    <span class="hide-menu ms-2">Others</span>
-                                </a>
-                            </li>
                         <li class="sidebar-item">
                             <div class="ps-1">
                                 <!-- Authentication -->

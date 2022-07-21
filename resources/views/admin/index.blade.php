@@ -154,7 +154,9 @@
     <div class="pt-20 text-center">
         <h1 class="text-sky-blue pb-4 text-5xl font-bold text-center"><i class="fa-solid fa-holly-berry"></i></h1>
         <h1 class="text-brand text-3xl font-bold">Welcome to Manvik Dashboard !</h1>
-        <h4 class="text-xl text-white mb-4">Please ask your officials to give you the right permission to perform the operations <span class="text-brand"><i class="fa-solid fa-face-smile-beam"></i></span></h4>
+        @unlessrole('user')
+          <h4 class="text-xl text-white mb-4">Please ask your officials to give you the right permission to perform the operations <span class="text-brand"><i class="fa-solid fa-face-smile-beam"></i></span></h4>
+        @endunlessrole     
     </div>
 </div>
 @endrole

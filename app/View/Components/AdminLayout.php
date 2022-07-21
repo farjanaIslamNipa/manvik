@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\User;
 use Illuminate\View\Component;
 
 class AdminLayout extends Component
@@ -13,6 +14,7 @@ class AdminLayout extends Component
      */
     public function render()
     {
-        return view('layouts.admin');
+        $users = User::all();
+        return view('layouts.admin', compact('users'));
     }
 }

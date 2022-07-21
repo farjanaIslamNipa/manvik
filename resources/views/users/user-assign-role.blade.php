@@ -13,7 +13,7 @@
                         <div class="mt-4 d-flex">
                             @if ($user->roles)
                                 @foreach ($user->roles as $role)
-                                <form action="{{ route('admin.users.roles.remove', [$user->id, $role->id]) }}" method="POST" onsubmit="return confirm('are your sure?');">
+                                <form action="{{ route('admin.users.roles.remove', [$user->id, $role->id]) }}" method="POST" onsubmit="return confirm('are your sure you want to delete this role?');">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger bg-danger ms-2 py-1 text-capitalize" type="submit" >{{ $role->name }}</button>
