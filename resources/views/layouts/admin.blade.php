@@ -19,6 +19,7 @@
     <!-- Template CSS -->
     <link href="{{ asset('assets/css/float-chart.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/style.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" />
     {{-- Custom css --}}
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <!-- Fonts -->
@@ -100,7 +101,7 @@
                                     @foreach ($users as $user)
                                     <li><a class="dropdown-item bg-dark text-white" href="{{ route('admin.users.assign.role.view', $user->id) }}">{{ $user->name }}</a></li>
                                     @endforeach
-                                    
+
                                 </ul>
                             </li>
                         @endrole
@@ -198,7 +199,7 @@
                                 <span class="hide-menu ms-3">Dashboard</span>
                             </a>
                         </li>
-                            
+
                             @role('admin')
                                 <li class="sidebar-item">
                                     <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
@@ -265,9 +266,9 @@
                                         <span class="menu-icon"><i class="fa-solid fa-users"></i></span>
                                         <span class="hide-menu ms-2">Employee </span>
                                     </a>
-                                    <ul aria-expanded="false" class="collapse first-level bg-info ps-2">
+                                    <ul aria-expanded="false" class="collapse first-level bg-secondary">
                                         <li class="sidebar-item">
-                                            <a href="icon-material.html" class="sidebar-link"><span class="hide-menu">
+                                            <a href="{{ route('admin.all.employee.show') }}" class="sidebar-link {{ request()->routeIs('admin.all.employee.show') ? 'active-menu' : '' }}"><span class="hide-menu ms-2">
                                                     <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
                                                     Employee Details
                                                 </span>
@@ -275,7 +276,7 @@
                                         </li>
                                         <li class="sidebar-item">
                                             <a href="icon-fontawesome.html" class="sidebar-link">
-                                                <span class="hide-menu">
+                                                <span class="hide-menu ms-2">
                                                     <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
                                                     Employee Salary
                                                 </span>
@@ -431,7 +432,7 @@
                                     @csrf
                                     <a onclick="event.preventDefault(); this.closest('form').submit();"
                                         class="dropdown-item text-brand " href="{{ route('logout') }}">
-                                        <i class="fa fa-power-off me-1 ms-1"></i> <span class="log-out">Logout</span>
+                                        <i class="fa fa-power-off me-1 ms-1"></i> <span class="log-out hide-menu">Logout</span>
                                     </a>
                                 </form>
                             </div>
@@ -490,8 +491,17 @@
     <script src="{{ asset('assets/js/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script>
+              /*datwpicker*/
+      jQuery(".mydatepicker").datepicker();
+      jQuery("#datepicker-autoclose").datepicker({
+        autoclose: true,
+        todayHighlight: true,
+      });
     </script>
 </body>
 
