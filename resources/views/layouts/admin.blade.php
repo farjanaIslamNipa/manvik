@@ -209,8 +209,7 @@
                                     <ul aria-expanded="false" class="collapse first-level bg-info ps-2">
                                         <li class="sidebar-item">
                                             <a href="form-basic.html" class="sidebar-link">
-                                                <span class="hide-menu"> <span class="sub-menu-icon"><i
-                                                            class="fa-solid fa-caret-right"></i></span> Expense List
+                                                <span class="hide-menu"> <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Expense List
                                                 </span></a>
                                         </li>
                                         <li class="sidebar-item">
