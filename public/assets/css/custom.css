@@ -44,6 +44,30 @@ body{
 .text-brand{
     color: var(--brandColor);
 }
+
+.btn-brand{
+    background: linear-gradient(90deg, #d19d00 0%, #fcef7a 100%) !important;
+    padding: 8px 40px !important;
+    text-align: center !important;
+    transition: 0.5s !important;
+    background-size: 200% auto !important;
+    color: black !important;
+    border: 0px !important;
+    font-weight: 700 !important;
+    box-shadow: 0px 0px 14px -7px #d19d00 !important;
+    background-image: linear-gradient(45deg, #fcef7a 0%, #d19d00 51%, #fcef7a 100%) !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    touch-action: manipulation !important;
+    width: 200px !important;
+}
+
+.btn-brand:hover{
+    background-position: right center !important;
+    color: black !important;
+    text-decoration: none !important;
+}
 .alert{
     margin-bottom: 0 !important;
 }
@@ -222,4 +246,17 @@ body{
 
 .home-register-btn:hover, .home-login-btn:hover {
     color: whitesmoke !important;
+}
+.base-form input{
+    border: 1px solid #6b7280 !important;
+}
+
+.base-form input:focus{
+    border: 1px solid var(--brandColor) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.file-input{
+    padding-top: 6px !important;
+    padding-left: 10px !important;
 }
