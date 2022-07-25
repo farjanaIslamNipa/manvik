@@ -22,7 +22,7 @@
                 @foreach ($employees as $employee)
                 <p>{{ $employee->name }}</p>
                 @if($employee->img)
-                <img src="{{ asset($employee->img) }}" alt="">
+                <img class="w-25" src="{{ asset($employee->img) }}" alt="">
                 @endif
 
                 @endforeach

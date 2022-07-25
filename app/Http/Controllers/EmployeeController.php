@@ -24,12 +24,13 @@ class EmployeeController extends Controller
         $request->validate([
             'name'          => 'required',
             'fathers_name'  => 'required',
-            'phone'         => 'required',
+            'phone'         => 'required|numeric',
             'gender'        => 'required',
+            'nid'           => 'nullable|numeric|unique:employees',
             'address'       => 'required',
             'joining_date'  => 'required',
             'position'      => 'required',
-            'salary'        => 'required'
+            'salary'        => 'required|numeric'
         ]);
 
         if ($request->hasFile('img')) {
@@ -63,7 +64,7 @@ class EmployeeController extends Controller
         // }
 
          $employee->save();
-        return redirect()->back()->with('success', 'New employee added successfully');
+        return redirect()->route('admin.all.employee.show')->with('success', 'New employee added successfully');
         //  dd($employee);
     }
 
