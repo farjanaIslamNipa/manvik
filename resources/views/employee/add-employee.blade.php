@@ -6,7 +6,7 @@
     <div class="page-wrapper">
         <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-lg-7">
+                <div class="col-xl-7 col-md-10">
                   <div class="card mt-4">
                     <h4 class="text-lg text-center pt-5 pb-3 font-bold">Employee Information</h4>
                     <form action="{{ route('admin.store.employee') }}" method="POST" enctype="multipart/form-data" class="base-form">

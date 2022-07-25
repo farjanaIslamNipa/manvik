@@ -9,7 +9,8 @@ class EmployeeController extends Controller
 {
     public function allEmployee()
     {
-        return view('employee.all-employee');
+        $employees = Employee::orderBy('id', 'DESC')->get();;
+        return view('employee.all-employee', compact('employees'));
     }
 
     public function addEmployee()
@@ -19,7 +20,7 @@ class EmployeeController extends Controller
 
     public function storeEmployee(Request $request)
     {
- 
+
         $request->validate([
             'name'          => 'required',
             'fathers_name'  => 'required',
@@ -31,22 +32,22 @@ class EmployeeController extends Controller
             'salary'        => 'required'
         ]);
 
-        // if ($request->hasFile('image')) {
-        //     $file = $request->file('image');
-        //     $thumbNameTmp = md5_file($file->getRealPath());
-        //     $extension = $file->getClientOriginalExtension();
-        //     $filename = 'tags' . $thumbNameTmp . '_' . time() . '.' . $extension;
-        //     $path = 'uploads/tags/images';
-        //     $imgUrl = $file->move($path, $filename);
-        //     $request['image'] = $imgUrl;
-        // }
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+            $thumbNameTmp = md5_file($file->getRealPath());
+            $extension = $file->getClientOriginalExtension();
+            $filename = 'employees' . $thumbNameTmp . '_' . time() . '.' . $extension;
+            $path = 'uploads/employees';
+            $imgUrl = $file->move($path, $filename);
+            $request['img'] = $imgUrl;
+        }
     //    dd($file);
         $employee = new Employee();
 
         $employee->name             = $request->name;
         $employee->fathers_name     = $request->fathers_name;
         $employee->phone            = $request->phone;
-        $employee->img              = $request->img;
+        $employee->img              = isset($imgUrl) ? $imgUrl : '';
         $employee->nid              = $request->nid;
         $employee->gender           = $request->gender;
         $employee->address          = $request->address;
@@ -60,11 +61,11 @@ class EmployeeController extends Controller
         //     $request->img->store('employee', 'public');
         //     $employee->img = $request->img->hashName();
         // }
-    
+
          $employee->save();
-       
+        return redirect()->back()->with('success', 'New employee added successfully');
         //  dd($employee);
     }
 
-    
+
 }
