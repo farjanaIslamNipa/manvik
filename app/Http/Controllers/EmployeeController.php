@@ -19,28 +19,38 @@ class EmployeeController extends Controller
 
     public function storeEmployee(Request $request)
     {
+ 
         $request->validate([
             'name'          => 'required',
-            'img'           => 'nullable',
             'fathers_name'  => 'required',
-            'nid'           => 'nullable',
-            'gender'        => 'nullable',
+            'phone'         => 'required',
+            'gender'        => 'required',
             'address'       => 'required',
             'joining_date'  => 'required',
             'position'      => 'required',
             'salary'        => 'required'
         ]);
 
-
-
+        // if ($request->hasFile('image')) {
+        //     $file = $request->file('image');
+        //     $thumbNameTmp = md5_file($file->getRealPath());
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = 'tags' . $thumbNameTmp . '_' . time() . '.' . $extension;
+        //     $path = 'uploads/tags/images';
+        //     $imgUrl = $file->move($path, $filename);
+        //     $request['image'] = $imgUrl;
+        // }
+    //    dd($file);
         $employee = new Employee();
 
         $employee->name             = $request->name;
         $employee->fathers_name     = $request->fathers_name;
+        $employee->phone            = $request->phone;
+        $employee->img              = $request->img;
         $employee->nid              = $request->nid;
         $employee->gender           = $request->gender;
         $employee->address          = $request->address;
-        $employee->joining_date     = $request->joining_date;
+        $employee->joining_date     = date('Y-m-d H:i:s', strtotime($request->joining_date));
         $employee->position         = $request->position;
         $employee->salary           = $request->salary;
         // if($request->hasFile('img')){
@@ -50,10 +60,10 @@ class EmployeeController extends Controller
         //     $request->img->store('employee', 'public');
         //     $employee->img = $request->img->hashName();
         // }
-
+    
          $employee->save();
-
-         dd($employee);
+       
+        //  dd($employee);
     }
 
     

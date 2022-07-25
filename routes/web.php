@@ -34,7 +34,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     // EMPLOYEE ROUTES
     Route::get(uri:'/employee', action:[EmployeeController::class, 'allEmployee'])->name('all.employee.show');
     Route::get(uri:'/employee/add', action:[EmployeeController::class, 'addEmployee'])->name('add.employee');
-    Route::get(uri:'/employee/store', action:[EmployeeController::class, 'storeEmployee'])->name('store.employee');
+    Route::post(uri:'/employee/store', action:[EmployeeController::class, 'storeEmployee'])->name('store.employee');
 });
 // Route::get('/admin', function () {
 //     return view('admin.index');

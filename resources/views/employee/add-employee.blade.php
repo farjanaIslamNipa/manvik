@@ -24,7 +24,7 @@
                               class="form-control"
                               id="fname"
                               name="name"
-                              placeholder="Enter"
+                              placeholder="Enter full name"
                             />
                           </div>
                         </div>
@@ -166,6 +166,7 @@
                                 type="text"
                                 class="form-control"
                                 id="datepicker-autoclose"
+                                name="joining_date"
                                 placeholder="mm/dd/yyyy"
                               />
                             </div>
@@ -188,7 +189,7 @@
                           </div>
                       </div>
                       <div class="text-right pe-5 pb-5 pt-2">
-                        <button type="button" class="btn-brand me-2">
+                        <button type="submit" class="btn-brand me-2">
                           Submit
                         </button>
                       </div>
