@@ -13,35 +13,17 @@
                       @csrf
                       <div class="card-body pb-1">
                         <div class="form-group row">
-                          <label
-                            for="fname"
-                            class="col-lg-2 col-lg-2 col-sm-3 text-end control-label col-form-label"
-                            >Full Name:</label
-                          >
+                          <label for="fname" class="col-lg-2 col-lg-2 col-sm-3 text-end control-label col-form-label">Full Name:</label>
                           <div class="col-lg-10 col-sm-9 px-5">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="fname"
-                              name="name"
-                              placeholder="Enter full name"
-                            />
+                            <input type="text" class="form-control" id="fname" name="name" value="{{ old('name') }}" placeholder="Enter full name" />
+                            @error('name') <p class="text-danger mb-0">{{ $message }}</p>@enderror
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label
-                            for="lname"
-                            class="col-lg-2 col-sm-3 text-end control-label col-form-label"
-                            >Father's Name:</label
-                          >
+                          <label for="lname" class="col-lg-2 col-sm-3 text-end control-label col-form-label">Father's Name:</label>
                           <div class="col-lg-10 col-sm-9 px-5">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="lname"
-                              name="fathers_name"
-                              placeholder="Enter Father's name"
-                            />
+                            <input type="text" class="form-control" id="lname" value="{{ old('fathers_name') }}" name="fathers_name" placeholder="Enter Father's name" />
+                            @error('fathers_name') <p class="text-danger mb-0">{{ $message }}</p>@enderror
                           </div>
                         </div>
                         <div class="form-group row">
@@ -56,8 +38,10 @@
                               class="form-control"
                               id="lname"
                               name="phone"
+                              value="{{ old('phone') }}"
                               placeholder="Enter phone number"
                             />
+                            @error('phone') <p class="text-danger mb-0">{{ $message }}</p>@enderror
                           </div>
                         </div>
                         <div class="form-group row">
@@ -72,8 +56,10 @@
                               class="form-control"
                               id="lname"
                               name="address"
+                              value="{{ old('address') }}"
                               placeholder="Enter Address"
                             />
+                            @error('address') <p class="text-danger mb-0">{{ $message }}</p>@enderror
                           </div>
                         </div>
                         <div class="form-group row">
@@ -109,6 +95,7 @@
                                       >
                                     </div>
                               </div>
+                              @error('gender') <p class="text-danger mb-0">{{ $message }}</p>@enderror
                           </div>
                         </div>
                         <div class="form-group row">
@@ -123,8 +110,10 @@
                               class="form-control"
                               id="lname"
                               name="nid"
+                              value="{{ old('nid') }}"
                               placeholder="Enter NID number"
                             />
+                            @error('nid') <p class="text-danger mb-0">{{ $message }}</p>@enderror
                           </div>
                         </div>
                         <div class="form-group row">
@@ -139,8 +128,10 @@
                               class="form-control"
                               id="lname"
                               name="position"
+                              value="{{ old('position') }}"
                               placeholder="Enter position"
                             />
+                            @error('position') <p class="text-danger mb-0">{{ $message }}</p>@enderror
                           </div>
                         </div>
                         <div class="form-group row">
@@ -155,8 +146,10 @@
                               class="form-control"
                               id="lname"
                               name="salary"
+                              value="{{ old('salary') }}"
                               placeholder="Enter salary amount"
                             />
+                            @error('salary') <p class="text-danger mb-0">{{ $message }}</p>@enderror
                           </div>
                         </div>
                         <div class="form-group row">
@@ -169,6 +162,7 @@
                                 name="joining_date"
                                 placeholder="mm/dd/yyyy"
                               />
+                              @error('joining_date') <p class="text-danger mb-0">{{ $message }}</p>@enderror
                             </div>
                         </div>
 

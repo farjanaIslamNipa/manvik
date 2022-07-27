@@ -9,13 +9,18 @@ class EmployeeController extends Controller
 {
     public function allEmployee()
     {
-        $employees = Employee::orderBy('id', 'DESC')->get();;
+        $employees = Employee::orderBy('id', 'DESC')->get();
         return view('employee.all-employee', compact('employees'));
     }
 
     public function addEmployee()
     {
         return view('employee.add-employee');
+    }
+    public function editEmployee()
+    {
+        $employees = Employee::orderBy('id', 'DESC')->get();
+        return view('employee.edit-employee', compact('employees'));
     }
 
     public function storeEmployee(Request $request)
