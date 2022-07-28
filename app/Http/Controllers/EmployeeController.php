@@ -17,10 +17,15 @@ class EmployeeController extends Controller
     {
         return view('employee.add-employee');
     }
-    public function editEmployee()
+    public function updateEmployee()
     {
         $employees = Employee::orderBy('id', 'DESC')->get();
-        return view('employee.edit-employee', compact('employees'));
+        return view('employee.update-employee-view', compact('employees'));
+    }
+    public function editEmployee($id)
+    {
+        $employee = Employee::findOrFail($id);
+        return view('employee.edit-employee', compact('employee'));
     }
 
     public function storeEmployee(Request $request)
