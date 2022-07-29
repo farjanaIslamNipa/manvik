@@ -44,7 +44,9 @@ body{
 .text-brand{
     color: var(--brandColor);
 }
-
+.btn-close:focus{
+    box-shadow: none;
+}
 .btn-brand{
     background: linear-gradient(90deg, #d19d00 0%, #fcef7a 100%) !important;
     padding: 8px 40px !important;
@@ -260,3 +262,20 @@ body{
     padding-top: 6px !important;
     padding-left: 10px !important;
 }
+.base-pagination span, p{
+    color:white !important;
+    background: none !important;
+    border-radius: 0 !important;
+}
+.base-pagination p{
+    color:white !important;
+    background: none !important;
+    border-radius: 0 !important;
+}
+.base-pagination a{
+    background: none !important;
+    border: 1px solid var(--brandColor) !important;
+    border-radius: 0 !important;
+    color: white !important;
+}
+

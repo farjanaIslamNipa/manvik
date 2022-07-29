@@ -5,10 +5,11 @@
 
   <div class="page-wrapper">
     <div class="container-fluid">
+     @include('employee.inclueds.emplye-common-nav')
       <div class="row justify-content-center">
         <div class="col-xl-7 col-md-10">
           <div class="card mt-4">
-            <h4 class="text-lg text-center pt-5 pb-3 font-bold">Employee Information</h4>
+            <h4 class="text-lg text-center pt-4 pb-2 font-bold">Employee Information</h4>
             <form action="{{ route('admin.store.employee') }}" method="POST" enctype="multipart/form-data" class="base-form">
               @csrf
               <div class="card-body pb-1">
@@ -80,7 +81,7 @@
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Joining Date:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" id="datepicker-autoclose" name="joining_date" placeholder="mm/dd/yyyy" />
+                    <input type="text" class="form-control" value="{{ old('joining_date') }}" id="datepicker-autoclose" name="joining_date" placeholder="mm/dd/yyyy" />
                     @error('joining_date') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
@@ -88,8 +89,7 @@
                 <div class="form-group row">
                   <label id="imageFileLabel" for="imageInput" class="col-lg-2 col-sm-3 text-end control-label col-form-label">Image:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input id="imageInput" onchange="imageConvertToBase64(this)" type="file" class="form-control file-input" />
-                    <input type="hidden" id="image" name="img" value="">
+                    <input type="file" name="img" class="form-control file-input" />
                   </div>
                 </div>
               </div>
@@ -104,18 +104,18 @@
   </div>
 @section('scripts')
   <script>
-      function imageConvertToBase64(element){
-        let file = element.files[0];
+    //   function imageConvertToBase64(element){
+    //     let file = element.files[0];
 
-        document.getElementById('imageFileLabel').innerText = file.name;
+    //     document.getElementById('imageFileLabel').innerText = file.name;
 
-        let reader = new FileReader();
-        reader.onloadend = function () {
-            document.getElementById('image').value = reader.result;
-        }
+    //     let reader = new FileReader();
+    //     reader.onloadend = function () {
+    //         document.getElementById('image').value = reader.result;
+    //     }
 
-        reader.readAsDataURL(file);
-      }
+    //     reader.readAsDataURL(file);
+    //   }
   </script>
 @endsection
 </x-admin-layout>

@@ -76,7 +76,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="d-flex align-items-center">
-                  <p class="mb-0 text-capitalize user-name">{{ Auth::user()->name }} 
+                  <p class="mb-0 text-capitalize user-name">{{ Auth::user()->name }}
                     <span class=""><i class="fa-solid fa-caret-down"></i></span></p>
                   <img src="{{ asset('/assets/images/users/4.jpg') }}" alt="user" class="ms-3 rounded-circle user-icon" />
                 </div>
@@ -87,7 +87,7 @@
                   <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a onclick="event.preventDefault(); this.closest('form').submit();" class="dropdown-item pt-4 pb-3 text-brand rounded bg-dark" href="{{ route('logout') }}">
-                      <span><i class="fa fa-power-off me-1 ms-1"></i></span> 
+                      <span><i class="fa fa-power-off me-1 ms-1"></i></span>
                       <span class="log-out">Logout</span>
                     </a>
                   </form>
@@ -137,22 +137,22 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> 
+                    <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu">
                       <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Equipment Purchase</span>
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> 
+                    <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu">
                       <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Repair Cost </span>
                     </a>
                   </li>
                   <li class="sidebar-item">
-                      <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> 
+                      <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu">
                         <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Transport </span>
                       </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu"> 
+                    <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu">
                       <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Rent </span>
                     </a>
                   </li>
@@ -354,9 +354,9 @@
     {{ $slot }}
   </div>
 
-  @yield('scripts')
-  <script src="{{ asset('assets/js/custom.js') }}"></script>
+
   <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/js/custom.js') }}"></script>
   <script src="{{ asset('assets/js/perfect-scrollbar.jquery.min.js') }}"></script>
   <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
   <script src="{{ asset('assets/js/custom.min.js') }}"></script>
@@ -372,6 +372,7 @@
       todayHighlight: true,
     });
   </script>
+  @yield('scripts')
 </body>
 
 </html>

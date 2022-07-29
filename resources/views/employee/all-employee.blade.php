@@ -5,18 +5,7 @@
 
   <div class="page-wrapper">
       <div class="container-fluid">
-          <div class="row">
-              <div class="col-6">
-                <h4 class="page-title text-xl font-bold">All Employee list</h4>
-              </div>
-              <div class="col-6">
-                <div class="text-end">
-                  <a class="btn btn-primary" href="{{ route('admin.add.employee') }}">Add New <span><i class="fa-solid fa-plus"></i></span></a>
-                  <a class="btn btn-danger" href="{{ route('admin.update.employee') }}">Edit / Delete</a>
-                </div>
-              </div>
-          </div>
-
+        @include('employee.inclueds.emplye-common-nav')
           {{-- employee table --}}
           <div class="table-responsive-xxl mt-3">
               <table style=" overflow-x:auto; white-space: nowrap;" class="table table-dark table-hover">
@@ -38,8 +27,14 @@
                   <tbody style="">
                     @foreach ($employees as $employee)
                       <tr>
-                        <th scope="row">{{ $loop->index + 1 }}</th>
-                        <td><img style="height: 40px; width:40px; border-radius:50%" src="{{ asset($employee->img) }}" alt=""></td>
+                        <td scope="row">{{ $loop->index + 1 }}</td>
+                        <td>
+                            @if($employee->img)
+                            <img style="height: 40px; width:40px; border-radius:50%; object-fit:cover;" src="{{ asset($employee->img) }}" alt="">
+                            @else
+                            <img style="height: 40px; width:40px; border-radius:50%; object-fit:cover;" src="{{ asset('/assets/images/users/no-image.jpg') }}" alt="">
+                            @endif
+                        </td>
                         <td class="text-capitalize">{{ $employee->name }}</td>
                         <td>{{ $employee->phone }}</td>
                         <td>{{ $employee->nid }}</td>
@@ -54,6 +49,9 @@
                   </tbody>
               </table>
           </div>
+          <div class="mt-2 p-2 bg-dark text-white base-pagination">
+            {!! $employees->links() !!}
+        </div>
       </div>
 
   </div>

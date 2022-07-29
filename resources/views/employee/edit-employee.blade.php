@@ -5,11 +5,12 @@
 
   <div class="page-wrapper">
     <div class="container-fluid">
+      @include('employee.inclueds.emplye-common-nav')
       <div class="row justify-content-center">
         <div class="col-xl-7 col-md-10">
           <div class="card mt-4">
-            <h4 class="text-lg text-center pt-5 pb-3 font-bold">Update Employee Information</h4>
-            <form action="{{ route('admin.store.employee') }}" method="POST" enctype="multipart/form-data" class="base-form">
+            <h4 class="text-lg text-center pt-4 pb-2 font-bold">Update Information</h4>
+            <form action="{{ route('admin.update.employee.info', $employee->id) }}" method="POST" enctype="multipart/form-data" class="base-form">
               @csrf
               <div class="card-body pb-1">
                 <div class="form-group row">
@@ -88,13 +89,12 @@
                 <div class="form-group row">
                   <label id="imageFileLabel" for="imageInput" class="col-lg-2 col-sm-3 text-end control-label col-form-label">Image:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input id="imageInput" onchange="imageConvertToBase64(this)" type="file" class="form-control file-input" />
-                    <input type="hidden" id="image" name="img" value="">
+                    <input id="imageInput" name="img" type="file" class="form-control file-input" />
                   </div>
                 </div>
               </div>
               <div class="text-right pe-5 pb-5 pt-2">
-                <button type="submit" class="btn-brand me-2">Submit</button>
+                <button type="submit" class="btn-brand me-2">Update</button>
               </div>
             </form>
           </div>
@@ -103,7 +103,7 @@
     </div>
   </div>
 @section('scripts')
-  <script>
+  {{-- <script>
       function imageConvertToBase64(element){
         let file = element.files[0];
 
@@ -116,6 +116,6 @@
 
         reader.readAsDataURL(file);
       }
-  </script>
+  </script> --}}
 @endsection
 </x-admin-layout>
