@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,11 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/employee/edit/{id}', action:[EmployeeController::class, 'editEmployee'])->name('edit.employee');
     Route::post(uri:'/employee/update/{id}', action:[EmployeeController::class, 'updateEmployeeInfo'])->name('update.employee.info');
     Route::get(uri:'/employee/delete/{id}', action:[EmployeeController::class, 'deleteEmployee'])->name('delete.employee');
+
+    // SALARY ROUTES
+    Route::get(uri:'/add-salary', action:[SalaryController::class, 'addSalary'])->name('add.salary');
+    Route::get(uri:'/all-salary', action:[SalaryController::class, 'allSalary'])->name('all.salary');
+
 });
 // Route::get('/admin', function () {
 //     return view('admin.index');
