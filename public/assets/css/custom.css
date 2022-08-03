@@ -258,6 +258,14 @@ body{
     outline: none !important;
     box-shadow: none !important;
 }
+.base-form select{
+    width: 100%;
+}
+.base-form select:focus{
+    border: 1px solid var(--brandColor) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
 .file-input{
     padding-top: 6px !important;
     padding-left: 10px !important;

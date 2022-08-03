@@ -20,6 +20,7 @@
   <link href="{{ asset('assets/css/float-chart.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/css/style.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" />
+
   {{-- Custom css --}}
   <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
   <!-- Fonts -->
@@ -175,7 +176,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="icon-fontawesome.html" class="sidebar-link">
+                    <a href="{{ route('admin.all.salary') }}" class="sidebar-link">
                       <span class="hide-menu ms-2"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Employee Salary</span>
                     </a>
                   </li>
@@ -371,6 +372,11 @@
       autoclose: true,
       todayHighlight: true,
     });
+    jQuery("#yearpicker").datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years"
+        });
   </script>
   @yield('scripts')
 </body>
