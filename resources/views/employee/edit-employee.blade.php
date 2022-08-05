@@ -67,7 +67,11 @@
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Position:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" name="position" value="{{ isset($employee) ? $employee->position : '' }}" placeholder="Enter position" />
+                    <select name="position">
+                        @foreach ($positions as $position)
+                            <option {{ $employee->position == $position->position ? 'selected' : ''}} value="{{ $position->position }}">{{ $position->position }}</option>
+                        @endforeach
+                    </select>
                     @error('position') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>

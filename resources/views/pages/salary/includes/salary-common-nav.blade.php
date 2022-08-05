@@ -16,10 +16,13 @@
     </div>
     <div class="col-6">
       <div class="text-end">
-          @if (request()->routeIs('admin.all.salary'))
+          @if (request()->routeIs('admin.all.salary') || request()->routeIs('admin.advance.salary'))
             <a class="btn btn-success text-white me-2" href="{{ route('admin.add.salary') }}">Add Salary<span></a>
           @endif
-          @if (request()->routeIs('admin.add.salary'))
+          @if (request()->routeIs('admin.all.salary') || request()->routeIs('admin.add.salary'))
+            <a class="btn btn-warning text-white me-2" href="{{ route('admin.advance.salary') }}">Advance Salary<span></a>
+          @endif
+          @if (request()->routeIs('admin.add.salary') || request()->routeIs('admin.advance.salary'))
             <a class="btn btn-primary me-2" href="{{ route('admin.all.salary') }}">View All</span></a>
           @endif
           {{-- @if (request()->routeIs('admin.all.employee.show') || request()->routeIs('admin.add.employee'))

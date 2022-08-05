@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,14 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::post(uri:'/user/{user}/assign-role', action:[UsersController::class, 'assignRole'])->name('users.roles.assign');
     Route::delete(uri:'/user/{user}/remove-role/{role}', action:[UsersController::class, 'removeRole'])->name('users.roles.remove');
 
+    //POSITION ROUTES
+    Route::get(uri:'/positions', action:[PositionController::class, 'allPositions'])->name('all.positions.show');
+    Route::get(uri:'/positions/create', action:[PositionController::class, 'addPosition'])->name('position.add');
+    Route::post(uri:'/positions/store', action:[PositionController::class, 'storePosition'])->name('position.store');
+    Route::get(uri:'/positions/edit/{id}', action:[PositionController::class, 'editPosition'])->name('position.edit');
+    Route::post(uri:'/positions/update/{id}', action:[PositionController::class, 'updatePosition'])->name('position.update');
+    Route::delete(uri:'/positions/delete/{id}', action:[PositionController::class, 'deletePosition'])->name('position.remove');
+
     // EMPLOYEE ROUTES
     Route::get(uri:'/employee', action:[EmployeeController::class, 'allEmployee'])->name('all.employee.show');
     Route::get(uri:'/employee/add', action:[EmployeeController::class, 'addEmployee'])->name('add.employee');
@@ -42,6 +51,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/employee/delete/{id}', action:[EmployeeController::class, 'deleteEmployee'])->name('delete.employee');
 
     // SALARY ROUTES
+    Route::get(uri:'/advance-salary', action:[SalaryController::class, 'advanceSalary'])->name('advance.salary');
     Route::get(uri:'/add-salary', action:[SalaryController::class, 'addSalary'])->name('add.salary');
     Route::get(uri:'/all-salary', action:[SalaryController::class, 'allSalary'])->name('all.salary');
     Route::get(uri:'/add-salary/store', action:[SalaryController::class, 'StoreSalary'])->name('store.salary');

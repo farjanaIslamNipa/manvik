@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Position;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -15,7 +16,8 @@ class EmployeeController extends Controller
 
     public function addEmployee()
     {
-        return view('employee.add-employee');
+        $positions = Position::where('status', '1')->get();
+        return view('employee.add-employee', compact('positions'));
     }
     public function updateEmployee()
     {
@@ -25,7 +27,8 @@ class EmployeeController extends Controller
     public function editEmployee($id)
     {
         $employee = Employee::findOrFail($id);
-        return view('employee.edit-employee', compact('employee'));
+        $positions = Position::where('status', '1')->get();
+        return view('employee.edit-employee', compact('employee', 'positions'));
     }
 
     public function storeEmployee(Request $request)

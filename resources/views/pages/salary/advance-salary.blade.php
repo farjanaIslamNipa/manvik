@@ -1,6 +1,6 @@
 <x-admin-layout>
     @section('title')
-    Add Salary | Manvik
+    Advance List | Manvik
     @endsection
 
     <div class="page-wrapper">
@@ -9,7 +9,7 @@
           <div class="row justify-content-center">
             <div class="col-xl-7 col-md-10">
               <div class="card mt-4">
-                <h4 class="text-lg text-center pt-4 pb-2 font-bold">Provide all Information</h4>
+                <h4 class="text-lg text-center pt-4 pb-2 font-bold">Advance Salary</h4>
                 <form action="{{ route('admin.store.salary') }}" method="POST" enctype="multipart/form-data" class="base-form">
                   @csrf
                   <div class="card-body pb-1">

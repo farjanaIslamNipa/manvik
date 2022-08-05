@@ -67,7 +67,12 @@
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Position:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" name="position" value="{{ old('position') }}" placeholder="Enter position" />
+                    <select name="position">
+                        <option selected disabled>Select Position</option>
+                        @foreach ($positions as $position)
+                            <option value="{{ $position->position }}">{{ $position->position }}</option>
+                        @endforeach
+                    </select>
                     @error('position') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>

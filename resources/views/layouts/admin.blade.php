@@ -277,6 +277,20 @@
                   <span class="hide-menu ms-2">Others</span>
                 </a>
               </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
+                    <span class="menu-icon"><i class="fa-solid fa-table-cells"></i></span>
+                    <span class="hide-menu ms-2">Others</span>
+                  </a>
+                <ul aria-expanded="false" class="collapse first-level bg-info">
+                  <li class="sidebar-item">
+                    <a href="{{ route('admin.all.positions.show') }}" class="sidebar-link">
+                      <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                      <span class="hide-menu">Positions</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
             @endrole
             @role('user')
               <li class="sidebar-item">
