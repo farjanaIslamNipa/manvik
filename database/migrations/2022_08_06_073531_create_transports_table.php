@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('salaries', function (Blueprint $table) {
+        Schema::create('transports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id');
-            $table->foreignId('position_id');
-            $table->string('month');
-            $table->string('year');
-            $table->tinyInteger('status')->default('0');
-            $table->integer('advance')->nullable();
+            $table->string(column:'transport_type', length:50);
+            $table->float(column:'rent');
+            $table->float(column:'paid')->nullable();
+            $table->float(column:'due')->nullable();
+            $table->date(column:'date');
+            $table->string(column:'note')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salaries');
+        Schema::dropIfExists('transports');
     }
 };

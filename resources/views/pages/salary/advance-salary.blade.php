@@ -10,7 +10,7 @@
             <div class="col-xl-7 col-md-10">
               <div class="card mt-4">
                 <h4 class="text-lg text-center pt-4 pb-2 font-bold">Advance Salary</h4>
-                <form action="{{ route('admin.store.salary') }}" method="POST" enctype="multipart/form-data" class="base-form">
+                <form action="{{ route('admin.store.advance.salary') }}" method="POST" enctype="multipart/form-data" class="base-form">
                   @csrf
                   <div class="card-body pb-1">
                     <div class="form-group row">
@@ -28,61 +28,49 @@
                     <div class="form-group row">
                         <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Position:</label>
                         <div class="col-lg-10 col-sm-9 px-5">
-                          <input type="text" class="form-control" name="position" value="{{ old('position') }}" placeholder="Enter position" />
+                          <select name="position_id" class="w-100">
+                            <option selected disabled>Select position</option>
+                            @foreach ($positions as $position)
+                              <option value="{{ $position->id }}">{{ $position->position }}</option>
+                            @endforeach
+                        </select>
                           @error('position') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                         </div>
                       </div>
-                    <div class="form-group row">
-                      <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Month:</label>
-                      <div class="col-lg-10 col-sm-9 px-5">
-                        <select name="month">
-                            <option selected disabled>Select Month</option>
-                            <option value="january">January</option>
-                            <option value="february">February</option>
-                            <option value="march">March</option>
-                            <option value="april">April</option>
-                            <option value="may">May</option>
-                            <option value="june">June</option>
-                            <option value="july">July</option>
-                            <option value="august">August</option>
-                            <option value="september">September</option>
-                            <option value="october">October</option>
-                            <option value="november">November</option>
-                            <option value="december">December</option>
-                        </select>
-                        @error('month') <p class="text-danger mb-0">{{ $message }}</p> @enderror
+                      <div class="form-group row">
+                        <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Month:</label>
+                        <div class="col-lg-10 col-sm-9 px-5">
+                          <select name="month">
+                              <option selected disabled>Select Month</option>
+                              <option value="january">January</option>
+                              <option value="february">February</option>
+                              <option value="march">March</option>
+                              <option value="april">April</option>
+                              <option value="may">May</option>
+                              <option value="june">June</option>
+                              <option value="july">July</option>
+                              <option value="august">August</option>
+                              <option value="september">September</option>
+                              <option value="october">October</option>
+                              <option value="november">November</option>
+                              <option value="december">December</option>
+                          </select>
+                          @error('month') <p class="text-danger mb-0">{{ $message }}</p> @enderror
+                        </div>
                       </div>
-                    </div>
-                    <div class="form-group row">
+                      <div class="form-group row">
                         <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Year:</label>
                         <div class="col-lg-10 col-sm-9 px-5">
                           <input type="text" class="form-control" value="{{ old('year') }}" id="yearpicker" name="year" placeholder="Year" />
                           @error('year') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                         </div>
                       </div>
-                    <div class="form-group row">
-                      <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Advance (<small>If any</small>):</label>
-                      <div class="col-lg-10 col-sm-9 px-5">
-                        <input type="" class="form-control" name="phone" value="{{ old('advance') }}" placeholder="Advance taken if any" />
-                        @error('advance') <p class="text-danger mb-0">{{ $message }}</p> @enderror
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Paid Total:</label>
-                      <div class="col-lg-10 col-sm-9 px-5">
-                        <input type="text" class="form-control" name="paid_total" value="{{ old('paid_total') }}" placeholder="Paid Total" />
-                        @error('paid_total') <p class="text-danger mb-0">{{ $message }}</p> @enderror
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Status:</label>
-                      <div class="col-lg-10 col-sm-9 px-5">
-                       <select name="status">
-                        <option selected value="1">Paid</option>
-                        <option value="0">Due</option>
-                       </select>
-                        @error('status') <p class="text-danger mb-0">{{ $message }}</p> @enderror
-                      </div>
+                      <div class="form-group row">
+                        <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Advance Salary:</label>
+                        <div class="col-lg-10 col-sm-9 px-5">
+                          <input type="" class="form-control" name="phone" value="{{ old('advance') }}" placeholder="Advance salary amount" />
+                          @error('advance') <p class="text-danger mb-0">{{ $message }}</p> @enderror
+                        </div>
                     </div>
                   </div>
                   <div class="text-right pe-5 pb-5 pt-2">

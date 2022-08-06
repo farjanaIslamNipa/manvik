@@ -54,6 +54,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/advance-salary', action:[SalaryController::class, 'advanceSalary'])->name('advance.salary');
     Route::get(uri:'/add-salary', action:[SalaryController::class, 'addSalary'])->name('add.salary');
     Route::get(uri:'/all-salary', action:[SalaryController::class, 'allSalary'])->name('all.salary');
+    Route::get(uri:'/add-advance-salary/store', action:[SalaryController::class, 'StoreAdvanceSalary'])->name('store.advance.salary');
     Route::get(uri:'/add-salary/store', action:[SalaryController::class, 'StoreSalary'])->name('store.salary');
 
 });
