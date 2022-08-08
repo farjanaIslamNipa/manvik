@@ -19,7 +19,7 @@
                         <select name="employee_id" class="w-100">
                             <option selected disabled>Select employee name</option>
                             @foreach ($employees as $employee)
-                                <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                <option {{ old('employee_id') }} value="{{ $employee->id }}">{{ $employee->name }}</option>
                             @endforeach
                         </select>
                         @error('employee_id') <p class="text-danger mb-0">{{ $message }}</p> @enderror
@@ -34,7 +34,6 @@
                               <option value="{{ $position->id }}">{{ $position->position }}</option>
                             @endforeach
                         </select>
-                          @error('position') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                         </div>
                       </div>
                       <div class="form-group row">
@@ -68,7 +67,7 @@
                       <div class="form-group row">
                         <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Advance Salary:</label>
                         <div class="col-lg-10 col-sm-9 px-5">
-                          <input type="" class="form-control" name="phone" value="{{ old('advance') }}" placeholder="Advance salary amount" />
+                          <input type="" class="form-control" name="advance" value="{{ old('advance') }}" placeholder="Advance salary amount" />
                           @error('advance') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                         </div>
                     </div>
