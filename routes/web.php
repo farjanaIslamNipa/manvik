@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\FabricsController;
+use App\Http\Controllers\FabricTypeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SalaryController;
@@ -56,6 +58,19 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/all-salary', action:[SalaryController::class, 'allSalary'])->name('all.salary');
     Route::get(uri:'/add-advance-salary/store', action:[SalaryController::class, 'StoreAdvanceSalary'])->name('store.advance.salary');
     Route::get(uri:'/add-salary/store', action:[SalaryController::class, 'StoreSalary'])->name('store.salary');
+
+    //CREATE FABRICS TYPE ROUTES
+    Route::get(uri:'/fabrics', action:[FabricTypeController::class, 'showFabrics'])->name('fabrics.show');
+    Route::get(uri:'/fabrics/create', action:[FabricTypeController::class, 'addFabrics'])->name('fabrics.add');
+    Route::post(uri:'/fabrics/store', action:[FabricTypeController::class, 'storeFabrics'])->name('fabrics.store');
+    Route::get(uri:'/fabrics/edit/{id}', action:[FabricTypeController::class, 'editFabrics'])->name('fabrics.edit');
+    Route::post(uri:'/fabrics/update/{id}', action:[FabricTypeController::class, 'updateFabrics'])->name('fabrics.update');
+    Route::delete(uri:'/fabrics/delete/{id}', action:[FabricTypeController::class, 'deleteFabrics'])->name('fabrics.remove');
+
+    // FABRICS ROUTES
+    Route::get(uri:'/fabrics-expenditure-list', action:[FabricsController::class, 'showFabricsExpenditure'])->name('show.fabrics.expenditure');
+    Route::get(uri:'/fabrics-expenditure-list/add', action:[FabricsController::class, 'addFabricsExpenditure'])->name('add.fabrics.expenditure');
+    Route::post(uri:'/fabrics-expenditure-list/store', action:[FabricsController::class, 'storeFabricsExpenditure'])->name('store.fabrics.expenditure');
 
 });
 // Route::get('/admin', function () {

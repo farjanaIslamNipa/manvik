@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('iron_bills', function (Blueprint $table) {
             $table->id();
-            $table->string(column:'shop_name', length:50)->nullable();
-            $table->integer(column:'shop_phone')->nullable();
+            $table->string(column:'shop_details')->nullable();
             $table->string(column:'prod_name', length:100);
             $table->integer(column:'quantity')->default(1);
             $table->float(column:'unit_price');

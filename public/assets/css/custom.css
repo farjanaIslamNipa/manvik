@@ -259,9 +259,19 @@ body{
     box-shadow: none !important;
 }
 .base-form select{
+    border: 1px solid #6b7280 !important;
     width: 100%;
 }
 .base-form select:focus{
+    border: 1px solid var(--brandColor) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.base-form textarea{
+    border: 1px solid #6b7280 !important;
+    width: 100%;
+}
+.base-form textarea:focus{
     border: 1px solid var(--brandColor) !important;
     outline: none !important;
     box-shadow: none !important;

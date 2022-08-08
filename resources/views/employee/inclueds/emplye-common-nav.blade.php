@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-6">
       @if (request()->routeIs('admin.all.employee.show'))
-        <h4 class="page-title text-xl font-bold">All Employee list</h4>
+        <h4 class="page-title text-xl font-bold">All Employee List</h4>
       @endif
       @if (request()->routeIs('admin.add.employee'))
         <h4 class="page-title text-xl font-bold">Add New Employee</h4>

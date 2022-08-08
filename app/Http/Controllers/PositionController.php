@@ -10,11 +10,11 @@ class PositionController extends Controller
     public function allPositions()
     {
         $positions = Position::all();
-        return view('pages.positions.all-positions', compact('positions'));
+        return view('pages.others.positions.all-positions', compact('positions'));
     }
     public function addPosition()
     {
-        return view('pages.positions.add-position');
+        return view('pages.others.positions.add-position');
     }
     public function storePosition(Request $request)
     {
@@ -35,7 +35,7 @@ class PositionController extends Controller
     public function editPosition($id)
     {
         $position = Position::findOrFail($id);
-        return view('pages.positions.edit-position', compact('position'));
+        return view('pages.others.positions.edit-position', compact('position'));
     }
     public function updatePosition(Request $request, $id)
     {

@@ -3,81 +3,62 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fabrics;
+use App\Models\FabricType;
 use Illuminate\Http\Request;
 
 class FabricsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function showFabricsExpenditure()
     {
-        //
+        return view('pages.expenses.fabrics.fabrics-expenditure-list');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function addFabricsExpenditure()
     {
-        //
+        $fabricTypes = FabricType::all();
+        return view('pages.expenses.fabrics.add-fabrics-expenditure', compact('fabricTypes'));
+    }
+    public function storeFabricsExpenditure(Request $request)
+    {
+        $request->validate([
+            'shop_details'  => 'nullable',
+            'fabrics_name'  => 'required',
+            'quantity'      => 'required',
+            'unit_price'    => 'required',
+            'total_price'   => 'required',
+            'paid'          => 'required',
+            'due'           => 'nullable',
+            'date'          => 'required',
+            'note'          => 'nullable',
+        ]);
+
+        $fabrics = new Fabrics();
+
+        $fabrics->shop_details = $request->shop_details;
+        $fabrics->fabrics_name = $request->fabrics_name;
+        $fabrics->quantity = $request->quantity;
+        $fabrics->unit_price = $request->unit_price;
+        $fabrics->total_price = $request->total_price;
+        $fabrics->paid = $request->paid;
+        $fabrics->due = $request->due;
+        $fabrics->date = $request->date;
+        $fabrics->note = $request->note;
+
+        $fabrics->save();
+
+        return redirect()->route('admin.show.fabrics.expenditure')->with('success', 'Fabrics expenditure added successfully');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Fabrics  $fabrics
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Fabrics $fabrics)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Fabrics  $fabrics
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Fabrics $fabrics)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Fabrics  $fabrics
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Fabrics $fabrics)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Fabrics  $fabrics
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Fabrics $fabrics)
     {
         //

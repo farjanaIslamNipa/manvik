@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('repair_bills', function (Blueprint $table) {
             $table->id();
-            $table->string(column:'shop_name', length:50)->nullable();
-            $table->integer(column:'shop_phone')->nullable();
+            $table->string(column:'shop_details')->nullable();
             $table->string(column:'equipment_name', length:100);
             $table->integer(column:'quantity')->nullable();
             $table->float(column:'repair_cost');
