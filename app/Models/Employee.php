@@ -22,4 +22,9 @@ class Employee extends Model
         'position',
     ];
 
+    public function advanceSalary()
+    {
+        return $this->hasOne(AdvanceSalary::class);
+    }
+
 }

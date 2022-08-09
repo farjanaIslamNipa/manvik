@@ -53,7 +53,8 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/employee/delete/{id}', action:[EmployeeController::class, 'deleteEmployee'])->name('delete.employee');
 
     // SALARY ROUTES
-    Route::get(uri:'/advance-salary', action:[SalaryController::class, 'advanceSalary'])->name('advance.salary.add');
+    Route::get(uri:'/pay-advance-salary', action:[SalaryController::class, 'advanceSalary'])->name('advance.salary.add');
+    Route::get(uri:'/all-advance-salary', action:[SalaryController::class, 'allAdvanceSalary'])->name('advance.salary.all');
     Route::post(uri:'/add-advance-salary/store', action:[SalaryController::class, 'StoreAdvanceSalary'])->name('store.advance.salary');
     Route::get(uri:'/add-salary', action:[SalaryController::class, 'addSalary'])->name('add.salary');
     Route::get(uri:'/all-salary', action:[SalaryController::class, 'allSalary'])->name('all.salary');
