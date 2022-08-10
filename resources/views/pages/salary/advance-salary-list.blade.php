@@ -55,9 +55,11 @@
                     </tbody>
                 </table>
             </div>
+            @if (count($advanceSalaries) > 8)
             <div class="mt-2 p-2 bg-dark text-white base-pagination">
               {!! $advanceSalaries->links() !!}
-          </div>
+            </div>
+            @endif
         </div>
 
     </div>

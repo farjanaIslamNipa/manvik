@@ -34,7 +34,7 @@ class SalaryController extends Controller
     {
         $request->validate([
             'employee_id'   => 'required',
-            'position_id'   => 'nullable',
+            'position'      => 'nullable',
             'month'         => 'required',
             'year'          => 'required',
             'advance'       => 'required',
@@ -52,19 +52,25 @@ class SalaryController extends Controller
             $advance_salary = new AdvanceSalary();
 
             $advance_salary->employee_id = $request->employee_id;
-            $advance_salary->position_id = $request->position_id;
+            $advance_salary->position = $request->position;
             $advance_salary->month = $request->month;
             $advance_salary->year = $request->year;
             $advance_salary->advance = $request->advance;
 
             $advance_salary->save();
 
-            return redirect()->route('admin.all.salary')->with('success', 'Advance salary paid successfully !');
+            return redirect()->route('admin.advance.salary.all')->with('success', 'Advance salary paid successfully !');
         }else{
             return redirect()->route('admin.advance.salary.add')->with('error', 'Advance salary is already taken for this month !');
         }
 
 
+    }
+    public function editAdvanceSalary()
+    {
+        $employees = Employee::all();
+        $positions  = Position::all();
+        return view('pages.salary.advance-salary', compact('employees', 'positions'));
     }
     public function storeSalary(Request $request)
     {

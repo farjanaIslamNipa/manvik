@@ -19,7 +19,7 @@
                         <select name="employee_id" class="w-100">
                             <option selected disabled>Select employee name</option>
                             @foreach ($employees as $employee)
-                                <option {{ old('employee_id') }} value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                <option {{ old('employee_id') == $employee->id ? 'selected' : '' }} value="{{ $employee->id }}">{{ $employee->name }}</option>
                             @endforeach
                         </select>
                         @error('employee_id') <p class="text-danger mb-0">{{ $message }}</p> @enderror
@@ -28,10 +28,10 @@
                     <div class="form-group row">
                         <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Position:</label>
                         <div class="col-lg-10 col-sm-9 px-5">
-                          <select name="position_id" class="w-100">
+                          <select name="position" class="w-100">
                             <option selected disabled>Select position</option>
                             @foreach ($positions as $position)
-                              <option value="{{ $position->id }}">{{ $position->position }}</option>
+                              <option value="{{ $position->id }}" {{ old('position') == $position->id ? 'selected' : '' }}>{{ $position->position }}</option>
                             @endforeach
                         </select>
                         </div>
@@ -41,18 +41,18 @@
                         <div class="col-lg-10 col-sm-9 px-5">
                           <select name="month">
                               <option selected disabled>Select Month</option>
-                              <option value="january">January</option>
-                              <option value="february">February</option>
-                              <option value="march">March</option>
-                              <option value="april">April</option>
-                              <option value="may">May</option>
-                              <option value="june">June</option>
-                              <option value="july">July</option>
-                              <option value="august">August</option>
-                              <option value="september">September</option>
-                              <option value="october">October</option>
-                              <option value="november">November</option>
-                              <option value="december">December</option>
+                              <option {{ old('month') == 'january' ? 'selected' : '' }} value="january">January</option>
+                              <option {{ old('month') == 'fabruary' ? 'selected' : '' }} value="february">February</option>
+                              <option {{ old('month') == 'march' ? 'selected' : '' }} value="march">March</option>
+                              <option {{ old('month') == 'april' ? 'selected' : '' }} value="april">April</option>
+                              <option {{ old('month') == 'may' ? 'selected' : '' }} value="may">May</option>
+                              <option {{ old('month') == 'june' ? 'selected' : '' }} value="june">June</option>
+                              <option {{ old('month') == 'july' ? 'selected' : '' }} value="july">July</option>
+                              <option {{ old('month') == 'august' ? 'selected' : '' }} value="august">August</option>
+                              <option {{ old('month') == 'september' ? 'selected' : '' }} value="september">September</option>
+                              <option {{ old('month') == 'october' ? 'selected' : '' }} value="october">October</option>
+                              <option {{ old('month') == 'november' ? 'selected' : '' }} value="november">November</option>
+                              <option {{ old('month') == 'december' ? 'selected' : '' }} value="december">December</option>
                           </select>
                           @error('month') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                         </div>
