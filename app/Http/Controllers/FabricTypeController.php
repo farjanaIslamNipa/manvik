@@ -9,7 +9,7 @@ class FabricTypeController extends Controller
 {
     public function showFabrics()
     {
-        $fabrics = FabricType::all();
+        $fabrics = FabricType::orderBy('id', 'DESC')->get();
         return view('pages.others.fabrics.all-fabrics', compact('fabrics'));
     }
     public function addFabrics()
@@ -19,7 +19,7 @@ class FabricTypeController extends Controller
     public function storeFabrics(Request $request)
     {
         $request->validate([
-            'fabrics' => 'required',
+            'fabrics' => 'required|unique:fabric_types',
             'status' => 'required',
         ]);
 

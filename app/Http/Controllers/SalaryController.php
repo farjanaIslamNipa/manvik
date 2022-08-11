@@ -19,6 +19,12 @@ class SalaryController extends Controller
         $employees = Employee::all();
         return view('pages.salary.add-salary', compact('employees'));
     }
+    public function storeSalary(Request $request)
+    {
+        $request->validate([
+
+        ]);
+    }
     public function allAdvanceSalary()
     {
         $advanceSalaries = AdvanceSalary::orderBy('id', 'DESC')->paginate(8);
@@ -66,16 +72,35 @@ class SalaryController extends Controller
 
 
     }
-    public function editAdvanceSalary()
-    {
-        $employees = Employee::all();
-        $positions  = Position::all();
-        return view('pages.salary.advance-salary', compact('employees', 'positions'));
-    }
-    public function storeSalary(Request $request)
-    {
-        $request->validate([
 
+    public function editAdvanceSalary($id)
+    {
+        $advanceSalary = AdvanceSalary::findOrFail($id);
+        return view('pages.salary.advance-salary-edit', compact('advanceSalary'));
+    }
+    public function updateAdvanceSalary(Request $request, $id)
+    {
+        $advanceSalary = AdvanceSalary::findOrFail($id);
+        $request->validate([
+            'month'     => 'required',
+            'year'      => 'required',
+            'advance'   => 'required',
         ]);
+
+        $advanceSalary->employee_id     = $advanceSalary->employee_id;
+        $advanceSalary->position        = $advanceSalary->position;
+        $advanceSalary->month           = $request->month;
+        $advanceSalary->year            = $request->year;
+        $advanceSalary->advance         = $request->advance;
+
+        $advanceSalary->save();
+        return redirect()->route('admin.advance.salary.all')->with('success', 'Advance salary updated successfully !');
+    }
+    
+    public function deleteAdvanceSalary($id)
+    {
+        $advanceSalary = AdvanceSalary::findOrFail($id);
+        $advanceSalary->delete();
+        return redirect()->route('admin.advance.salary.all')->with('success', 'Advance salary deleted successfully !');
     }
 }

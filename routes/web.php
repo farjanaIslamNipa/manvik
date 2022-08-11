@@ -54,6 +54,9 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
 
     // SALARY ROUTES
     Route::get(uri:'/pay-advance-salary', action:[SalaryController::class, 'advanceSalary'])->name('advance.salary.add');
+    Route::get(uri:'/edit-advance-salary/{id}', action:[SalaryController::class, 'editAdvanceSalary'])->name('advance.salary.edit');
+    Route::post(uri:'/update-advance-salary/{id}', action:[SalaryController::class, 'updateAdvanceSalary'])->name('advance.salary.update');
+    Route::get(uri:'/advance-salary/delete/{id}', action:[SalaryController::class, 'deleteAdvanceSalary'])->name('advance.salary.delete');
     Route::get(uri:'/all-advance-salary', action:[SalaryController::class, 'allAdvanceSalary'])->name('advance.salary.all');
     Route::post(uri:'/add-advance-salary/store', action:[SalaryController::class, 'StoreAdvanceSalary'])->name('store.advance.salary');
     Route::get(uri:'/add-salary', action:[SalaryController::class, 'addSalary'])->name('add.salary');
@@ -69,9 +72,11 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::delete(uri:'/fabrics/delete/{id}', action:[FabricTypeController::class, 'deleteFabrics'])->name('fabrics.remove');
 
     // FABRICS ROUTES
-    Route::get(uri:'/fabrics-expenditure-list', action:[FabricsController::class, 'showFabricsExpenditure'])->name('show.fabrics.expenditure');
-    Route::get(uri:'/fabrics-expenditure-list/add', action:[FabricsController::class, 'addFabricsExpenditure'])->name('add.fabrics.expenditure');
-    Route::post(uri:'/fabrics-expenditure-list/store', action:[FabricsController::class, 'storeFabricsExpenditure'])->name('store.fabrics.expenditure');
+    Route::get(uri:'/fabrics-expenditure-list', action:[FabricsController::class, 'showFabricsExpenditure'])->name('fabrics.expenditure.show');
+    Route::get(uri:'/fabrics-expenditure-list/add', action:[FabricsController::class, 'addFabricsExpenditure'])->name('fabrics.expenditure.add');
+    Route::post(uri:'/fabrics-expenditure-list/store', action:[FabricsController::class, 'storeFabricsExpenditure'])->name('fabrics.expenditure.store');
+    Route::get(uri:'/fabrics-expenditure/edit/{id}', action:[FabricsController::class, 'editFabricsExpenditure'])->name('fabrics.expenditure.edit');
+    Route::get(uri:'/fabrics-expenditure/update/{id}', action:[FabricsController::class, 'updateFabricsExpenditure'])->name('fabrics.expenditure.update');
 
 });
 // Route::get('/admin', function () {

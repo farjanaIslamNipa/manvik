@@ -1,6 +1,6 @@
 <x-admin-layout>
   @section('title')
-  Fabrics Expenditure List | Manvik
+    Fabrics Expenditure List | Manvik
   @endsection
 
   <div class="page-wrapper">
@@ -11,11 +11,11 @@
           </div>
           <div class="col-6">
             <div class="text-end">
-              <a class="btn bg-sky-blue text-white me-2" href="{{ route('admin.add.fabrics.expenditure') }}">Add New</span></a>
+              <a class="btn bg-sky-blue text-white me-2" href="{{ route('admin.fabrics.expenditure.add') }}">Add New</span></a>
             </div>
           </div>
         </div>
-      
+
         {{-- fabrics expenditure list table --}}
         <div class="table-responsive-xxl mt-3">
             <table style=" overflow-x:auto; white-space: nowrap;" class="table table-dark table-hover">
@@ -30,38 +30,71 @@
                     <th scope="col"><span class="text-brand text-md">Paid</span></th>
                     <th scope="col"><span class="text-brand text-md">Due</span></th>
                     <th scope="col"><span class="text-brand text-md">Date</span></th>
+                    <th scope="col"><span class="text-brand text-md">Note</span></th>
                     <th scope="col"><span class="text-brand text-md">Action</span></th>
                   </tr>
                 </thead>
                 <tbody style="">
-                  {{-- @foreach ($employees as $employee)
+                  @foreach ($fabrics as $fabric)
                     <tr>
                       <td scope="row">{{ $loop->index + 1 }}</td>
+                      <td class="text-capitalize">{{ $fabric->shop_details }}</td>
+                      <td class="text-capitalize">{{ $fabric->fabrics_name }}</td>
+                      <td>{{ $fabric->quantity }}</td>
+                      <td>{{ $fabric->unit_price }}</td>
+                      <td>{{ $fabric->total_price }}</td>
+                      <td>{{ $fabric->due }}</td>
+                      <td>{{ $fabric->paid }}</td>
+                      <td>{{ $fabric->date }}</td>
+                      <td>{{ $fabric->note }}</td>
                       <td>
-                          @if($employee->img)
-                          <img style="height: 40px; width:40px; border-radius:50%; object-fit:cover;" src="{{ asset($employee->img) }}" alt="">
-                          @else
-                          <img style="height: 40px; width:40px; border-radius:50%; object-fit:cover;" src="{{ asset('/assets/images/users/no-image.jpg') }}" alt="">
-                          @endif
+                        <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.fabrics.expenditure.edit', $fabric->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
+                        <button class="btn btn-sm btn-danger rounded delete-fabric"
+                            data-bs-toggle="modal"
+                            data-bs-target="#deleteFabric"
+                            data-id="{{ $fabric->id  }}">
+                            <span><i class="fa-solid fa-trash-can"></i></span>
+                        </button>
                       </td>
-                      <td class="text-capitalize">{{ $employee->name }}</td>
-                      <td>{{ $employee->phone }}</td>
-                      <td>{{ $employee->nid }}</td>
-                      <td class="text-capitalize">{{ $employee->fathers_name }}</td>
-                      <td class="text-capitalize">{{ $employee->gender }}</td>
-                      <td class="text-capitalize">{{ $employee->position }}</td>
-                      <td>{{ $employee->salary }}</td>
-                      <td>{{ $employee->joining_date }}</td>
-                      <td class="text-capitalize">{{ $employee->address }}</td>
                     </tr>
-                  @endforeach --}}
+                  @endforeach
                 </tbody>
             </table>
         </div>
+        @if (count($fabrics) > 8)
         <div class="mt-2 p-2 bg-dark text-white base-pagination">
-          {{-- {!! $employees->links() !!} --}}
-      </div>
+          {!! $fabrics->links() !!}
+        </div>
+        @endif
     </div>
-
+    {{-- delete modal --}}
+    <div class="modal fade" id="deleteFabric" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <span class="text-danger"><i class="fas fa-exclamation-circle fa-5x mt-3"></i></span>
+                    <h3 class="pt-4 mb-2 text-dark text-xl font-bold">Are you sure?</h3>
+                    <p class="text-info text-md">Do you really want to delete this records? This process can't be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="" type="submit" id="deleteFabricModalHref" class="btn btn-danger bg-danger">Delete it.</a>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
+  @section('scripts')
+  <script>
+        $('.delete-fabric').click(function () {
+
+            let id_value = $(this).data('id');
+            let url = '/admin/fabric/delete/' + id_value ;
+            console.log(url)
+            document.getElementById("deleteFabricModalHref").href = url;
+        });
+
+  </script>
+  @endsection
 </x-admin-layout>

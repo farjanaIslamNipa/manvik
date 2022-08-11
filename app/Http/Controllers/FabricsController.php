@@ -10,12 +10,13 @@ class FabricsController extends Controller
 {
     public function showFabricsExpenditure()
     {
-        return view('pages.expenses.fabrics.fabrics-expenditure-list');
+        $fabrics = Fabrics::orderBy('id', 'DESC')->paginate(8);
+        return view('pages.expenses.fabrics.fabrics-expenditure-list', compact('fabrics'));
     }
 
     public function addFabricsExpenditure()
     {
-        $fabricTypes = FabricType::all();
+        $fabricTypes = FabricType::where('status', 1)->get();
         return view('pages.expenses.fabrics.add-fabrics-expenditure', compact('fabricTypes'));
     }
     public function storeFabricsExpenditure(Request $request)
@@ -23,12 +24,12 @@ class FabricsController extends Controller
         $request->validate([
             'shop_details'  => 'nullable',
             'fabrics_name'  => 'required',
-            'quantity'      => 'required',
+            'quantity'      => 'required|numeric',
             'unit_price'    => 'required',
             'total_price'   => 'required',
             'paid'          => 'required',
             'due'           => 'nullable',
-            'date'          => 'required',
+            'date'          => 'nullable',
             'note'          => 'nullable',
         ]);
 
@@ -41,7 +42,7 @@ class FabricsController extends Controller
         $fabrics->total_price = $request->total_price;
         $fabrics->paid = $request->paid;
         $fabrics->due = $request->due;
-        $fabrics->date = $request->date;
+        $fabrics->date = date('Y-m-d H:i:s', strtotime($request->date));
         $fabrics->note = $request->note;
 
         $fabrics->save();
@@ -49,9 +50,11 @@ class FabricsController extends Controller
         return redirect()->route('admin.show.fabrics.expenditure')->with('success', 'Fabrics expenditure added successfully');
     }
 
-    public function edit(Fabrics $fabrics)
+    public function editFabricsExpenditure($id)
     {
-        //
+        $fabric = Fabrics::findOrFail($id);
+        $fabricTypes = FabricType::where('status', 1)->get();
+        return view('pages.expenses.fabrics.edit-fabrics-expenditure', compact('fabricTypes', 'fabric'));
     }
 
     public function update(Request $request, Fabrics $fabrics)

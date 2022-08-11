@@ -123,7 +123,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="{{ route('admin.show.fabrics.expenditure') }}" class="sidebar-link">
+                    <a href="{{ route('admin.fabrics.expenditure.show') }}" class="sidebar-link">
                         <span class="hide-menu"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Fabrics </span>
                     </a>
                   </li>
