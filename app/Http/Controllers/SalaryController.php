@@ -14,10 +14,13 @@ class SalaryController extends Controller
     {
         return view('pages.salary.all-salary');
     }
-    public function addSalary()
+    public function paySalary()
     {
-        $employees = Employee::all();
-        return view('pages.salary.add-salary', compact('employees'));
+        $employees = Employee::orderBy('id', 'ASC')->paginate(10);
+        $lastMonth = strtolower(date('F', strtotime('-1 months')));
+
+        // dd($lastMonth);
+        return view('pages.salary.pay-salary', compact('employees', 'lastMonth'));
     }
     public function storeSalary(Request $request)
     {
@@ -96,7 +99,7 @@ class SalaryController extends Controller
         $advanceSalary->save();
         return redirect()->route('admin.advance.salary.all')->with('success', 'Advance salary updated successfully !');
     }
-    
+
     public function deleteAdvanceSalary($id)
     {
         $advanceSalary = AdvanceSalary::findOrFail($id);

@@ -20,7 +20,7 @@
     <div class="col-6">
       <div class="text-end">
           @if (request()->routeIs('admin.all.salary') || request()->routeIs('admin.advance.salary.show'))
-            <a class="btn btn-success text-white me-2" href="{{ route('admin.add.salary') }}">Add Salary<span></a>
+            <a class="btn bg-dark-indigo text-white me-2" href="{{ route('admin.add.salary') }}">Pay Salary<span></a>
           @endif
           @if (request()->routeIs('admin.all.salary') || request()->routeIs('admin.add.salary'))
             <a class="btn bg-dark-red text-white me-2" href="{{ route('admin.advance.salary.all') }}">Advance Salary<span></a>

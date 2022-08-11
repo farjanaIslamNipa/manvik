@@ -60,7 +60,7 @@
                       <div class="form-group row">
                         <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Year:</label>
                         <div class="col-lg-10 col-sm-9 px-5">
-                          <input type="text" class="form-control" value="{{ old('year') }}" id="yearpicker" name="year" placeholder="Year" />
+                          <input type="text" class="form-control" value="{{ date('Y') }}" readonly name="year" placeholder="Year" />
                           @error('year') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                         </div>
                       </div>
