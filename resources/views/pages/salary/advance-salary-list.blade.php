@@ -24,6 +24,7 @@
                   </thead>
                   <tbody>
                     @foreach ($advanceSalaries as $advanceSalary)
+                    {{-- {{ dd($advanceSalary->employee->img) }} --}}
                       <tr>
                         <td scope="row">{{ $loop->index + 1 }}</td>
                         <td>
@@ -82,7 +83,7 @@
   @section('scripts')
   <script>
         $('.delete-advance').click(function () {
-         
+
             let id_value = $(this).data('id');
             let url = '/admin/advance-salary/delete/' + id_value ;
             console.log(url)

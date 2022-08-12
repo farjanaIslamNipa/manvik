@@ -23,7 +23,7 @@
             <a class="btn bg-dark-indigo text-white me-2" href="{{ route('admin.add.salary') }}">Pay Salary<span></a>
           @endif
           @if (request()->routeIs('admin.all.salary') || request()->routeIs('admin.add.salary'))
-            <a class="btn bg-dark-red text-white me-2" href="{{ route('admin.advance.salary.all') }}">Advance Salary<span></a>
+          <a class="btn btn-primary" href="{{ route('admin.advance.salary.add') }}">Pay Advance</a>
           @endif
           @if (request()->routeIs('admin.add.salary') || request()->routeIs('admin.advance.salary.add') || request()->routeIs('admin.advance.salary.all'))
             <a class="btn bg-dark-indigo text-white me-2" href="{{ route('admin.all.salary') }}">All Salary List</span></a>

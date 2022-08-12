@@ -169,7 +169,7 @@
                   <span class="menu-icon"><i class="fa-solid fa-users"></i></span>
                   <span class="hide-menu ms-2">Employee </span>
                 </a>
-                <ul aria-expanded="false" class="collapse first-level bg-secondary">
+                <ul aria-expanded="false" class="collapse first-level bg-info">
                   <li class="sidebar-item">
                     <a href="{{ route('admin.all.employee.show') }}" class="sidebar-link {{ request()->routeIs('admin.all.employee.show') ? 'active-menu' : '' }}">
                       <span class="hide-menu ms-2"> <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Employee Details</span>
@@ -177,7 +177,18 @@
                   </li>
                   <li class="sidebar-item">
                     <a href="{{ route('admin.all.salary') }}" class="sidebar-link">
-                      <span class="hide-menu ms-2"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Employee Salary</span>
+                      <span class="hide-menu ms-2"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                      all Salary</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="{{ route('admin.add.salary') }}" class="sidebar-link">
+                      <span class="hide-menu ms-2"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Pay Salary</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="{{ route('admin.advance.salary.add') }}" class="sidebar-link">
+                      <span class="hide-menu ms-2"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Pay Advance</span>
                     </a>
                   </li>
                 </ul>

@@ -6,6 +6,7 @@ use App\Http\Controllers\FabricTypeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,9 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/user/{user}/role', action:[UsersController::class, 'assignRoleView'])->name('users.assign.role.view');
     Route::post(uri:'/user/{user}/assign-role', action:[UsersController::class, 'assignRole'])->name('users.roles.assign');
     Route::delete(uri:'/user/{user}/remove-role/{role}', action:[UsersController::class, 'removeRole'])->name('users.roles.remove');
+
+    //SEARCH ROUTES
+    Route::get(uri:'advance-salary/search/employee', action:[SearchController::class, 'advanceSalaryEmployeeSearch'])->name('advance.salary.search.employee');
 
     //POSITION ROUTES
     Route::get(uri:'/positions', action:[PositionController::class, 'allPositions'])->name('all.positions.show');
