@@ -26,5 +26,9 @@ class Employee extends Model
     {
         return $this->hasOne(AdvanceSalary::class);
     }
+    public function paidSalary()
+    {
+        return $this->hasOne(Salary::class);
+    }
 
 }

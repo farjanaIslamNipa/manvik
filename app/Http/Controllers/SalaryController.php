@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AdvanceSalary;
 use App\Models\Employee;
 use App\Models\Position;
+use App\Models\Salary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,15 +19,46 @@ class SalaryController extends Controller
     {
         $employees = Employee::orderBy('id', 'ASC')->paginate(10);
         $lastMonth = strtolower(date('F', strtotime('-1 months')));
-
         // dd($lastMonth);
         return view('pages.salary.pay-salary', compact('employees', 'lastMonth'));
     }
     public function storeSalary(Request $request)
     {
+        // dd($request);
         $request->validate([
-
+            'employee_id'   => 'required',
+            'position'      => 'required',
+            'month'         => 'required',
+            'year'          => 'required',
+            'salary'        => 'required'
         ]);
+
+        $month = $request->month;
+        $year  = $request->year;
+        $employee_id = $request->employee_id;
+
+        $paidSalary    = DB::table('salaries')
+                   ->where('month', $month)
+                   ->where('year', $year)
+                   ->where('employee_id', $employee_id)
+                   ->first();
+
+        if($paidSalary === null){
+            $salary = new Salary();
+
+            $salary->employee_id = $request->employee_id;
+            $salary->position = $request->position;
+            $salary->month = $request->month;
+            $salary->year = $request->year;
+            $salary->salary = $request->salary;
+
+            $salary->save();
+
+            return redirect()->route('admin.add.salary')->with('success', 'Paid Successfully!');
+        }else{
+            return redirect()->route('admin.add.salary')->with('error', 'Already paid for this month to this employee!');
+        }
+
     }
     public function allAdvanceSalary()
     {

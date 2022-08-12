@@ -29,46 +29,78 @@
                       <th scope="col"><span class="text-brand text-md">Position</span></th>
                       <th scope="col"><span class="text-brand text-md">Month</span></th>
                       <th scope="col"><span class="text-brand text-md">Year</span></th>
-                      <th scope="col"><span class="text-brand text-md">Advance</span></th>
-                      <th scope="col"><span class="text-brand text-md">Action</span></th>
+                      <th scope="col" class="text-end"><span class="text-brand text-md">Advance</span></th>
+                      <th scope="col" class="text-end"><span class="text-brand text-md">Salary</span></th>
+                      <th scope="col" class="text-end"><span class="text-brand text-md">Paid Salary</span></th>
+                      <th scope="col" class="text-center"><span class="text-brand text-md">Action</span></th>
                     </tr>
                   </thead>
                   <tbody>
                     @foreach ($employees as $employee)
-                      <tr>
-                        <td scope="row">{{ $loop->index + 1 }}</td>
-                        <td>
-                            @if($employee->img)
-                            <img style="height: 40px; width:40px; border-radius:50%; object-fit:cover;" src="{{ asset($employee->img) }}" alt="">
-                            @else
-                            <img style="height: 40px; width:40px; border-radius:50%; object-fit:cover;" src="{{ asset('/assets/images/users/no-image.jpg') }}" alt="">
-                            @endif
-                        </td>
-                        <td class="text-capitalize">{{ $employee->name }}</td>
-                        <td>{{ $employee->position }}</td>
-                        <td class="text-capitalize">{{ $lastMonth }}</td>
-                        <td>{{ $employee->year }}</td>
-                        <td>
-                            @isset($employee->advanceSalary->month)
-                                @if ( $employee->advanceSalary->month == $lastMonth)
-                                    {{ $employee->advanceSalary->month }}
-                                @endif
-                            @endisset
+                    {{-- {{ dd($employee->paidSalary) }} --}}
+                        <form action="{{ route('admin.store.salary', $employee->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <tr>
+                                <td scope="row">{{ $loop->index + 1 }}</td>
+                                <td>
+                                    @if($employee->img)
+                                    <img style="height: 40px; width:40px; border-radius:50%; object-fit:cover;" src="{{ asset($employee->img) }}" alt="">
+                                    @else
+                                    <img style="height: 40px; width:40px; border-radius:50%; object-fit:cover;" src="{{ asset('/assets/images/users/no-image.jpg') }}" alt="">
+                                    @endif
+                                </td>
+                                <td class="text-capitalize">
+                                    {{ $employee->name }}
+                                    <input type="hidden" value="{{ $employee->id }}" name="employee_id">
+                                </td>
+                                <td>
+                                    {{ $employee->position }}
+                                    <input type="hidden" value="{{ $employee->position }}" name="position">
+                                </td>
+                                <td class="text-capitalize">
+                                    {{ $lastMonth }}
+                                    <input type="hidden" value="{{ $lastMonth }}" name="month">
+                                </td>
+                                <td>
+                                    {{ date('Y') }}
+                                    <input type="hidden" value="{{ date('Y') }}" name="year">
+                                </td>
+                                <td class="text-end">
+                                    @if ( $employee->advanceSalary)
+                                    {{ $employee->advanceSalary->advance }}
+                                    @else
+                                    <span>0</span>
+                                    @endif
+                                </td>
+                                <td class="text-end">{{ $employee->salary }}</td>
+                                <td class="text-end">
+                                    @if ($employee->advanceSalary)
+                                    {{ $employee->salary - $employee->advanceSalary->advance }}
+                                    <input type="hidden" value="{{ $employee->salary - $employee->advanceSalary->advance }}" name="salary">
+                                    @else
+                                    {{ $employee->salary }}
+                                    <input type="hidden" value="{{ $employee->salary }}" name="salary">
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    @if($employee->paidSalary)
+                                        @php
+                                            $currentMonth = strtolower(date('F', strtotime('-1 months')));
+                                            $currentYear = date('Y');
+                                        @endphp
+                                        @if (($employee->paidSalary->month == $currentMonth) && ($employee->paidSalary->year == $currentYear))
 
+                                        <button disabled class="btn btn-danger bg-danger px-4 text-white rounded">Paid</button>
+                                        @else
+                                        <button type="submit" class="btn btn-success text-white rounded">Pay Now</button>
+                                        @endif
 
-                            {{-- @isset($employee->advanceSalary)
-                            @if ($employee->advanceSalary->month == 'july')
-                            {{ $employee->advanceSalary->advance }}
-                        @else
-                            <span>N/A</span>
-                        @endif
-                            @endisset --}}
-
-                        </td>
-                        <td>
-                          <a class="btn btn-success text-white rounded me-1" href="{{ route('admin.advance.salary.edit', $employee->id) }}">Pay Now</a>
-                        </td>
-                      </tr>
+                                    @else
+                                    <button type="submit" class="btn btn-success text-white rounded">Pay Now</button>
+                                    @endif
+                                </td>
+                              </tr>
+                        </form>
                     @endforeach
                   </tbody>
               </table>

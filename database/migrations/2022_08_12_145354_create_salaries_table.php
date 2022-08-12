@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id');
-            $table->foreignId('position_id');
+            $table->string('position');
             $table->string('month');
             $table->string('year');
-            $table->tinyInteger('status')->default('0');
-            $table->integer('advance')->nullable();
+            $table->tinyInteger('status')->default(1)->comment('1:paid, 0:unpaid')->nullable();
+            $table->double('salary');
             $table->timestamps();
         });
     }
