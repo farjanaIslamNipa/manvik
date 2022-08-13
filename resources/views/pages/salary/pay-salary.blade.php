@@ -37,7 +37,6 @@
                   </thead>
                   <tbody>
                     @foreach ($employees as $employee)
-                    {{-- {{ dd($employee->paidSalary) }} --}}
                         <form action="{{ route('admin.store.salary', $employee->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <tr>

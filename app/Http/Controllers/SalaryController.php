@@ -13,7 +13,8 @@ class SalaryController extends Controller
 {
     public function allSalary()
     {
-        return view('pages.salary.all-salary');
+        $employees = Employee::orderBy('id', 'ASC')->paginate(8);
+        return view('pages.salary.all-salary', compact('employees', 'salaries'));
     }
     public function paySalary()
     {
@@ -63,7 +64,6 @@ class SalaryController extends Controller
     public function allAdvanceSalary()
     {
         $advanceSalaries = AdvanceSalary::orderBy('id', 'DESC')->paginate(8);
-
         return view('pages.salary.advance-salary-list', compact('advanceSalaries'));
     }
     public function advanceSalary()
