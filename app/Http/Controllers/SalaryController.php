@@ -13,11 +13,12 @@ class SalaryController extends Controller
 {
     public function allSalary()
     {
-        return view('pages.salary.all-salary');
+        $employees = Employee::orderBy('id', 'ASC')->paginate(8);
+        return view('pages.salary.all-salary', compact('employees'));
     }
     public function paySalary()
     {
-        $employees = Employee::orderBy('id', 'ASC')->paginate(10);
+        $employees = Employee::orderBy('id', 'ASC')->paginate(8);
         $lastMonth = strtolower(date('F', strtotime('-1 months')));
         $currentYear = date('Y');
         // dd($lastMonth);
@@ -64,7 +65,6 @@ class SalaryController extends Controller
     public function allAdvanceSalary()
     {
         $advanceSalaries = AdvanceSalary::orderBy('id', 'DESC')->paginate(8);
-
         return view('pages.salary.advance-salary-list', compact('advanceSalaries'));
     }
     public function advanceSalary()

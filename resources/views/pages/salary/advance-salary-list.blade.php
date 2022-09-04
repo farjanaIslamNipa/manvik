@@ -24,7 +24,6 @@
                   </thead>
                   <tbody>
                     @foreach ($advanceSalaries as $advanceSalary)
-                    {{-- {{ dd($advanceSalary->employee->img) }} --}}
                       <tr>
                         <td scope="row">{{ $loop->index + 1 }}</td>
                         <td>
@@ -35,7 +34,7 @@
                             @endif
                         </td>
                         <td class="text-capitalize">{{ $advanceSalary->employee->name }}</td>
-                        <td>{{ $advanceSalary->employee->position }}</td>
+                        <td class="text-capitalize">{{ $advanceSalary->employee->position }}</td>
                         <td class="text-capitalize">{{ $advanceSalary->month }}</td>
                         <td>{{ $advanceSalary->year }}</td>
                         <td>{{ $advanceSalary->advance }}</td>
@@ -89,7 +88,6 @@
             console.log(url)
             document.getElementById("deleteAdvanceModalHref").href = url;
         });
-
   </script>
   @endsection
   </x-admin-layout>

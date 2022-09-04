@@ -10,7 +10,7 @@ class EmployeeController extends Controller
 {
     public function allEmployee()
     {
-        $employees = Employee::orderBy('id', 'DESC')->paginate(10);
+        $employees = Employee::orderBy('id', 'DESC')->paginate(8);
         return view('employee.all-employee', compact('employees'));
     }
 
