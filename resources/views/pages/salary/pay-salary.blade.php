@@ -62,11 +62,11 @@
                                     <input type="hidden" value="{{ $lastMonth }}" name="month">
                                 </td>
                                 <td>
-                                    {{ date('Y') }}
-                                    <input type="hidden" value="{{ date('Y') }}" name="year">
+                                    {{ $currentYear }}
+                                    <input type="hidden" value="{{ $currentYear }}" name="year">
                                 </td>
                                 <td class="text-end">
-                                    @if ( $employee->advanceSalary)
+                                    @if ( $employee->advanceSalary && $employee->advanceSalary->month == $lastMonth && $employee->advanceSalary->year = $currentYear)
                                     {{ $employee->advanceSalary->advance }}
                                     @else
                                     <span>0</span>
@@ -74,7 +74,7 @@
                                 </td>
                                 <td class="text-end">{{ $employee->salary }}</td>
                                 <td class="text-end">
-                                    @if ($employee->advanceSalary)
+                                    @if ( $employee->advanceSalary && $employee->advanceSalary->month == $lastMonth && $employee->advanceSalary->year = $currentYear)
                                     {{ $employee->salary - $employee->advanceSalary->advance }}
                                     <input type="hidden" value="{{ $employee->salary - $employee->advanceSalary->advance }}" name="salary">
                                     @else
@@ -83,20 +83,12 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
+                                    {{-- <button type="submit" class="btn btn-success text-white rounded">Pay Now</button> --}}
+                                    {{-- {{ dd($employee->paidSalary->month == $lastMonth) }} --}}
                                     @if($employee->paidSalary)
-                                        @php
-                                            $currentMonth = strtolower(date('F', strtotime('-1 months')));
-                                            $currentYear = date('Y');
-                                        @endphp
-                                        @if (($employee->paidSalary->month == $currentMonth) && ($employee->paidSalary->year == $currentYear))
-
                                         <button disabled class="btn btn-danger bg-danger px-4 text-white rounded">Paid</button>
-                                        @else
-                                        <button type="submit" class="btn btn-success text-white rounded">Pay Now</button>
-                                        @endif
-
                                     @else
-                                    <button type="submit" class="btn btn-success text-white rounded">Pay Now</button>
+                                        <button type="submit" class="btn btn-success text-white rounded">Pay Now</button>
                                     @endif
                                 </td>
                               </tr>

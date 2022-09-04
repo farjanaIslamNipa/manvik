@@ -19,8 +19,9 @@ class SalaryController extends Controller
     {
         $employees = Employee::orderBy('id', 'ASC')->paginate(10);
         $lastMonth = strtolower(date('F', strtotime('-1 months')));
+        $currentYear = date('Y');
         // dd($lastMonth);
-        return view('pages.salary.pay-salary', compact('employees', 'lastMonth'));
+        return view('pages.salary.pay-salary', compact('employees', 'lastMonth', 'currentYear'));
     }
     public function storeSalary(Request $request)
     {
