@@ -14,7 +14,8 @@ class SalaryController extends Controller
     public function allSalary()
     {
         $employees = Employee::orderBy('id', 'ASC')->paginate(8);
-        return view('pages.salary.all-salary', compact('employees'));
+        $salaries = Salary::orderBy('id', 'DESC')->paginate(8);
+        return view('pages.salary.all-salary', compact('employees','salaries' ));
     }
     public function paySalary()
     {

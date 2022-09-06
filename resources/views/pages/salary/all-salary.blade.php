@@ -1,6 +1,6 @@
 <x-admin-layout>
     @section('title')
-    Employee Salary List | Manvik
+    salary Salary List | Manvik
     @endsection
 
     <div class="page-wrapper">
@@ -12,7 +12,7 @@
                       <tr>
                         <th scope="col"><span class="text-brand text-md">#</span></th>
                         <th scope="col"><span class="text-brand text-md">Image</span></th>
-                        <th scope="col"><span class="text-brand text-md">Employee Name</span></th>
+                        <th scope="col"><span class="text-brand text-md">salary Name</span></th>
                         <th scope="col"><span class="text-brand text-md">Position</span></th>
                         <th scope="col"><span class="text-brand text-md">Month</span></th>
                         <th scope="col"><span class="text-brand text-md">Year</span></th>
@@ -23,48 +23,57 @@
                       </tr>
                     </thead>
                     <tbody style="">
-
-                      @foreach ($employees as $employee)
-
+                        @if ($salaries)
+                        @foreach ($salaries as $salary)
                         <tr>
                             <td scope="row">{{ $loop->index + 1 }}</td>
                             <td>
-                                @if($employee->img)
-                                <img style="height: 40px; width:40px; border-radius:50%; object-fit:cover;" src="{{ asset($employee->img) }}" alt="">
+                                @if($salary->employee->img)
+                                <img style="height: 40px; width:40px; border-radius:50%; object-fit:cover;" src="{{ asset($salary->employee->img) }}" alt="">
                                 @else
                                 <img style="height: 40px; width:40px; border-radius:50%; object-fit:cover;" src="{{ asset('/assets/images/users/no-image.jpg') }}" alt="">
                                 @endif
                             </td>
-                            <td class="text-capitalize">{{ $employee->name }}</td>
-                            <td class="text-capitalize">{{ $employee->position }}</td>
-                            <td class="text-capitalize text-warning">{{ ($employee->paidSalary) ? $employee->paidSalary->month : 'N/A' }}</td>
-                            <td class="text-success">{{ ($employee->advanceSalary) ? $employee->advanceSalary->year : 'N/A' }}</td>
-                            <td class="text-brand">{{ ($employee->advanceSalary) ? $employee->advanceSalary->advance : 'N/A' }}</td>
-                            <td class="text-success">
-                                @if (($employee->paidSalary))
-                                    {{ $employee->paidSalary->salary }}
+                            <td class="text-capitalize">{{ $salary->employee->name }}</td>
+                            <td class="text-capitalize">{{ $salary->employee->position }}</td>
+                            <td class="text-capitalize text-warning">{{ $salary->month }}</td>
+                            <td class="text-success">{{ $salary->year }}</td>
+                            <td class="text-brand text-right">
+                                @if($salary->employee->advanceSalary)
+                                {{ $salary->employee->advanceSalary->advance }}
                                 @else
-                                <span class="text-danger">Not Paid</span>
+                                0
                                 @endif
-
                             </td>
-                            <td>{{ $employee->salary }}</td>
+                            <td class="text-success text-right">
+                                    {{ $salary->salary }}
+                            </td>
+                            <td class="text-right">
+                                @if($salary->employee->advanceSalary)
+                                {{ $salary->salary + $salary->employee->advanceSalary->advance }}
+                                @else
+                                {{ $salary->salary + 0 }}
+                                @endif
+                            </td>
                             <td class="text-capitalize">
-                                <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.fabrics.expenditure.edit', $employee->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
+                                {{-- <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.fabrics.expenditure.edit', $salary->employeeid) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
                                 <button class="btn btn-sm btn-danger rounded delete-salary"
                                     data-bs-toggle="modal"
                                     data-bs-target="#deleteFabric"
-                                    data-id="{{ $employee->id  }}">
+                                    data-id="{{ $salary->id  }}">
                                     <span><i class="fa-solid fa-trash-can"></i></span>
-                                </button>
+                                </button> --}}
                             </td>
                         </tr>
                       @endforeach
+                        @else
+                        <h4 class="text-center">No data found</h4>
+                        @endif
                     </tbody>
                 </table>
             </div>
             <div class="mt-2 p-2 bg-dark text-white base-pagination">
-              {!! $employees->links() !!}
+              {!! $salaries->links() !!}
           </div>
               {{-- delete modal --}}
             <div class="modal fade" id="deleteFabric" tabindex="-1" role="dialog"

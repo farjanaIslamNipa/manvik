@@ -4,7 +4,7 @@
     @endsection
 
     <div class="page-wrapper">
-        {{-- {{ dd($employees) }} --}}
+       
       <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
@@ -82,13 +82,7 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    {{-- <button type="submit" class="btn btn-success text-white rounded">Pay Now</button> --}}
-                                    {{-- {{ dd($employee->paidSalary->month == $lastMonth) }} --}}
-                                    @if($employee->paidSalary)
-                                        <button disabled class="btn btn-danger bg-danger px-4 text-white rounded">Paid</button>
-                                    @else
-                                        <button type="submit" class="btn btn-success text-white rounded">Pay Now</button>
-                                    @endif
+                                    <button type="submit" class="btn btn-success text-white rounded">Pay Now</button>
                                 </td>
                               </tr>
                         </form>
