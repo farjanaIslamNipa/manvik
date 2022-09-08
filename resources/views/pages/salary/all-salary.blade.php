@@ -16,9 +16,9 @@
                         <th scope="col"><span class="text-brand text-md">Position</span></th>
                         <th scope="col"><span class="text-brand text-md">Month</span></th>
                         <th scope="col"><span class="text-brand text-md">Year</span></th>
-                        <th scope="col"><span class="text-brand text-md">Advance</span></th>
-                        <th scope="col"><span class="text-brand text-md">Paid</span></th>
-                        <th scope="col"><span class="text-brand text-md">Paid Total</span></th>
+                        <th scope="col" class="text-right"><span class="text-brand text-md">Advance</span></th>
+                        <th scope="col" class="text-right"><span class="text-brand text-md">Paid</span></th>
+                        <th scope="col" class="text-right"><span class="text-brand text-md">Paid Total</span></th>
                         <th scope="col"><span class="text-brand text-md">Action</span></th>
                       </tr>
                     </thead>
@@ -38,31 +38,17 @@
                             <td class="text-capitalize">{{ $salary->employee->position }}</td>
                             <td class="text-capitalize text-warning">{{ $salary->month }}</td>
                             <td class="text-success">{{ $salary->year }}</td>
-                            <td class="text-brand text-right">
-                                @if($salary->employee->advanceSalary)
-                                {{ $salary->employee->advanceSalary->advance }}
-                                @else
-                                0
-                                @endif
-                            </td>
-                            <td class="text-success text-right">
-                                    {{ $salary->salary }}
-                            </td>
-                            <td class="text-right">
-                                @if($salary->employee->advanceSalary)
-                                {{ $salary->salary + $salary->employee->advanceSalary->advance }}
-                                @else
-                                {{ $salary->salary + 0 }}
-                                @endif
-                            </td>
+                            <td class="text-brand text-right">{{ $salary->advance }}</td>
+                            <td class="text-success text-right">{{ $salary->paid }}</td>
+                            <td class="text-right">{{ $salary->paid_total }}</</td>
                             <td class="text-capitalize">
-                                {{-- <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.fabrics.expenditure.edit', $salary->employeeid) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
+                                <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.edit.salary', $salary->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
                                 <button class="btn btn-sm btn-danger rounded delete-salary"
                                     data-bs-toggle="modal"
                                     data-bs-target="#deleteFabric"
                                     data-id="{{ $salary->id  }}">
                                     <span><i class="fa-solid fa-trash-can"></i></span>
-                                </button> --}}
+                                </button>
                             </td>
                         </tr>
                       @endforeach

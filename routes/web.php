@@ -66,6 +66,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/pay-salary', action:[SalaryController::class, 'paySalary'])->name('add.salary');
     Route::get(uri:'/all-salary', action:[SalaryController::class, 'allSalary'])->name('all.salary');
     Route::post(uri:'/add-salary/store/{id}', action:[SalaryController::class, 'StoreSalary'])->name('store.salary');
+    Route::post(uri:'/add-salary/edit/{id}', action:[SalaryController::class, 'editSalary'])->name('edit.salary');
 
     //CREATE FABRICS TYPE ROUTES
     Route::get(uri:'/fabrics', action:[FabricTypeController::class, 'showFabrics'])->name('fabrics.show');

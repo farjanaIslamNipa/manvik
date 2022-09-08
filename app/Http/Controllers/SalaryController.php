@@ -33,7 +33,9 @@ class SalaryController extends Controller
             'position'      => 'required',
             'month'         => 'required',
             'year'          => 'required',
-            'salary'        => 'required'
+            'advance'       => 'nullable',
+            'paid'          => 'required',
+            'paid_total'    => 'required'
         ]);
 
         $month = $request->month;
@@ -53,7 +55,9 @@ class SalaryController extends Controller
             $salary->position = $request->position;
             $salary->month = $request->month;
             $salary->year = $request->year;
-            $salary->salary = $request->salary;
+            $salary->advance = $request->advance;
+            $salary->paid = $request->paid;
+            $salary->paid_total = $request->paid_total;
 
             $salary->save();
 

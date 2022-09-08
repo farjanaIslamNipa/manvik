@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('month');
             $table->string('year');
             $table->tinyInteger('status')->default(1)->comment('1:paid, 0:unpaid')->nullable();
-            $table->double('salary');
+            $table->double('advance')->nullable();
+            $table->double('paid');
+            $table->double('paid_total');
             $table->timestamps();
         });
     }

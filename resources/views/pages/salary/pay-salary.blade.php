@@ -30,8 +30,8 @@
                       <th scope="col"><span class="text-brand text-md">Month</span></th>
                       <th scope="col"><span class="text-brand text-md">Year</span></th>
                       <th scope="col" class="text-end"><span class="text-brand text-md">Advance</span></th>
-                      <th scope="col" class="text-end"><span class="text-brand text-md">Salary</span></th>
-                      <th scope="col" class="text-end"><span class="text-brand text-md">Paid Salary</span></th>
+                      <th scope="col" class="text-end"><span class="text-brand text-md">Paid</span></th>
+                      <th scope="col" class="text-end"><span class="text-brand text-md">Paid Total</span></th>
                       <th scope="col" class="text-center"><span class="text-brand text-md">Action</span></th>
                     </tr>
                   </thead>
@@ -67,18 +67,28 @@
                                 <td class="text-end">
                                     @if ( $employee->advanceSalary && $employee->advanceSalary->month == $lastMonth && $employee->advanceSalary->year = $currentYear)
                                     {{ $employee->advanceSalary->advance }}
+                                    <input type="hidden" value="{{ $employee->advanceSalary->advance }}" name="advance">
                                     @else
                                     <span>0</span>
+                                    <input type="hidden" value="0" name="advance">
                                     @endif
                                 </td>
-                                <td class="text-end">{{ $employee->salary }}</td>
-                                <td class="text-end">
+                                 <td class="text-end">
                                     @if ( $employee->advanceSalary && $employee->advanceSalary->month == $lastMonth && $employee->advanceSalary->year = $currentYear)
                                     {{ $employee->salary - $employee->advanceSalary->advance }}
-                                    <input type="hidden" value="{{ $employee->salary - $employee->advanceSalary->advance }}" name="salary">
+                                    <input type="hidden" value="{{ $employee->salary - $employee->advanceSalary->advance }}" name="paid">
                                     @else
                                     {{ $employee->salary }}
-                                    <input type="hidden" value="{{ $employee->salary }}" name="salary">
+                                    <input type="hidden" value="{{ $employee->salary }}" name="paid">
+                                    @endif
+                                </td>
+                                <td class="text-end">
+                                    @if ( $employee->advanceSalary && $employee->advanceSalary->month == $lastMonth && $employee->advanceSalary->year = $currentYear)
+                                    {{ ($employee->salary - $employee->advanceSalary->advance) + $employee->advanceSalary->advance }}
+                                    <input type="hidden" value="{{ ($employee->salary - $employee->advanceSalary->advance) + $employee->advanceSalary->advance }}" name="paid_total">
+                                    @else
+                                    {{ $employee->salary }}
+                                    <input type="hidden" value="{{ $employee->salary }}" name="paid_total">
                                     @endif
                                 </td>
                                 <td class="text-center">
