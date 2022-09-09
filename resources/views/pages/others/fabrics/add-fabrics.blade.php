@@ -1,6 +1,6 @@
 <x-admin-layout>
   @section('title')
-  Add Fabrics | Manvik
+  Add Fabric | Manvik
   @endsection
 
   <div class="page-wrapper">
@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
           <div class="col-xl-7 col-md-10">
             <div class="card mt-4">
-              <h4 class="text-lg text-center pt-4 pb-2 font-bold">Create Fabrics</h4>
+              <h4 class="text-lg text-center pt-4 pb-2 font-bold">Create Fabric</h4>
               <form action="{{ route('admin.fabrics.store') }}" method="POST" class="base-form">
                 @csrf
                 <div class="card-body pb-1">

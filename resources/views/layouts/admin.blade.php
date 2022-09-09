@@ -187,8 +187,8 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="{{ route('admin.advance.salary.add') }}" class="sidebar-link">
-                      <span class="hide-menu ms-2"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Pay Advance</span>
+                    <a href="{{ route('admin.advance.salary.all') }}" class="sidebar-link">
+                      <span class="hide-menu ms-2"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Advance</span>
                     </a>
                   </li>
                 </ul>
@@ -290,13 +290,19 @@
                   <li class="sidebar-item">
                     <a href="{{ route('admin.all.positions.show') }}" class="sidebar-link">
                       <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                      <span class="hide-menu">Add Positions</span>
+                      <span class="hide-menu">Add Position</span>
                     </a>
                   </li>
                   <li class="sidebar-item">
                     <a href="{{ route('admin.fabrics.show') }}" class="sidebar-link">
                       <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
-                      <span class="hide-menu">Add Fabrics</span>
+                      <span class="hide-menu">Add Fabric</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="{{ route('admin.accessory.show') }}" class="sidebar-link">
+                      <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                      <span class="hide-menu">Add Accessory</span>
                     </a>
                   </li>
                 </ul>

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('accessories_types', function (Blueprint $table) {
+        Schema::create('accessory_types', function (Blueprint $table) {
             $table->id();
             $table->string('accessories');
             $table->tinyInteger('status');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accessories_types');
+        Schema::dropIfExists('accessory_types');
     }
 };

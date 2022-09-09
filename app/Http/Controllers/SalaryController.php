@@ -25,6 +25,14 @@ class SalaryController extends Controller
         // dd($lastMonth);
         return view('pages.salary.pay-salary', compact('employees', 'lastMonth', 'currentYear'));
     }
+    public function editSalary($id)
+    {
+        $salary = Salary::findOrFail($id);
+        $lastMonth = strtolower(date('F', strtotime('-1 months')));
+        $currentYear = date('Y');
+        // dd($lastMonth);
+        return view('pages.salary.edit-salary', compact('salary', 'lastMonth', 'currentYear'));
+    }
     public function storeSalary(Request $request)
     {
         // dd($request);
@@ -67,6 +75,36 @@ class SalaryController extends Controller
         }
 
     }
+    public function updateSalary(Request $request,  $id)
+    {
+        $salary = Salary::findOrFail($id);
+        $request->validate([
+            'paid'          => 'required',
+            'paid_total'    => 'required'
+        ]);
+
+        $salary->employee_id = $request->employee_id;
+        $salary->position = $request->position;
+        $salary->month = $request->month;
+        $salary->year = $request->year;
+        $salary->advance = $request->advance;
+        $salary->paid = $request->paid;
+        $salary->paid_total = $request->paid_total;
+
+        $salary->save();
+
+        return redirect()->route('admin.all.salary')->with('success', 'Salary Updated Successfully!');
+
+    }
+
+    public function deleteSalary($id)
+    {
+        $salary = Salary::findOrFail($id);
+        $salary->delete();
+        return redirect()->route('admin.all.salary')->with('success', 'Salary deleted successfully !');
+    }
+
+
     public function allAdvanceSalary()
     {
         $advanceSalaries = AdvanceSalary::orderBy('id', 'DESC')->paginate(8);

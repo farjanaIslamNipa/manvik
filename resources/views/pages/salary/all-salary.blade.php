@@ -45,7 +45,7 @@
                                 <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.edit.salary', $salary->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
                                 <button class="btn btn-sm btn-danger rounded delete-salary"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#deleteFabric"
+                                    data-bs-target="#deleteSalary"
                                     data-id="{{ $salary->id  }}">
                                     <span><i class="fa-solid fa-trash-can"></i></span>
                                 </button>
@@ -62,7 +62,7 @@
               {!! $salaries->links() !!}
           </div>
               {{-- delete modal --}}
-            <div class="modal fade" id="deleteFabric" tabindex="-1" role="dialog"
+            <div class="modal fade" id="deleteSalary" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -73,7 +73,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal">Cancel</button>
-                            <a href="" type="submit" id="deleteFabricModalHref" class="btn btn-danger bg-danger">Delete it.</a>
+                            <a href="" type="submit" id="deleteSalaryModalHref" class="btn btn-danger bg-danger">Delete it.</a>
                         </div>
                     </div>
                 </div>
@@ -84,9 +84,9 @@
     <script>
           $('.delete-salary').click(function () {
               let id_value = $(this).data('id');
-              let url = '/admin/fabric/delete/' + id_value ;
+              let url = '/admin/delete-salary/' + id_value ;
               console.log(url)
-              document.getElementById("deleteFabricModalHref").href = url;
+              document.getElementById("deleteSalaryModalHref").href = url;
           });
 
     </script>

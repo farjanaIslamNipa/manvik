@@ -35,29 +35,35 @@
                   </tr>
                 </thead>
                 <tbody style="">
-                  @foreach ($fabrics as $fabric)
+                    @if(count($fabrics) > 0)
+                    @foreach ($fabrics as $fabric)
                     <tr>
                       <td scope="row">{{ $loop->index + 1 }}</td>
                       <td class="text-capitalize">{{ $fabric->shop_details }}</td>
                       <td class="text-capitalize">{{ $fabric->fabrics_name }}</td>
-                      <td>{{ $fabric->quantity }}</td>
-                      <td>{{ $fabric->unit_price }}</td>
-                      <td>{{ $fabric->total_price }}</td>
-                      <td>{{ $fabric->due }}</td>
-                      <td>{{ $fabric->paid }}</td>
+                      <td class="text-center">{{ $fabric->quantity }}</td>
+                      <td class="text-center">{{ $fabric->unit_price }}</td>
+                      <td class="text-center">{{ $fabric->total_price }}</td>
+                      <td class="text-center">{{ $fabric->due }}</td>
+                      <td class="text-center">{{ $fabric->paid }}</td>
                       <td>{{ $fabric->date }}</td>
                       <td>{{ $fabric->note }}</td>
                       <td>
                         <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.fabrics.expenditure.edit', $fabric->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
                         <button class="btn btn-sm btn-danger rounded delete-fabric"
                             data-bs-toggle="modal"
-                            data-bs-target="#deleteFabric"
+                            data-bs-target="#deleteFabricExpenditur"
                             data-id="{{ $fabric->id  }}">
                             <span><i class="fa-solid fa-trash-can"></i></span>
                         </button>
                       </td>
                     </tr>
                   @endforeach
+                  @else
+                  <tr class="text-center">
+                    <td colspan="12"><h5 class="text-lg">No data found</h5></td>
+                  </tr>
+                  @endif
                 </tbody>
             </table>
         </div>
@@ -68,7 +74,7 @@
         @endif
     </div>
     {{-- delete modal --}}
-    <div class="modal fade" id="deleteFabric" tabindex="-1" role="dialog"
+    <div class="modal fade" id="deleteFabricExpenditur" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -79,7 +85,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="" type="submit" id="deleteFabricModalHref" class="btn btn-danger bg-danger">Delete it.</a>
+                    <a href="" type="submit" id="deleteFabricExpenditurModalHref" class="btn btn-danger bg-danger">Delete it.</a>
                 </div>
             </div>
         </div>
@@ -90,9 +96,9 @@
         $('.delete-fabric').click(function () {
 
             let id_value = $(this).data('id');
-            let url = '/admin/fabric/delete/' + id_value ;
+            let url = '/admin/fabrics-expenditure/delete/' + id_value ;
             console.log(url)
-            document.getElementById("deleteFabricModalHref").href = url;
+            document.getElementById("deleteFabricExpenditurModalHref").href = url;
         });
 
   </script>

@@ -47,7 +47,7 @@ class FabricsController extends Controller
 
         $fabrics->save();
 
-        return redirect()->route('admin.show.fabrics.expenditure')->with('success', 'Fabrics expenditure added successfully');
+        return redirect()->route('admin.fabrics.expenditure.show')->with('success', 'Fabrics expenditure added successfully');
     }
 
     public function editFabricsExpenditure($id)
@@ -57,13 +57,41 @@ class FabricsController extends Controller
         return view('pages.expenses.fabrics.edit-fabrics-expenditure', compact('fabricTypes', 'fabric'));
     }
 
-    public function update(Request $request, Fabrics $fabrics)
+    public function updateFabricsExpenditure(Request $request, $id)
     {
-        //
+        $request->validate([
+            'shop_details'  => 'nullable',
+            'fabrics_name'  => 'required',
+            'quantity'      => 'required|numeric',
+            'unit_price'    => 'required',
+            'total_price'   => 'required',
+            'paid'          => 'required',
+            'due'           => 'nullable',
+            'date'          => 'nullable',
+            'note'          => 'nullable',
+        ]);
+
+        $fabrics = Fabrics::findOrFail($id);
+
+        $fabrics->shop_details = $request->shop_details;
+        $fabrics->fabrics_name = $request->fabrics_name;
+        $fabrics->quantity = $request->quantity;
+        $fabrics->unit_price = $request->unit_price;
+        $fabrics->total_price = $request->total_price;
+        $fabrics->paid = $request->paid;
+        $fabrics->due = $request->due;
+        $fabrics->date = date('Y-m-d H:i:s', strtotime($request->date));
+        $fabrics->note = $request->note;
+
+        $fabrics->save();
+
+        return redirect()->route('admin.fabrics.expenditure.show')->with('success', 'Fabrics expenditure updated successfully');
     }
 
-    public function destroy(Fabrics $fabrics)
+    public function deleteFabricsExpenditure($id)
     {
-        //
+        $fabrics = Fabrics::findOrFail($id);
+        $fabrics->delete();
+        return redirect()->route('admin.fabrics.expenditure.show')->with('success', 'Fabrics expenditure deleted successfully');
     }
 }
