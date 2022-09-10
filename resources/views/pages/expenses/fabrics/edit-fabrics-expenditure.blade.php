@@ -19,7 +19,7 @@
           <div class="col-xl-7 col-md-10">
             <div class="card mt-4 pt-4">
               <h4 class="text-lg text-center pb-2 font-bold">Update Fabrics Information</h4>
-              <form action="{{ route('admin.fabrics.expenditure.update', $fabric->id) }}" method="POST" class="base-form">
+              <form action="{{ route('admin.fabrics.expenditure.update', $fabric->id) }}"  method="POST" class="base-form">
                 @csrf
                 <div class="card-body pb-1">
                   <div class="form-group row">

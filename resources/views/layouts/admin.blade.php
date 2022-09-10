@@ -128,7 +128,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="form-wizard.html" class="sidebar-link">
+                    <a href="{{ route('admin.accessories.expenditure.show') }}" class="sidebar-link">
                       <span class="hide-menu"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Accessories </span>
                     </a>
                   </li>
@@ -138,7 +138,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu">
+                    <a href="{{ route('admin.equipment.purchase.show') }}" class="sidebar-link"><span class="hide-menu">
                       <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Equipment Purchase</span>
                     </a>
                   </li>

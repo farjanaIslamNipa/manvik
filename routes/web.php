@@ -102,7 +102,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/accessories-expenditure-list/add', action:[AccessoriesController::class, 'addAccessoriesExpenditure'])->name('accessories.expenditure.add');
     Route::post(uri:'/accessories-expenditure-list/store', action:[AccessoriesController::class, 'storeAccessoriesExpenditure'])->name('accessories.expenditure.store');
     Route::get(uri:'/accessories-expenditure/edit/{id}', action:[AccessoriesController::class, 'editAccessoriesExpenditure'])->name('accessories.expenditure.edit');
-    Route::post(uri:'/fabrics-expenditure/update/{id}', action:[AccessoriesController::class, 'updateAccessoriesExpenditure'])->name('fabrics.expenditure.update');
+    Route::post(uri:'/accessories-expenditure/update/{id}', action:[AccessoriesController::class, 'updateAccessoriesExpenditure'])->name('accessories.expenditure.update');
     Route::get(uri:'/accessories-expenditure/delete/{id}', action:[AccessoriesController::class, 'deleteAccessoriesExpenditure'])->name('accessories.expenditure.delete');
 
     //CREATE EQUIPMENT PURCHASE ROUTES
@@ -111,7 +111,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::post(uri:'/equipment-purchase/store', action:[EquipmentPurchaseController::class, 'storeEquipmentPurchase'])->name('equipment.purchase.store');
     Route::get(uri:'/equipment-purchase/edit/{id}', action:[EquipmentPurchaseController::class, 'editEquipmentPurchase'])->name('equipment.purchase.edit');
     Route::post(uri:'/equipment-purchase/update/{id}', action:[EquipmentPurchaseController::class, 'updateEquipmentPurchase'])->name('equipment.purchase.update');
-    Route::delete(uri:'/equipment-purchase/delete/{id}', action:[EquipmentPurchaseController::class, 'deleteEquipmentPurchase'])->name('equipment.purchase.remove');
+    Route::get(uri:'/equipment-purchase/delete/{id}', action:[EquipmentPurchaseController::class, 'deleteEquipmentPurchase'])->name('equipment.purchase.remove');
 
 });
 // Route::get('/admin', function () {

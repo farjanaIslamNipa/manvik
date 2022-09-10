@@ -25,7 +25,7 @@
                 <div class="form-group row">
                   <label for="fname" class="col-lg-2 col-lg-2 col-sm-3 text-end control-label col-form-label">Shop Details:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <textarea class="form-control" rows="2" name="shop_details" value="{{ old('shop_details') }}" placeholder="Enter shop details"></textarea>
+                    <textarea class="form-control" rows="2" name="shop_details" placeholder="Enter shop details">{{ old('shop_details') }}</textarea>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -34,7 +34,7 @@
                     <select name="accessories_name">
                       <option selected disabled>Select Accessory</option>
                       @foreach ($accessoryTypes as $accessoryType)
-                        <option value="{{ $accessoryType->accessory }}">{{ $accessoryType->accessory }}</option>
+                        <option value="{{ $accessoryType->accessories }}">{{ $accessoryType->accessories }}</option>
                       @endforeach
                   </select>
                     @error('accessories_name') <p class="text-danger mb-0">{{ $message }}</p> @enderror
@@ -86,7 +86,7 @@
                 <div class="form-group row">
                   <label class="col-lg-2 col-lg-2 col-sm-3 text-end control-label col-form-label">Note:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <textarea class="form-control" rows="3" name="note" value="{{ old('note') }}" placeholder="Enter Note (if any)"></textarea>
+                    <textarea class="form-control" rows="3" name="note"  placeholder="Enter Note (if any)">{{ old('note') }}</textarea>
                   </div>
                 </div>
               </div>

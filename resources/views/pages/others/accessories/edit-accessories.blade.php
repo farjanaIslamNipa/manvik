@@ -13,7 +13,7 @@
                   @csrf
                   <div class="card-body pb-1">
                     <div class="form-group row">
-                        <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Fabrics:</label>
+                        <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Accessories:</label>
                         <div class="col-lg-10 col-sm-9 px-5">
                           <input type="text" class="form-control" name="accessories" value="{{ $accessory->accessories }}" />
                           @error('accessories') <p class="text-danger mb-0">{{ $message }}</p> @enderror

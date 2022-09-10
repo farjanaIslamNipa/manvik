@@ -67,11 +67,11 @@
                 </tbody>
             </table>
         </div>
-        @if (count($accessories) > 8)
+        {{-- @if (count($accessories) > 8)
         <div class="mt-2 p-2 bg-dark text-white base-pagination">
           {!! $accessories->links() !!}
         </div>
-        @endif
+        @endif --}}
     </div>
     {{-- delete modal --}}
     <div class="modal fade" id="deleteequipmentPurchase" tabindex="-1" role="dialog"

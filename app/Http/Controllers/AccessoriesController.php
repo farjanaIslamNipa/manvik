@@ -20,7 +20,9 @@ class AccessoriesController extends Controller
         return view('pages.expenses.accessories.add-accessories-expenditure', compact('accessoryTypes'));
     }
     public function storeAccessoriesExpenditure(Request $request)
+
     {
+        // dd($request->accessories_name);
         $request->validate([
             'shop_details'      => 'nullable',
             'accessories_name'  => 'required',
@@ -54,7 +56,7 @@ class AccessoriesController extends Controller
     {
         $accessory = Accessories::findOrFail($id);
         $accessoryTypes = AccessoryType::where('status', 1)->get();
-        return view('pages.expenses.fabrics.edit-fabrics-expenditure', compact('accessoryTypes', 'accessory'));
+        return view('pages.expenses.accessories.edit-accessories-expenditure', compact('accessoryTypes', 'accessory'));
     }
 
     public function updateAccessoriesExpenditure(Request $request, $id)

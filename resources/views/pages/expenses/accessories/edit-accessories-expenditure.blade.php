@@ -34,7 +34,7 @@
                     <select name="accessories_name">
                       <option selected disabled>Select Accessory</option>
                       @foreach ($accessoryTypes as $accessoryType)
-                        <option value="{{ $accessoryType->accessory }}" {{ ($accessoryType->accessory == $accessory->accessories_name) ? 'selected' : '' }}>{{ $accessoryType->accessory }}</option>
+                        <option value="{{ $accessoryType->accessories }}" {{ ($accessoryType->accessories == $accessory->accessories_name) ? 'selected' : '' }}>{{ $accessoryType->accessories }}</option>
                       @endforeach
                   </select>
                     @error('accessories_name') <p class="text-danger mb-0">{{ $message }}</p> @enderror

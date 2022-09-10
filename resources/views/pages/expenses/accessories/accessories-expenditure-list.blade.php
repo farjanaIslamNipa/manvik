@@ -16,7 +16,7 @@
           </div>
         </div>
 
-        {{-- fabrics expenditure list table --}}
+        {{-- Accessories expenditure list table --}}
         <div class="table-responsive-xxl mt-3">
             <table style=" overflow-x:auto; white-space: nowrap;" class="table table-dark table-hover">
               <thead>
@@ -49,7 +49,7 @@
                       <td>{{ $accessory->date }}</td>
                       <td>{{ $accessory->note }}</td>
                       <td>
-                        <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.fabrics.expenditure.edit', $accessory->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
+                        <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.accessories.expenditure.edit', $accessory->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
                         <button class="btn btn-sm btn-danger rounded delete-accessories"
                             data-bs-toggle="modal"
                             data-bs-target="#deleteAccessoryExpenditur"
