@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AccessoryTypeController;
+use App\Http\Controllers\AccessoriesController;
+use App\Http\Controllers\EquipmentPurchaseController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FabricsController;
 use App\Http\Controllers\FabricTypeController;
@@ -94,13 +96,22 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/accessory/edit/{id}', action:[AccessoryTypeController::class, 'editAccessory'])->name('accessory.edit');
     Route::post(uri:'/accessory/update/{id}', action:[AccessoryTypeController::class, 'updateAccessory'])->name('accessory.update');
     Route::delete(uri:'/accessory/delete/{id}', action:[AccessoryTypeController::class, 'deleteAccessory'])->name('accessory.remove');
+
     // ACCESSORIES ROUTES
-    Route::get(uri:'/fabrics-expenditure-list', action:[FabricsController::class, 'showFabricsExpenditure'])->name('fabrics.expenditure.show');
-    Route::get(uri:'/fabrics-expenditure-list/add', action:[FabricsController::class, 'addFabricsExpenditure'])->name('fabrics.expenditure.add');
-    Route::post(uri:'/fabrics-expenditure-list/store', action:[FabricsController::class, 'storeFabricsExpenditure'])->name('fabrics.expenditure.store');
-    Route::get(uri:'/fabrics-expenditure/edit/{id}', action:[FabricsController::class, 'editFabricsExpenditure'])->name('fabrics.expenditure.edit');
-    Route::post(uri:'/fabrics-expenditure/update/{id}', action:[FabricsController::class, 'updateFabricsExpenditure'])->name('fabrics.expenditure.update');
-    Route::get(uri:'/fabrics-expenditure/delete/{id}', action:[FabricsController::class, 'deleteFabricsExpenditure'])->name('fabrics.expenditure.delete');
+    Route::get(uri:'/accessories-expenditure-list', action:[AccessoriesController::class, 'showAccessoriesExpenditure'])->name('accessories.expenditure.show');
+    Route::get(uri:'/accessories-expenditure-list/add', action:[AccessoriesController::class, 'addAccessoriesExpenditure'])->name('accessories.expenditure.add');
+    Route::post(uri:'/accessories-expenditure-list/store', action:[AccessoriesController::class, 'storeAccessoriesExpenditure'])->name('accessories.expenditure.store');
+    Route::get(uri:'/accessories-expenditure/edit/{id}', action:[AccessoriesController::class, 'editAccessoriesExpenditure'])->name('accessories.expenditure.edit');
+    Route::post(uri:'/fabrics-expenditure/update/{id}', action:[AccessoriesController::class, 'updateAccessoriesExpenditure'])->name('fabrics.expenditure.update');
+    Route::get(uri:'/accessories-expenditure/delete/{id}', action:[AccessoriesController::class, 'deleteAccessoriesExpenditure'])->name('accessories.expenditure.delete');
+
+    //CREATE EQUIPMENT PURCHASE ROUTES
+    Route::get(uri:'/equipment-purchase-summery', action:[EquipmentPurchaseController::class, 'showEquipmentPurchase'])->name('equipment.purchase.show');
+    Route::get(uri:'/equipment-purchase/create', action:[EquipmentPurchaseController::class, 'addEquipmentPurchase'])->name('equipment.purchase.add');
+    Route::post(uri:'/equipment-purchase/store', action:[EquipmentPurchaseController::class, 'storeEquipmentPurchase'])->name('equipment.purchase.store');
+    Route::get(uri:'/equipment-purchase/edit/{id}', action:[EquipmentPurchaseController::class, 'editEquipmentPurchase'])->name('equipment.purchase.edit');
+    Route::post(uri:'/equipment-purchase/update/{id}', action:[EquipmentPurchaseController::class, 'updateEquipmentPurchase'])->name('equipment.purchase.update');
+    Route::delete(uri:'/equipment-purchase/delete/{id}', action:[EquipmentPurchaseController::class, 'deleteEquipmentPurchase'])->name('equipment.purchase.remove');
 
 });
 // Route::get('/admin', function () {

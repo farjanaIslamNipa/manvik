@@ -1,17 +1,17 @@
 <x-admin-layout>
   @section('title')
-  Equipment Purchase List | Manvik
+  Accessories Expenditure List | Manvik
   @endsection
 
   <div class="page-wrapper">
       <div class="container-fluid">
         <div class="row">
           <div class="col-6">
-            <h4 class="page-title text-xl font-bold">Equipment Purchase List</h4>
+            <h4 class="page-title text-xl font-bold">Accessories Expenditure List</h4>
           </div>
           <div class="col-6">
             <div class="text-end">
-              <a class="btn bg-sky-blue text-white me-2" href="{{ route('admin.equipment.purchase.add') }}">Add New</span></a>
+              <a class="btn bg-sky-blue text-white me-2" href="{{ route('admin.accessories.expenditure.add') }}">Add New</span></a>
             </div>
           </div>
         </div>
@@ -23,7 +23,7 @@
                   <tr>
                     <th scope="col"><span class="text-brand text-md">#</span></th>
                     <th scope="col"><span class="text-brand text-md">Shop Details</span></th>
-                    <th scope="col"><span class="text-brand text-md">Equipment Name</span></th>
+                    <th scope="col"><span class="text-brand text-md">Product Name</span></th>
                     <th scope="col"><span class="text-brand text-md">Quantity</span></th>
                     <th scope="col"><span class="text-brand text-md">Unit Price</span></th>
                     <th scope="col"><span class="text-brand text-md">Total Price</span></th>
@@ -35,25 +35,25 @@
                   </tr>
                 </thead>
                 <tbody style="">
-                    @if(count($equipments) > 0)
-                    @foreach ($equipments as $equipment)
+                    @if(count($accessories) > 0)
+                    @foreach ($accessories as $accessory)
                     <tr>
                       <td scope="row">{{ $loop->index + 1 }}</td>
-                      <td class="text-capitalize">{{ $equipment->shop_details }}</td>
-                      <td class="text-capitalize">{{ $equipment->equipment_name }}</td>
-                      <td class="text-center">{{ $equipment->quantity }}</td>
-                      <td class="text-center">{{ $equipment->unit_price }}</td>
-                      <td class="text-center">{{ $equipment->total_price }}</td>
-                      <td class="text-center">{{ $equipment->due }}</td>
-                      <td class="text-center">{{ $equipment->paid }}</td>
-                      <td>{{ $equipment->date }}</td>
-                      <td>{{ $equipment->note }}</td>
+                      <td class="text-capitalize">{{ $accessory->shop_details }}</td>
+                      <td class="text-capitalize">{{ $accessory->accessories_name }}</td>
+                      <td class="text-center">{{ $accessory->quantity }}</td>
+                      <td class="text-center">{{ $accessory->unit_price }}</td>
+                      <td class="text-center">{{ $accessory->total_price }}</td>
+                      <td class="text-center">{{ $accessory->due }}</td>
+                      <td class="text-center">{{ $accessory->paid }}</td>
+                      <td>{{ $accessory->date }}</td>
+                      <td>{{ $accessory->note }}</td>
                       <td>
-                        <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.equipment.purchase.edit', $equipment->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
-                        <button class="btn btn-sm btn-danger rounded delete-equipment"
+                        <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.fabrics.expenditure.edit', $accessory->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
+                        <button class="btn btn-sm btn-danger rounded delete-accessories"
                             data-bs-toggle="modal"
-                            data-bs-target="#deleteequipmentPurchase"
-                            data-id="{{ $equipment->id  }}">
+                            data-bs-target="#deleteAccessoryExpenditur"
+                            data-id="{{ $accessory->id  }}">
                             <span><i class="fa-solid fa-trash-can"></i></span>
                         </button>
                       </td>
@@ -74,7 +74,7 @@
         @endif
     </div>
     {{-- delete modal --}}
-    <div class="modal fade" id="deleteequipmentPurchase" tabindex="-1" role="dialog"
+    <div class="modal fade" id="deleteAccessoryExpenditur" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="" type="submit" id="deleteequipmentPurchaseModalHref" class="btn btn-danger bg-danger">Delete it.</a>
+                    <a href="" type="submit" id="deleteAccessoryExpenditurModalHref" class="btn btn-danger bg-danger">Delete it.</a>
                 </div>
             </div>
         </div>
@@ -93,12 +93,12 @@
   </div>
   @section('scripts')
   <script>
-        $('.delete-equipment').click(function () {
+        $('.delete-accessories').click(function () {
 
             let id_value = $(this).data('id');
-            let url = '/admin/equipment-purchase/delete/' + id_value ;
+            let url = '/admin/accessories-expenditure/delete/' + id_value ;
             console.log(url)
-            document.getElementById("deleteequipmentPurchaseModalHref").href = url;
+            document.getElementById("deleteAccessoryExpenditurModalHref").href = url;
         });
 
   </script>

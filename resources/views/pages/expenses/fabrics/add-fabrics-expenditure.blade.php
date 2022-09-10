@@ -1,6 +1,6 @@
 <x-admin-layout>
   @section('title')
-      Fabrics | Manvik
+     Add Fabrics | Manvik
   @endsection
 
   <div class="page-wrapper">
