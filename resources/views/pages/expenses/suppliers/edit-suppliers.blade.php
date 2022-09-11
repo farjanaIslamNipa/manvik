@@ -25,48 +25,48 @@
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Name:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" name="name" value="{{ $suppliers->name }}" placeholder="Enter name" />
+                    <input type="text" class="form-control" name="name" value="{{ $supplier->name }}" placeholder="Enter name" />
                     @error('name') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Email:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" name="email" value="{{ $suppliers->email }}" placeholder="Enter email address" />
+                    <input type="text" class="form-control" name="email" value="{{ $supplier->email }}" placeholder="Enter email address" />
                     @error('email') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Phone:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" name="phone" value="{{ $suppliers->phone }}" placeholder="Enter phone number" />
+                    <input type="text" class="form-control" name="phone" value="{{ $supplier->phone }}" placeholder="Enter phone number" />
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Product Name:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" name="prod_name" value="{{ $suppliers->prod_name }}" placeholder="Enter name" />
+                    <input type="text" class="form-control" name="prod_name" value="{{ $supplier->prod_name }}" placeholder="Enter name" />
                     @error('prod_name') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Quantity:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input onkeyup="getValue()" type="text" class="form-control" name="quantity" id="supplier-product-edit-quantity" value="{{ $suppliers->quantity }}" />
+                    <input onkeyup="getValue()" type="text" class="form-control" name="quantity" id="supplier-product-edit-quantity" value="{{ $supplier->quantity }}" />
                     @error('quantity') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Unit Price:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input onkeyup="getValue()" type="text" class="form-control" name="unit_price" id="supplier-product-edit-unit-price" value="{{ $suppliers->unit_price }}" />
+                    <input onkeyup="getValue()" type="text" class="form-control" name="unit_price" id="supplier-product-edit-unit-price" value="{{ $supplier->unit_price }}" />
                     @error('unit_price') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Total Price:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input onkeyup="getValue()" type="text" class="form-control" name="total_price" id="supplier-product-edit-total-price" value="{{ $suppliers->total_price }}" />
+                    <input onkeyup="getValue()" type="text" class="form-control" name="total_price" id="supplier-product-edit-total-price" value="{{ $supplier->total_price }}" />
                     @error('total_price') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
@@ -74,28 +74,28 @@
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Paid:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input onkeyup="getValue()" type="text" class="form-control" name="paid" id="laundsupplier-product-paid-amount" value="{{ $suppliers->paid }}" />
+                    <input onkeyup="getValue()" type="text" class="form-control" name="paid" id="laundsupplier-product-paid-amount" value="{{ $supplier->paid }}" />
                     @error('paid') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Due:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                      <input onkeyup="getValue()" type="text" class="form-control" name="due" id="supplier-product-edit-due-amount" value="{{ $suppliers->due }}" />
+                      <input onkeyup="getValue()" type="text" class="form-control" name="due" id="supplier-product-edit-due-amount" value="{{ $supplier->due }}" />
                       @error('due') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Date:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" value="{{ $suppliers->date }}" id="datepicker-autoclose" name="date" placeholder="mm/dd/yyyy" />
+                    <input type="text" class="form-control" value="{{ $supplier->date }}" id="datepicker-autoclose" name="date" placeholder="mm/dd/yyyy" />
                     @error('date') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-lg-2 col-sm-3 text-end control-label col-form-label">Note:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <textarea class="form-control" rows="3" name="note" value="{{ $suppliers->note }}" placeholder="Enter Note (if any)">{{ $suppliers->note }}</textarea>
+                    <textarea class="form-control" rows="3" name="note" value="{{ $supplier->note }}" placeholder="Enter Note (if any)">{{ $supplier->note }}</textarea>
                   </div>
                 </div>
               </div>

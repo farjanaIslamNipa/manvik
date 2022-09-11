@@ -133,8 +133,8 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="form-wizard.html" class="sidebar-link">
-                      <span class="hide-menu"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Iron </span>
+                    <a href="{{ route('admin.laundry.bill.show') }}" class="sidebar-link">
+                      <span class="hide-menu"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Laundry </span>
                     </a>
                   </li>
                   <li class="sidebar-item">
@@ -143,7 +143,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu">
+                    <a href="{{ route('admin.equipment.repair.show') }}" class="sidebar-link"><span class="hide-menu">
                       <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Repair Cost </span>
                     </a>
                   </li>
@@ -153,12 +153,12 @@
                       </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="form-wizard.html" class="sidebar-link"><span class="hide-menu">
-                      <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Rent </span>
+                    <a href="{{ route('admin.rents.show') }}" class="sidebar-link"><span class="hide-menu">
+                      <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Rents </span>
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="form-wizard.html" class="sidebar-link">
+                    <a href="{{ route('admin.suppliers.show') }}" class="sidebar-link">
                         <span class="hide-menu"><span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span> Suppliers</span>
                     </a>
                   </li>

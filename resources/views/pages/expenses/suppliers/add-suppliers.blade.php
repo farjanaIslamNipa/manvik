@@ -40,6 +40,7 @@
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Phone:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
                     <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Enter phone number" />
+                    @error('phone') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">

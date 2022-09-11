@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('repair_bills', function (Blueprint $table) {
+        Schema::create('laundry_bills', function (Blueprint $table) {
             $table->id();
             $table->string(column:'shop_details')->nullable();
-            $table->string(column:'equipment_name', length:100);
-            $table->integer(column:'quantity')->nullable();
+            $table->string(column:'prod_name', length:100);
+            $table->integer(column:'quantity')->default(1);
             $table->float(column:'unit_price');
             $table->float(column:'total_price');
             $table->float(column:'paid');
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('repair_bills');
+        Schema::dropIfExists('laundry_bills');
     }
 };

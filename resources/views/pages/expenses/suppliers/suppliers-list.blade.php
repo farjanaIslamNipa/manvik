@@ -65,7 +65,7 @@
                   @endforeach
                   @else
                   <tr class="text-center">
-                    <td colspan="12"><h5 class="text-lg">No data found</h5></td>
+                    <td colspan="13"><h5 class="text-lg">No data found</h5></td>
                   </tr>
                   @endif
                 </tbody>
