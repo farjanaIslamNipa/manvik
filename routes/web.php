@@ -6,6 +6,7 @@ use App\Http\Controllers\EquipmentPurchaseController;
 use App\Http\Controllers\RepairBillsController;
 use App\Http\Controllers\LaundryBillsController;
 use App\Http\Controllers\SuppliersController;
+use App\Http\Controllers\RentsController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FabricsController;
 use App\Http\Controllers\FabricTypeController;
@@ -139,6 +140,15 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/supplier/edit/{id}', action:[SuppliersController::class, 'editSupplier'])->name('suppliers.edit');
     Route::post(uri:'/supplier/update/{id}', action:[SuppliersController::class, 'updateSupplier'])->name('suppliers.update');
     Route::get(uri:'/supplier/delete/{id}', action:[SuppliersController::class, 'deleteSupplier'])->name('suppliers.remove');
+
+
+    //RENT ROUTES
+    Route::get(uri:'/rent-list', action:[RentsController::class, 'showRents'])->name('rents.show');
+    Route::get(uri:'/rent/create', action:[RentsController::class, 'addRent'])->name('rents.add');
+    Route::post(uri:'/rent/store', action:[RentsController::class, 'storeRent'])->name('rents.store');
+    Route::get(uri:'/rent/edit/{id}', action:[RentsController::class, 'editRent'])->name('rents.edit');
+    Route::post(uri:'/rent/update/{id}', action:[RentsController::class, 'updateRent'])->name('rents.update');
+    Route::get(uri:'/rent/delete/{id}', action:[RentsController::class, 'deleteRent'])->name('rents.remove');
 
 });
 // Route::get('/admin', function () {
