@@ -29,7 +29,7 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">equipment Name:</label>
+                  <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Equipment Name:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
                     <input type="text" class="form-control" name="equipment_name" value="{{ $equipment->equipment_name }}" placeholder="Enter name" />
                     @error('equipment_name') <p class="text-danger mb-0">{{ $message }}</p> @enderror

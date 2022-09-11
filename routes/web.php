@@ -4,6 +4,8 @@ use App\Http\Controllers\AccessoryTypeController;
 use App\Http\Controllers\AccessoriesController;
 use App\Http\Controllers\EquipmentPurchaseController;
 use App\Http\Controllers\RepairBillsController;
+use App\Http\Controllers\LaundryBillsController;
+use App\Http\Controllers\SuppliersController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FabricsController;
 use App\Http\Controllers\FabricTypeController;
@@ -115,12 +117,28 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/equipment-purchase/delete/{id}', action:[EquipmentPurchaseController::class, 'deleteEquipmentPurchase'])->name('equipment.purchase.remove');
 
     //EQUIPMENT REPAIR ROUTES
-    Route::get(uri:'/equipment-repair-summery', action:[RepairBillsController::class, 'showEquipmentRepair'])->name('equipment.repair.show');
-    Route::get(uri:'/equipment-repair/create', action:[RepairBillsController::class, 'addEquipmentRepair'])->name('equipment.repair.add');
-    Route::post(uri:'/equipment-repair/store', action:[RepairBillsController::class, 'storeEquipmentRepair'])->name('equipment.repair.store');
-    Route::get(uri:'/equipment-repair/edit/{id}', action:[RepairBillsController::class, 'editEquipmentRepair'])->name('equipment.repair.edit');
-    Route::post(uri:'/equipment-repair/update/{id}', action:[RepairBillsController::class, 'updateEquipmentRepair'])->name('equipment.repair.update');
-    Route::get(uri:'/equipment-repair/delete/{id}', action:[RepairBillsController::class, 'deleteEquipmentRepair'])->name('equipment.repair.remove');
+    Route::get(uri:'/equipment-repair-summery', action:[RepairBillsController::class, 'showEquipmentRepairBill'])->name('equipment.repair.show');
+    Route::get(uri:'/equipment-repair/create', action:[RepairBillsController::class, 'addEquipmentRepairBill'])->name('equipment.repair.add');
+    Route::post(uri:'/equipment-repair/store', action:[RepairBillsController::class, 'storeEquipmentRepairBill'])->name('equipment.repair.store');
+    Route::get(uri:'/equipment-repair/edit/{id}', action:[RepairBillsController::class, 'editEquipmentRepairBill'])->name('equipment.repair.edit');
+    Route::post(uri:'/equipment-repair/update/{id}', action:[RepairBillsController::class, 'updateEquipmentRepairBill'])->name('equipment.repair.update');
+    Route::get(uri:'/equipment-repair/delete/{id}', action:[RepairBillsController::class, 'deleteEquipmentRepairBill'])->name('equipment.repair.remove');
+
+    //LAUNDRY BILL ROUTES
+    Route::get(uri:'/laundry-bill-summery', action:[LaundryBillsController::class, 'showLaundryBill'])->name('laundry.bill.show');
+    Route::get(uri:'/laundry-bill/create', action:[LaundryBillsController::class, 'addLaundryBill'])->name('laundry.bill.add');
+    Route::post(uri:'/laundry-bill/store', action:[LaundryBillsController::class, 'storeLaundryBill'])->name('laundry.bill.store');
+    Route::get(uri:'/laundry-bill/edit/{id}', action:[LaundryBillsController::class, 'editLaundryBill'])->name('laundry.bill.edit');
+    Route::post(uri:'/laundry-bill/update/{id}', action:[LaundryBillsController::class, 'updateLaundryBill'])->name('laundry.bill.update');
+    Route::get(uri:'/laundry-bill/delete/{id}', action:[LaundryBillsController::class, 'deleteLaundryBill'])->name('laundry.bill.remove');
+
+    //SUPPLIERS ROUTES
+    Route::get(uri:'/suppliers-list', action:[SuppliersController::class, 'showSuppliers'])->name('suppliers.show');
+    Route::get(uri:'/supplier/create', action:[SuppliersController::class, 'addSupplier'])->name('suppliers.add');
+    Route::post(uri:'/supplier/store', action:[SuppliersController::class, 'storeSupplier'])->name('suppliers.store');
+    Route::get(uri:'/supplier/edit/{id}', action:[SuppliersController::class, 'editSupplier'])->name('suppliers.edit');
+    Route::post(uri:'/supplier/update/{id}', action:[SuppliersController::class, 'updateSupplier'])->name('suppliers.update');
+    Route::get(uri:'/supplier/delete/{id}', action:[SuppliersController::class, 'deleteSupplier'])->name('suppliers.remove');
 
 });
 // Route::get('/admin', function () {

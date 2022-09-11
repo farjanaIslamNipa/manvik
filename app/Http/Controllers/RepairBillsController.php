@@ -7,17 +7,17 @@ use App\Models\RepairBill;
 
 class RepairBillsController extends Controller
 {
-    public function showEquipmentRepair()
+    public function showEquipmentRepairBill()
     {
         $equipments = RepairBill::orderBy('id', 'DESC')->paginate(8);
         return view('pages.expenses.equipments.repair.equipment-repair-list', compact('equipments'));
     }
 
-    public function addEquipmentRepair()
+    public function addEquipmentRepairBill()
     {
         return view('pages.expenses.equipments.repair.add-equipment-repair');
     }
-    public function storeEquipmentRepair(Request $request)
+    public function storeEquipmentRepairBill(Request $request)
     {
         $request->validate([
             'shop_details'      => 'nullable',
@@ -48,13 +48,13 @@ class RepairBillsController extends Controller
         return redirect()->route('admin.equipment.repair.show')->with('success', 'Equipment repair details added successfully');
     }
 
-    public function editEquipmentRepair($id)
+    public function editEquipmentRepairBill($id)
     {
         $equipment = RepairBill::findOrFail($id);
         return view('pages.expenses.equipments.repair.edit-equipment-repair', compact('equipment'));
     }
 
-    public function updateEquipmentRepair(Request $request, $id)
+    public function updateEquipmentRepairBill(Request $request, $id)
     {
         $request->validate([
             'shop_details'      => 'nullable',
@@ -85,7 +85,7 @@ class RepairBillsController extends Controller
         return redirect()->route('admin.equipment.repair.show')->with('success', 'Equipment repair details updated successfully');
     }
 
-    public function deleteEquipmentRepair($id)
+    public function deleteEquipmentRepairBill($id)
     {
         $equipments = RepairBill::findOrFail($id);
         $equipments->delete();
