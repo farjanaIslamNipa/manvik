@@ -52,7 +52,7 @@
                         <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.equipment.purchase.edit', $equipment->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
                         <button class="btn btn-sm btn-danger rounded delete-equipment"
                             data-bs-toggle="modal"
-                            data-bs-target="#deleteequipmentPurchase"
+                            data-bs-target="#deleteEquipmentPurchase"
                             data-id="{{ $equipment->id  }}">
                             <span><i class="fa-solid fa-trash-can"></i></span>
                         </button>
@@ -67,14 +67,14 @@
                 </tbody>
             </table>
         </div>
-        {{-- @if (count($accessories) > 8)
+        {{-- @if (count($equipments) > 8)
         <div class="mt-2 p-2 bg-dark text-white base-pagination">
-          {!! $accessories->links() !!}
+          {!! $equipments->links() !!}
         </div>
         @endif --}}
     </div>
     {{-- delete modal --}}
-    <div class="modal fade" id="deleteequipmentPurchase" tabindex="-1" role="dialog"
+    <div class="modal fade" id="deleteEquipmentPurchase" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="" type="submit" id="deleteequipmentPurchaseModalHref" class="btn btn-danger bg-danger">Delete it.</a>
+                    <a href="" type="submit" id="deleteEquipmentPurchaseModalHref" class="btn btn-danger bg-danger">Delete it.</a>
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
             let id_value = $(this).data('id');
             let url = '/admin/equipment-purchase/delete/' + id_value ;
             console.log(url)
-            document.getElementById("deleteequipmentPurchaseModalHref").href = url;
+            document.getElementById("deleteEquipmentPurchaseModalHref").href = url;
         });
 
   </script>

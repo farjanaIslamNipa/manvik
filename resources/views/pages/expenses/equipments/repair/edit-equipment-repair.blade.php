@@ -1,25 +1,25 @@
 <x-admin-layout>
   @section('title')
-  Equipments Purchase| Manvik
+  Equipments Repair| Manvik
   @endsection
 
   <div class="page-wrapper">
     <div class="container-fluid">
       <div class="row">
         <div class="col-6">
-          <h4 class="page-title text-xl font-bold">Update Equipments Purchase</h4>
+          <h4 class="page-title text-xl font-bold">Update Equipments Repair Details</h4>
         </div>
         <div class="col-6">
           <div class="text-end">
-            <a class="btn bg-sky-blue text-white me-2" href="{{ route('admin.equipment.purchase.show') }}">View All</span></a>
+            <a class="btn bg-sky-blue text-white me-2" href="{{ route('admin.equipment.repair.show') }}">View All</span></a>
           </div>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-xl-7 col-md-10">
           <div class="card mt-4 pt-4">
-            <h4 class="text-lg text-center pb-2 font-bold">Update Equipments Purchase Information</h4>
-            <form action="{{ route('admin.equipment.purchase.update', $equipment->id) }}" method="POST" class="base-form">
+            <h4 class="text-lg text-center pb-2 font-bold">Update Equipments Repair Information</h4>
+            <form action="{{ route('admin.equipment.repair.update', $equipment->id) }}" method="POST" class="base-form">
               @csrf
               <div class="card-body pb-1">
                 <div class="form-group row">
@@ -38,21 +38,21 @@
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Quantity:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input onkeyup="getValue()" type="text" class="form-control" name="quantity" id="equipment-quantity" value="{{ $equipment->quantity }}" />
+                    <input onkeyup="getValue()" type="text" class="form-control" name="quantity" id="equipment-repair-quantity" value="{{ $equipment->quantity }}" />
                     @error('quantity') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Unit Price:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input onkeyup="getValue()" type="text" class="form-control" name="unit_price" id="equipment-unit-price" value="{{ $equipment->unit_price }}" />
+                    <input onkeyup="getValue()" type="text" class="form-control" name="unit_price" id="equipment-repair-unit-price" value="{{ $equipment->unit_price }}" />
                     @error('unit_price') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Total Price:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input onkeyup="getValue()" type="text" class="form-control" name="total_price" id="equipment-total-price" value="{{ $equipment->total_price }}" />
+                    <input onkeyup="getValue()" type="text" class="form-control" name="total_price" id="equipment-repair-total-price" value="{{ $equipment->total_price }}" />
                     @error('total_price') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
@@ -60,14 +60,14 @@
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Paid:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input onkeyup="getValue()" type="text" class="form-control" name="paid" id="equipment-paid-amount" value="{{ $equipment->paid }}" />
+                    <input onkeyup="getValue()" type="text" class="form-control" name="paid" id="equipment-repair-paid-amount" value="{{ $equipment->paid }}" />
                     @error('paid') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Due:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                      <input onkeyup="getValue()" type="text" class="form-control" name="due" id="equipment-due-amount" value="{{ $equipment->due }}" />
+                      <input onkeyup="getValue()" type="text" class="form-control" name="due" id="equipment-repair-due-amount" value="{{ $equipment->due }}" />
                       @error('due') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
@@ -97,11 +97,11 @@
   @section('scripts')
     <script>
         const getValue = () => {
-            let itemQuantity = document.getElementById('equipment-quantity').value;
-            let unitPrice = document.getElementById('equipment-unit-price').value;
-            let totalPrice = document.getElementById('equipment-total-price');
-            let paidAmount = document.getElementById('equipment-paid-amount');
-            let dueAmount = document.getElementById('equipment-due-amount');
+            let itemQuantity = document.getElementById('equipment-repair-quantity').value;
+            let unitPrice = document.getElementById('equipment-repair-unit-price').value;
+            let totalPrice = document.getElementById('equipment-repair-total-price');
+            let paidAmount = document.getElementById('equipment-repair-paid-amount');
+            let dueAmount = document.getElementById('equipment-repair-due-amount');
 
             if(itemQuantity && unitPrice){
                 totalPrice.value = unitPrice * itemQuantity
