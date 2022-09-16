@@ -21,7 +21,7 @@ class RentsController extends Controller
     {
         $request->validate([
             'rent_type'         => 'required',
-            'month'             => 'nullable',
+            'month'             => 'required',
             'year'              => 'required',
             'rent_amount'       => 'required',
             'paid'              => 'required',

@@ -144,8 +144,8 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
 
     //RENT ROUTES
     Route::get(uri:'/rent-list', action:[RentsController::class, 'showRents'])->name('rents.show');
-    Route::get(uri:'/rent/create', action:[RentsController::class, 'addRent'])->name('rents.add');
-    Route::post(uri:'/rent/store', action:[RentsController::class, 'storeRent'])->name('rents.store');
+    Route::get(uri:'/add/rent', action:[RentsController::class, 'addRent'])->name('rents.add');
+    Route::post(uri:'/store/rent', action:[RentsController::class, 'storeRent'])->name('rents.store');
     Route::get(uri:'/rent/edit/{id}', action:[RentsController::class, 'editRent'])->name('rents.edit');
     Route::post(uri:'/rent/update/{id}', action:[RentsController::class, 'updateRent'])->name('rents.update');
     Route::get(uri:'/rent/delete/{id}', action:[RentsController::class, 'deleteRent'])->name('rents.remove');

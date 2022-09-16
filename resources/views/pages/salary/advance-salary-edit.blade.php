@@ -29,7 +29,6 @@
                       <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Month:</label>
                       <div class="col-lg-10 col-sm-9 px-5">
                         <select class="text-capitalize" name="month">
-                            <option selected disabled>Select Month</option>
                             <option {{ $advanceSalary->month == 'january' ? 'selected' : '' }} value="january">January</option>
                             <option {{ $advanceSalary->month == 'fabruary' ? 'selected' : '' }} value="february">February</option>
                             <option {{ $advanceSalary->month == 'march' ? 'selected' : '' }} value="march">March</option>

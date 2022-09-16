@@ -25,7 +25,7 @@
                   <div class="form-group row">
                     <label for="fname" class="col-lg-2 col-lg-2 col-sm-3 text-end control-label col-form-label">Shop Details:</label>
                     <div class="col-lg-10 col-sm-9 px-5">
-                      <textarea class="form-control" rows="2" id="fname" name="shop_details" value="{{ $fabric->shop_details }}" placeholder="Enter shop details">{{ $fabric->shop_details }}</textarea>
+                      <textarea class="form-control text-capitalize" rows="2" id="fname" name="shop_details" value="{{ $fabric->shop_details }}" placeholder="Enter shop details">{{ $fabric->shop_details }}</textarea>
                     </div>
                   </div>
                   <div class="form-group row">

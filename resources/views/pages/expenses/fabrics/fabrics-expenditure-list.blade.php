@@ -47,7 +47,7 @@
                       <td class="text-center">{{ $fabric->due }}</td>
                       <td class="text-center">{{ $fabric->paid }}</td>
                       <td>{{ $fabric->date }}</td>
-                      <td>{{ $fabric->note }}</td>
+                      <td>@if($fabric->note){{ $fabric->note }}@else N/A @endif</td>
                       <td>
                         <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.fabrics.expenditure.edit', $fabric->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
                         <button class="btn btn-sm btn-danger rounded delete-fabric"

@@ -25,7 +25,7 @@
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Rent Type:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" name="rent_type" value="{{ old('rent_type') }}" placeholder="Enter rent type name" />
+                    <input type="text" class="form-control text-capitalize" name="rent_type" value="{{ old('rent_type') }}" placeholder="Enter rent type name" />
                     @error('rent_type') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
@@ -51,16 +51,16 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Year:</label>
-                  <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" name="year" value="{{ old('year') }}" placeholder="Enter year" />
-                    @error('year') <p class="text-danger mb-0">{{ $message }}</p> @enderror
+                    <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Year:</label>
+                    <div class="col-lg-10 col-sm-9 px-5">
+                      <input type="text" class="form-control" value="{{ old('year') }}" id="yearpicker" name="year" />
+                      @error('year') <p class="text-danger mb-0">{{ $message }}</p> @enderror
+                    </div>
                   </div>
-                </div>
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Rent Amount:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" name="rent_amount" value="{{ old('rent_amount') }}" placeholder="Enter rent amount" />
+                    <input onkeyup="getValue()" type="text" class="form-control" id="rent_amount" name="rent_amount" value="{{ old('rent_amount') }}" placeholder="Enter rent amount" />
                     @error('rent_amount') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
@@ -81,7 +81,7 @@
                 <div class="form-group row">
                   <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Date:</label>
                   <div class="col-lg-10 col-sm-9 px-5">
-                    <input type="text" class="form-control" value="{{ old('date') }}" id="datepicker-autoclose" name="date" placeholder="mm/dd/yyyy" />
+                    <input type="text" class="form-control" value="{{ old('date') }}" id="datepicker-autoclose" name="date" placeholder="yyyy" />
                     @error('date') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                   </div>
                 </div>
@@ -104,17 +104,11 @@
   @section('scripts')
     <script>
         const getValue = () => {
-            let itemQuantity = document.getElementById('supplier-product-quantity').value;
-            let unitPrice = document.getElementById('supplier-product-unit-price').value;
-            let totalPrice = document.getElementById('supplier-product-total-price');
-            let paidAmount = document.getElementById('supplier-product-paid-amount');
-            let dueAmount = document.getElementById('supplier-product-due-amount');
-
-            if(itemQuantity && unitPrice){
-                totalPrice.value = unitPrice * itemQuantity
-            }
+            let rentAmount = document.getElementById('rent_amount');
+            let paidAmount = document.getElementById('rent-paid-amount');
+            let dueAmount = document.getElementById('rent-due-amount');
             if(paidAmount){
-                dueAmount.value = totalPrice.value - paidAmount.value
+                dueAmount.value = rentAmount.value - paidAmount.value
             }
         }
     </script>
