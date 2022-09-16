@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccessoryTypeController;
 use App\Http\Controllers\AccessoriesController;
+use App\Http\Controllers\ColorController;
 use App\Http\Controllers\EquipmentPurchaseController;
 use App\Http\Controllers\RepairBillsController;
 use App\Http\Controllers\LaundryBillsController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SizeController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -149,6 +151,22 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/rent/edit/{id}', action:[RentsController::class, 'editRent'])->name('rents.edit');
     Route::post(uri:'/rent/update/{id}', action:[RentsController::class, 'updateRent'])->name('rents.update');
     Route::get(uri:'/rent/delete/{id}', action:[RentsController::class, 'deleteRent'])->name('rents.remove');
+
+    //SIZE ROUTES
+    Route::get(uri:'/size', action:[SizeController::class, 'showSize'])->name('size.show');
+    Route::get(uri:'/size/create', action:[SizeController::class, 'addSize'])->name('size.add');
+    Route::post(uri:'/size/store', action:[SizeController::class, 'storeSize'])->name('size.store');
+    Route::get(uri:'/size/edit/{id}', action:[SizeController::class, 'editSize'])->name('size.edit');
+    Route::post(uri:'/size/update/{id}', action:[SizeController::class, 'updateSize'])->name('size.update');
+    Route::delete(uri:'/size/delete/{id}', action:[SizeController::class, 'deleteSize'])->name('size.remove');
+
+    //COLOR ROUTES
+    Route::get(uri:'/color', action:[ColorController::class, 'showColor'])->name('color.show');
+    Route::get(uri:'/color/create', action:[ColorController::class, 'addColor'])->name('color.add');
+    Route::post(uri:'/color/store', action:[ColorController::class, 'storeColor'])->name('color.store');
+    Route::get(uri:'/color/edit/{id}', action:[ColorController::class, 'editColor'])->name('color.edit');
+    Route::post(uri:'/color/update/{id}', action:[ColorController::class, 'updateColor'])->name('color.update');
+    Route::delete(uri:'/color/delete/{id}', action:[ColorController::class, 'deleteColor'])->name('color.remove');
 
 });
 // Route::get('/admin', function () {

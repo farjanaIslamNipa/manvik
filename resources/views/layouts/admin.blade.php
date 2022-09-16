@@ -99,7 +99,7 @@
         </div>
       </nav>
     </header>
-    <aside class="left-sidebar" data-sidebarbg="skin5">
+    <aside class="left-sidebar fixed-sidebar" data-sidebarbg="skin5">
       <div class="scroll-sidebar">
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
@@ -303,6 +303,18 @@
                     <a href="{{ route('admin.accessory.show') }}" class="sidebar-link">
                       <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
                       <span class="hide-menu">Add Accessory</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="{{ route('admin.size.show') }}" class="sidebar-link">
+                      <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                      <span class="hide-menu">Add Size</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="{{ route('admin.color.show') }}" class="sidebar-link">
+                      <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                      <span class="hide-menu">Add Color</span>
                     </a>
                   </li>
                 </ul>

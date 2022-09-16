@@ -297,4 +297,11 @@ body{
     color: white !important;
 }
 
+.fixed-sidebar{
+    height: 100vh;
+    overflow-y: scroll;
+}
 
+.size-input::placeholder{
+    text-transform: capitalize !important;
+}
