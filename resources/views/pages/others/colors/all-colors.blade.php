@@ -16,7 +16,8 @@
                     <thead>
                         <tr>
                           <th scope="col"><span class="text-brand text-md">#</span></th>
-                          <th scope="col"><span class="text-brand text-md">Color</span></th>
+                          <th scope="col"><span class="text-brand text-md">Name</span></th>
+                          <th scope="col"><span class="text-brand text-md text-center">Color</span></th>
                           <th scope="col"><span class="text-brand text-md">Status</span></th>
                           <th scope="col" class="text-end pe-4"><span class="text-brand text-md">Action</span></th>
                         </tr>
@@ -26,6 +27,9 @@
                           <tr>
                             <td scope="row">{{ $loop->index + 1 }}</td>
                             <td  class="text-capitalize">{{ $color->color }}</td>
+                            <td  class="text-center">
+                            <div style="background-color:{{ $color->color_code }}; height:25px; width:25px; border-radius:4px;"></div>
+                            </td>
                             <td class="text-capitalize">
                                 @if ($color->status == '1')
                                 <span class="badge bg-sky-blue text-white">Active</span>

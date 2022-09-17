@@ -13,6 +13,7 @@ use App\Http\Controllers\FabricsController;
 use App\Http\Controllers\FabricTypeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SizeController;
@@ -153,7 +154,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get(uri:'/rent/delete/{id}', action:[RentsController::class, 'deleteRent'])->name('rents.remove');
 
     //SIZE ROUTES
-    Route::get(uri:'/size', action:[SizeController::class, 'showSize'])->name('size.show');
+    Route::get(uri:'/size-list', action:[SizeController::class, 'showSize'])->name('size.show');
     Route::get(uri:'/size/create', action:[SizeController::class, 'addSize'])->name('size.add');
     Route::post(uri:'/size/store', action:[SizeController::class, 'storeSize'])->name('size.store');
     Route::get(uri:'/size/edit/{id}', action:[SizeController::class, 'editSize'])->name('size.edit');
@@ -161,12 +162,20 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::delete(uri:'/size/delete/{id}', action:[SizeController::class, 'deleteSize'])->name('size.remove');
 
     //COLOR ROUTES
-    Route::get(uri:'/color', action:[ColorController::class, 'showColor'])->name('color.show');
+    Route::get(uri:'/color-list', action:[ColorController::class, 'showColor'])->name('color.show');
     Route::get(uri:'/color/create', action:[ColorController::class, 'addColor'])->name('color.add');
     Route::post(uri:'/color/store', action:[ColorController::class, 'storeColor'])->name('color.store');
     Route::get(uri:'/color/edit/{id}', action:[ColorController::class, 'editColor'])->name('color.edit');
     Route::post(uri:'/color/update/{id}', action:[ColorController::class, 'updateColor'])->name('color.update');
     Route::delete(uri:'/color/delete/{id}', action:[ColorController::class, 'deleteColor'])->name('color.remove');
+
+    //PRODUCT ROUTES
+    Route::get(uri:'/product-list', action:[ProductController::class, 'showColor'])->name('products.show');
+    Route::get(uri:'/product/add', action:[ProductController::class, 'addColor'])->name('product.add');
+    Route::post(uri:'/product/store', action:[ProductController::class, 'storeColor'])->name('product.store');
+    Route::get(uri:'/product/edit/{id}', action:[ProductController::class, 'editColor'])->name('product.edit');
+    Route::post(uri:'/product/update/{id}', action:[ProductController::class, 'updateColor'])->name('product.update');
+    Route::delete(uri:'/product/delete/{id}', action:[ProductController::class, 'deleteColor'])->name('product.remove');
 
 });
 // Route::get('/admin', function () {

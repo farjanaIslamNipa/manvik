@@ -20,12 +20,14 @@ class ColorController extends Controller
     {
         $request->validate([
             'color' => 'required',
+            'color_code' => 'nullable',
             'status' => 'required',
         ]);
 
         $color = new Color();
 
         $color->color = $request->color;
+        $color->color_code = $request->color_code;
         $color->status = $request->status;
 
         $color->save();
@@ -42,9 +44,11 @@ class ColorController extends Controller
         $color = Color::findOrFail($id);
         $request->validate([
             'color' => 'required',
+            'color_code' => 'nullable',
             'status' => 'required',
         ]);
         $color->color = $request->color;
+        $color->color_code = $request->color_code;
         $color->status = $request->status;
 
         $color->save();
