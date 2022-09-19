@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Color;
 use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -15,7 +17,9 @@ class ProductController extends Controller
 
     public function addProduct()
     {
-        return view('pages.products.add-product');
+        $sizes = Size::where('status', '1')->get();
+        $colors = Color::where('status', '1')->get();
+        return view('pages.products.add-product', compact('sizes', 'colors'));
     }
     public function storeProduct(Request $request)
     {

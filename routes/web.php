@@ -170,12 +170,12 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::delete(uri:'/color/delete/{id}', action:[ColorController::class, 'deleteColor'])->name('color.remove');
 
     //PRODUCT ROUTES
-    Route::get(uri:'/product-list', action:[ProductController::class, 'showColor'])->name('products.show');
-    Route::get(uri:'/product/add', action:[ProductController::class, 'addColor'])->name('product.add');
-    Route::post(uri:'/product/store', action:[ProductController::class, 'storeColor'])->name('product.store');
-    Route::get(uri:'/product/edit/{id}', action:[ProductController::class, 'editColor'])->name('product.edit');
-    Route::post(uri:'/product/update/{id}', action:[ProductController::class, 'updateColor'])->name('product.update');
-    Route::delete(uri:'/product/delete/{id}', action:[ProductController::class, 'deleteColor'])->name('product.remove');
+    Route::get(uri:'/product-list', action:[ProductController::class, 'showProducts'])->name('products.show');
+    Route::get(uri:'/product/add', action:[ProductController::class, 'addProduct'])->name('product.add');
+    Route::post(uri:'/product/store', action:[ProductController::class, 'storeProduct'])->name('product.store');
+    Route::get(uri:'/product/edit/{id}', action:[ProductController::class, 'editProduct'])->name('product.edit');
+    Route::post(uri:'/product/update/{id}', action:[ProductController::class, 'updateProduct'])->name('product.update');
+    Route::delete(uri:'/product/delete/{id}', action:[ProductController::class, 'deleteProduct'])->name('product.remove');
 
 });
 // Route::get('/admin', function () {

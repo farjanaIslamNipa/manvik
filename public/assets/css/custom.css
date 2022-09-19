@@ -298,6 +298,7 @@ body{
 }
 
 .fixed-sidebar{
+    position: fixed;
     height: 100vh;
     overflow-y: scroll;
 }

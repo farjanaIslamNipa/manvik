@@ -261,13 +261,13 @@
                 </a>
                 <ul aria-expanded="false" class="collapse first-level bg-info">
                   <li class="sidebar-item">
-                    <a href="index2.html" class="sidebar-link">
+                    <a href="{{ route('admin.products.show') }}" class="sidebar-link">
                       <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
                       <span class="hide-menu"> Product List </span>
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="index2.html" class="sidebar-link">
+                    <a href="{{ route('admin.product.add') }}" class="sidebar-link">
                       <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
                       <span class="hide-menu"> Add Product </span>
                     </a>
