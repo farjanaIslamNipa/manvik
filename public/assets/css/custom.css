@@ -306,3 +306,7 @@ body{
 .size-input::placeholder{
     text-transform: capitalize !important;
 }
+
+input::placeholder{
+    text-transform: capitalize !important;
+}

@@ -108,19 +108,6 @@
     </div>
   </div>
 @section('scripts')
-  <script>
-    //   function imageConvertToBase64(element){
-    //     let file = element.files[0];
 
-    //     document.getElementById('imageFileLabel').innerText = file.name;
-
-    //     let reader = new FileReader();
-    //     reader.onloadend = function () {
-    //         document.getElementById('image').value = reader.result;
-    //     }
-
-    //     reader.readAsDataURL(file);
-    //   }
-  </script>
 @endsection
 </x-admin-layout>

@@ -45,6 +45,7 @@ class EmployeeController extends Controller
             'position'      => 'required',
             'salary'        => 'required|numeric'
         ]);
+        // dd($request->img);
 
         if ($request->hasFile('img')) {
             $file = $request->file('img');
@@ -55,6 +56,7 @@ class EmployeeController extends Controller
             $imgUrl = $file->move($path, $filename);
             $request['img'] = $imgUrl;
         }
+
 
         $employee = new Employee();
 

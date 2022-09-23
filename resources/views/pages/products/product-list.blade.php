@@ -22,6 +22,7 @@
                 <thead>
                     <tr>
                       <th scope="col"><span class="text-brand text-md">#</span></th>
+                      <th scope="col"><span class="text-brand text-md">Image</span></th>
                       <th scope="col"><span class="text-brand text-md">Product Name</span></th>
                       <th scope="col"><span class="text-brand text-md">Code</span></th>
                       <th scope="col"><span class="text-brand text-md">Size</span></th>
@@ -38,16 +39,29 @@
                       @foreach ($products as $product)
                       <tr>
                         <td scope="row">{{ $loop->index + 1 }}</td>
+                        <td>
+                            @if($product->img)
+                            <img style="height: 60px; width:60px; object-fit:cover;" src="{{ asset($product->img) }}" alt="">
+                            @else
+                            <img style="height: 60px; width:60px; object-fit:cover;" src="{{ asset('/assets/images/users/no-image.jpg') }}" alt="">
+                            @endif
+                        </td>
                         <td class="text-capitalize">{{ $product->name }}</td>
-                        <td class="text-capitalize">{{ $product->code }}</td>
-                        <td class="text-center">{{ $product->size }}</td>
-                        <td class="text-center">{{ $product->color }}</td>
+                        <td class="text-uppercase">{{ $product->code }}</td>
+                        <td class="text-center text-uppercase">{{ $product->size }}</td>
+                        <td class="text-center text-capitalize">{{ $product->color }}</td>
                         <td class="text-center">{{ $product->quantity }}</td>
                         <td class="text-center">{{ $product->unit_price }}</td>
-                        <td class="text-center">{{ $product->status }}</td>
+                        <td class="text-center">
+                            @if($product->status == 1)
+                            <span class="badge bg-sky-blue text-white">Active</span>
+                            @elseif($product->status == 0)
+                            <span class="badge bg-danger text-white">Inactive</span>
+                            @endif
+                        </td>
                         <td>@if($product->details){{ $product->details }}@else N/A @endif</td>
                         <td>
-                          <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.products.edit', $product->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
+                          <a class="btn btn-sm btn-success rounded me-1" href="{{ route('admin.product.edit', $product->id) }}"><span><i class="fa-solid fa-pen-to-square"></i></span></a>
                           <button class="btn btn-sm btn-danger rounded delete-product"
                               data-bs-toggle="modal"
                               data-bs-target="#deleteproductList"

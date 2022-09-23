@@ -19,13 +19,13 @@
           <div class="col-xl-7 col-md-10">
             <div class="card mt-4 pt-4">
               <h4 class="text-lg text-center pb-2 font-bold">Product Information</h4>
-              <form action="{{ route('admin.product.store') }}" method="POST" class="base-form">
+              <form action="{{ route('admin.product.store') }}" method="POST" class="base-form" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body pb-1">
                     <div class="form-group row">
                         <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Product Name:</label>
                         <div class="col-lg-10 col-sm-9 px-5">
-                          <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Enter product name" />
+                          <input type="text" class="form-control text-capitalize" name="name" id="name" value="{{ old('name') }}" placeholder="Enter product name" />
                           @error('name') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                         </div>
                       </div>
@@ -33,21 +33,20 @@
                         <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Product Code:</label>
                         <div class="col-lg-10 col-sm-9 px-5">
                             <div class="d-flex align-items-center">
-                                <input type="text" class="form-control" name="prefix" value="{{ old('prefix') }}" placeholder="Prefix" />
+                                <input type="text" class="form-control text-uppercase" name="prefix" value="{{ old('prefix') }}" placeholder="Prefix" />
                                 <input type="text" class="form-control mx-2" name="code" value="{{ old('code') }}" placeholder="Enter product code" />
-                                <input type="text" class="form-control" name="suffix" value="{{ old('suffix') }}" placeholder="Sufix" />
+                                <input type="text" class="form-control text-uppercase" name="suffix" value="{{ old('suffix') }}" placeholder="Suffix" />
                             </div>
-                          @error('code') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                         </div>
                       </div>
                   <div class="form-group row">
                     <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Size:</label>
                     <div class="col-lg-10 col-sm-9 px-5">
-                      <select name="fabrics_name">
+                      <select name="size">
                         <option selected disabled>Select Size</option>
                         @if($sizes)
                         @foreach ($sizes as $size)
-                          <option value="{{ $size->size }}">{{ $size->size }}</option>
+                          <option class="text-uppercase" value="{{ $size->size }}">{{ $size->size }}</option>
                         @endforeach
                         @endif
                     </select>
@@ -57,7 +56,7 @@
                   <div class="form-group row">
                     <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Color:</label>
                     <div class="col-lg-10 col-sm-9 px-5">
-                      <select name="fabrics_name">
+                      <select name="color" class="text-capitalize">
                         <option selected disabled>Select Color</option>
                         @if($colors)
                         @foreach ($colors as $color)
@@ -96,7 +95,7 @@
                   <div class="form-group row">
                     <label class="col-lg-2 col-lg-2 col-sm-3 text-end control-label col-form-label">Details:</label>
                     <div class="col-lg-10 col-sm-9 px-5">
-                      <textarea class="form-control" rows="3" name="note" value="{{ old('details') }}" placeholder="Enter Details (if any)"></textarea>
+                      <textarea class="form-control" rows="3" name="details" value="{{ old('details') }}" placeholder="Enter Details (if any)"></textarea>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -116,22 +115,4 @@
         </div>
       </div>
     </div>
-    @section('scripts')
-      <script>
-          const getValue = () => {
-              let itemQuantity = document.getElementById('quantity').value;
-              let unitPrice = document.getElementById('unit-price').value;
-              let totalPrice = document.getElementById('total-price');
-              let paidAmount = document.getElementById('paid-amount');
-              let dueAmount = document.getElementById('due-amount');
-
-              if(itemQuantity && unitPrice){
-                  totalPrice.value = unitPrice * itemQuantity
-              }
-              if(paidAmount){
-                  dueAmount.value = totalPrice.value - paidAmount.value
-              }
-          }
-      </script>
-    @endsection
   </x-admin-layout>

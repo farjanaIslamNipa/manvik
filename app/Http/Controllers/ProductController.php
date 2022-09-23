@@ -25,27 +25,45 @@ class ProductController extends Controller
     {
         $request->validate([
             'name'         => 'required',
-            'code'         => 'required',
+            'code'         => 'nullable|unique:products',
             'size'         => 'nullable',
             'color'        => 'nullable',
             'quantity'     => 'required',
-            'unit_price'   => 'nullable',
+            'unit_price'   => 'required',
             'status'       => 'required',
             'details'      => 'nullable',
         ]);
 
-        $products = new Product();
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+            $thumbNameTmp = md5_file($file->getRealPath());
+            $extension = $file->getClientOriginalExtension();
+            $filename = 'products' . $thumbNameTmp . '_' . time() . '.' . $extension;
+            $path = 'uploads/products';
+            $imgUrl = $file->move($path, $filename);
+            $request['img'] = $imgUrl;
 
-        $products->name             = $request->name;
-        $products->code             = $request->code;
-        $products->size             = $request->size;
-        $products->color            = $request->color;
-        $products->quantity         = $request->quantity;
-        $products->unit_price       = $request->unit_price;
-        $products->status           = $request->status;
-        $products->details          = $request->details;
 
-        $products->save();
+        }
+
+        $product = new Product();
+
+        $product->name             = strtolower($request->name);
+        if($request->prefix || $request->suffix){
+            $product->code = $request->prefix . $request->code . $request->suffix;
+        }else{
+            $product->code = $request->code;
+        }
+        $product->size             = $request->size;
+        $product->color            = $request->color;
+        $product->quantity         = $request->quantity;
+        $product->unit_price       = $request->unit_price;
+        $product->status           = $request->status;
+        $product->details          = $request->details;
+        $product->img              = isset($imgUrl) ? $imgUrl : '';
+
+
+        $product->save();
 
         return redirect()->route('admin.products.show')->with('success', 'Product added successfully');
     }
