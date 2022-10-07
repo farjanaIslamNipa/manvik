@@ -17,8 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string(column:'given_by', length:50);
             $table->string(column:'given_to', length:50);
+            $table->string(column:'sales_type', length:20)->nullable();
             $table->string(column:'seller_code');
             $table->float(column:'code_fee');
+            $table->float(column:'discount')->nullable();
+            $table->float(column:'paid');
+            $table->float(column:'due')->nullable();
             $table->date(column:'issue_date');
             $table->date(column:'valid_date');
             $table->string(column:'note')->nullable();

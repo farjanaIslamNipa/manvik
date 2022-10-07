@@ -15,6 +15,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\SalesTypesController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\UsersController;
@@ -175,7 +176,15 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::post(uri:'/product/store', action:[ProductController::class, 'storeProduct'])->name('product.store');
     Route::get(uri:'/product/edit/{id}', action:[ProductController::class, 'editProduct'])->name('product.edit');
     Route::post(uri:'/product/update/{id}', action:[ProductController::class, 'updateProduct'])->name('product.update');
-    Route::delete(uri:'/product/delete/{id}', action:[ProductController::class, 'deleteProduct'])->name('product.remove');
+    Route::get(uri:'/product/delete/{id}', action:[ProductController::class, 'deleteProduct'])->name('product.remove');
+
+    //SALES TYPE ROUTES
+    Route::get(uri:'/sales-type-list', action:[SalesTypesController::class, 'showSalesType'])->name('salesType.show');
+    Route::get(uri:'/sales-type/create', action:[SalesTypesController::class, 'addSalesType'])->name('salesType.add');
+    Route::post(uri:'/sales-type/store', action:[SalesTypesController::class, 'storeSalesType'])->name('salesType.store');
+    Route::get(uri:'/sales-type/edit/{id}', action:[SalesTypesController::class, 'editSalesType'])->name('salesType.edit');
+    Route::post(uri:'/sales-type/update/{id}', action:[SalesTypesController::class, 'updateSalesType'])->name('salesType.update');
+    Route::delete(uri:'/sales-type/delete/{id}', action:[SalesTypesController::class, 'deleteSalesType'])->name('salesType.remove');
 
 });
 // Route::get('/admin', function () {

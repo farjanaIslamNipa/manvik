@@ -8,7 +8,7 @@
             <div class="d-flex justify-content-between">
                 <h4 class="text-lg mb-0 font-bold">All Sizes</h4>
                 <div>
-                    <a class="btn btn-primary" href="{{ route('admin.size.add') }}">Create size</a>
+                    <a class="btn btn-primary" href="{{ route('admin.size.add') }}">Add size</a>
                 </div>
             </div>
             <div class="m-4 p-4 bg-white rounded">

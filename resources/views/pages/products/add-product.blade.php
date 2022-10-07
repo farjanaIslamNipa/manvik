@@ -82,7 +82,7 @@
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">status:</label>
+                    <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Status:</label>
                     <div class="col-lg-10 col-sm-9 px-5">
                       <select name="status">
                           <option selected disabled>Select status</option>

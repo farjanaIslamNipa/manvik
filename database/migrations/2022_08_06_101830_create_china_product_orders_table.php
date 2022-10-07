@@ -15,14 +15,21 @@ return new class extends Migration
     {
         Schema::create('china_product_orders', function (Blueprint $table) {
             $table->id();
-            $table->string(column:'supplier_name', length:50);
-            $table->string(column:'prod_name', length:80);
+            $table->string(column:'supplier_name', length:50)->nullable();
+            $table->string(column:'sales_type', length:20)->nullable();
+            $table->string(column:'prod_name', length:50);
+            $table->string(column:'code', length:50)->nullable();
+            $table->string(column:'color', length:50)->nullable();
+            $table->string(column:'size', length:50)->nullable();
             $table->integer(column:'quantity');
             $table->float(column:'unit_price');
             $table->float(column:'total_price');
-            $table->float(column:'advance');
-            $table->float(column:'due');
-            $table->date(column:'order_date');
+            $table->float(column:'discount')->nullable();
+            $table->float(column:'paid');
+            $table->float(column:'due')->nullable();
+            $table->date(column:'order_date')->nullable();
+            $table->date(column:'due_date')->nullable();
+            $table->string(column:'note')->nullable();
             $table->timestamps();
         });
     }

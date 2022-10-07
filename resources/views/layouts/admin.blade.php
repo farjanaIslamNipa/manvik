@@ -317,6 +317,12 @@
                       <span class="hide-menu">Add Color</span>
                     </a>
                   </li>
+                  <li class="sidebar-item">
+                    <a href="{{ route('admin.salesType.show') }}" class="sidebar-link">
+                      <span class="sub-menu-icon"><i class="fa-solid fa-caret-right"></i></span>
+                      <span class="hide-menu">Add Sales Type</span>
+                    </a>
+                  </li>
                 </ul>
               </li>
             @endrole

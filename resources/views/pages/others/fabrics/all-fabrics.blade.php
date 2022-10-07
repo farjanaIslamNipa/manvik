@@ -8,7 +8,7 @@
           <div class="d-flex justify-content-between">
               <h4 class="text-lg mb-0 font-bold">All Fabrics</h4>
               <div>
-                  <a class="btn btn-primary" href="{{ route('admin.fabrics.add') }}">Create Fabrics</a>
+                  <a class="btn btn-primary" href="{{ route('admin.fabrics.add') }}">Add Fabrics</a>
               </div>
           </div>
           <div class="m-4 p-4 bg-white rounded">
@@ -38,7 +38,7 @@
                               <form class="d-inline-block" action="{{ route('admin.fabrics.remove', $fabrics->id) }}" method="POST" onsubmit="return confirm('are your sure you want to delete this fabrics?');">
                                   @csrf
                                   @method('DELETE')
-                                  <button href="" class="btn btn-sm btn-danger bg-danger py-1 text-capitalize" type="submit" > <span><i class="fa-solid fa-trash-can"></i></span></button>
+                                  <button class="btn btn-sm btn-danger bg-danger py-1 text-capitalize" type="submit" > <span><i class="fa-solid fa-trash-can"></i></span></button>
                               </form>
                           </td>
                         </tr>

@@ -6,6 +6,7 @@ use App\Models\Color;
 use App\Models\Product;
 use App\Models\Size;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -25,7 +26,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name'         => 'required',
-            'code'         => 'nullable|unique:products',
+            'code'         => 'nullable',
             'size'         => 'nullable',
             'color'        => 'nullable',
             'quantity'     => 'required',
@@ -42,8 +43,6 @@ class ProductController extends Controller
             $path = 'uploads/products';
             $imgUrl = $file->move($path, $filename);
             $request['img'] = $imgUrl;
-
-
         }
 
         $product = new Product();
@@ -71,42 +70,68 @@ class ProductController extends Controller
     public function editProduct($id)
     {
         $product = Product::findOrFail($id);
-        return view('pages.products.edit-product', compact('product'));
+        $sizes = Size::all();
+        $colors = Color::all();
+        return view('pages.products.edit-product', compact('product', 'sizes', 'colors'));
     }
 
-    public function updateRent(Request $request, $id)
+    public function updateProduct(Request $request, $id)
     {
         $request->validate([
             'name'         => 'required',
-            'code'         => 'required',
+            'code'         => 'nullable',
             'size'         => 'nullable',
             'color'        => 'nullable',
             'quantity'     => 'required',
-            'unit_price'   => 'nullable',
+            'unit_price'   => 'required',
             'status'       => 'required',
             'details'      => 'nullable',
         ]);
 
-        $products = Product::findOrFail($id);
+        $product = Product::findOrFail($id);
 
-        $products->name             = $request->name;
-        $products->code             = $request->code;
-        $products->size             = $request->size;
-        $products->color            = $request->color;
-        $products->quantity         = $request->quantity;
-        $products->unit_price       = $request->unit_price;
-        $products->status           = $request->status;
-        $products->details          = $request->details;
+        if($request->img == '' || $request->img == null && $product->img){
+            $product->img              = $product->img;        }
 
-        $products->save();
+        if($request->img != '' || $request->img != null || $product->img){
+
+            if ($request->hasFile('img')) {
+                $destination = 'uploads/products'.$product->img;
+                if(File::exists($destination)){
+                    File::delete($destination);
+                }
+
+                $file = $request->file('img');
+                $thumbNameTmp = md5_file($file->getRealPath());
+                $extension = $file->getClientOriginalExtension();
+                $filename = 'products' . $thumbNameTmp . '_' . time() . '.' . $extension;
+                $path = 'uploads/products';
+                $imgUrl = $file->move($path, $filename);
+                $request['img'] = $imgUrl;
+            }
+        }
+
+
+
+
+        $product->name             = $request->name;
+        $product->code             = $request->code;
+        $product->size             = $request->size;
+        $product->color            = $request->color;
+        $product->quantity         = $request->quantity;
+        $product->unit_price       = $request->unit_price;
+        $product->status           = $request->status;
+        $product->details          = $request->details;
+
+        $product->save();
 
         return redirect()->route('admin.products.show')->with('success', 'Product information updated successfully');
     }
 
-    public function deleteRent($id)
+    public function deleteProduct($id)
     {
-        $products = Product::findOrFail($id);
-        $products->delete();
+        $product = Product::findOrFail($id);
+        $product->delete();
         return redirect()->route('admin.products.show')->with('success', 'Product deleted successfully');
     }
 }

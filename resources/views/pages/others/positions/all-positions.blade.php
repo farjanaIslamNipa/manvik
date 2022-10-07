@@ -8,7 +8,7 @@
             <div class="d-flex justify-content-between">
                 <h4 class="text-lg mb-0 font-bold">All positions</h4>
                 <div>
-                    <a class="btn btn-primary" href="{{ route('admin.position.add') }}">Create Position</a>
+                    <a class="btn btn-primary" href="{{ route('admin.position.add') }}">Add Position</a>
                 </div>
             </div>
             <div class="m-4 p-4 bg-white rounded">
@@ -38,7 +38,7 @@
                                 <form class="d-inline-block" action="{{ route('admin.position.remove', $position->id) }}" method="POST" onsubmit="return confirm('are your sure you want to delete this position?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button href="" class="btn btn-sm btn-danger bg-danger py-1 text-capitalize" type="submit" > <span><i class="fa-solid fa-trash-can"></i></span></button>
+                                    <button class="btn btn-sm btn-danger bg-danger py-1 text-capitalize" type="submit" > <span><i class="fa-solid fa-trash-can"></i></span></button>
                                 </form>
                             </td>
                           </tr>

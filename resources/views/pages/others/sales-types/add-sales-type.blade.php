@@ -1,6 +1,6 @@
 <x-admin-layout>
     @section('title')
-    Add Position | Manvik
+    Add Sales Type | Manvik
     @endsection
 
     <div class="page-wrapper">
@@ -8,15 +8,15 @@
           <div class="row justify-content-center">
             <div class="col-xl-7 col-md-10">
               <div class="card mt-4">
-                <h4 class="text-lg text-center pt-4 pb-2 font-bold">Add Position</h4>
-                <form action="{{ route('admin.position.store') }}" method="POST" class="base-form">
+                <h4 class="text-lg text-center pt-4 pb-2 font-bold">Add Sales Type</h4>
+                <form action="{{ route('admin.salesType.store') }}" method="POST" class="base-form">
                   @csrf
                   <div class="card-body pb-1">
                     <div class="form-group row">
                         <label class="col-lg-2 col-sm-3 text-end control-label col-form-label">Position:</label>
                         <div class="col-lg-10 col-sm-9 px-5">
-                          <input type="text" class="form-control" name="position" value="{{ old('position') }}" placeholder="Enter position name" />
-                          @error('position') <p class="text-danger mb-0">{{ $message }}</p> @enderror
+                          <input type="text" class="form-control text-capitalize" name="sales_type" value="{{ old('sales_type') }}" placeholder="Enter sales type" />
+                          @error('sales_type') <p class="text-danger mb-0">{{ $message }}</p> @enderror
                         </div>
                       </div>
                     <div class="form-group row">
